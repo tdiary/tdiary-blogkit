@@ -1,10 +1,10 @@
-# blog-style.rb: customize for blog style tDiary. $Revision: 1.2 $
+# blog-style.rb: customize for blog style tDiary. $Revision: 1.3 $
 #
 # Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
 #
 def no_diary
-	"Article ##{@date.strftime( '%Y%m%d' )} dose not exist."
+	"Article ##{@date.strftime( '%Y%m%d' )} does not exist."
 end
 
 def comment_today
