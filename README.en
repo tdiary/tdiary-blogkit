@@ -17,7 +17,7 @@ You can setup Blogkit without changing tDiary. It is only plugged-in.
 how to install
 --------------
 First, you need tDiary that is installed. 
-You must use tDiary version 1.5.4 or later.
+You must use tDiary version 1.5.5 or later.
 Here, it is assumed that you install tDiary under $INSTALL anew. 
 
 1. Creating tdiary.conf
@@ -73,16 +73,12 @@ See each plugin file if you want more information.
   Additional plugin for blog-style.rb for Japanese.
   DO NOT install this if you use tDiary in English.
 
-4. edit.rb
-  Changes 'Update' link to 'Edit' when topic page is shown.
-  You can use this plugin only by copying this plugin to plugin directory.
-
-5. lm.rb
+4. lm.rb
   Shows last-modified in each topic. You can choose position of
   the last-modified, under topic title or bottom of article.
   You can use this plugin only by copying this plugin to plugin directory.
 
-6. recent-entry.rb
+5. recent-entry.rb
   5.1 recent-entry plugin
     Shows the list of the recent topics. You have to choose 
     this plugin or recent-entry2.
@@ -91,18 +87,18 @@ See each plugin file if you want more information.
     If you want to show it on monthly mode
     or daily mode, choose recent-entry2.
 
-7. recent-entry2.rb
+6. recent-entry2.rb
   6.1 recent-entry plugin
     Show the list of recent topics. You have to choose 
     this or recent-entry.
     This is run only on insecure mode, but shows an accurate list 
     on latest mode and daily mode.
 
-8. title-navi.rb
+7. title-navi.rb
   Shows a topic title as navigation label. 
   You can use this plugin only by copying this plugin to plugin directory.
 
-9. whatsnew-list.rb
+8. whatsnew-list.rb
   8.1 whatsnew-list plugin
     Shows a list of updated topics like "What's new". 
     This plugin cannot be used on secure mode.

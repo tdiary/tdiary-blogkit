@@ -21,7 +21,7 @@ See README.en if you cannot read Japanese.
 で導入できます。
 
 ■インストール
-　すでにtDiaryはインストール済みだとします。tDiaryは1.5.4もしくはそ
+　すでにtDiaryはインストール済みだとします。tDiaryは1.5.5もしくはそ
 れ以降のできるだけ新しいものを推奨します。すでに運用中の日記ではなく、
 新たにblog系サイトを作るという前提で説明します。すでに運用中の日記に
 適用する場合には、tdiary.confのマージ作業などが必要になります。
@@ -88,16 +88,12 @@ See README.en if you cannot read Japanese.
   うにしてください。
   pluginディレクトリにコピーするだけで機能します。
 
-4. edit.rb
-  記事単体表示の時に、UpdateボタンをEditボタンにするプラグインです。
-  pluginディレクトリにコピーするだけで機能します。
-
-5. lm.rb
+4. lm.rb
   Last-Modifiedを表示するプラグインです。タイトル下か、記事最下部のどちら
   に表示するか、tdiary.confで選択可能です。
   pluginディレクトリにコピーするだけで機能します。
 
-6. recent-entry.rb
+5. recent-entry.rb
   5.1 recent-entryプラグイン
     最新の記事一覧を、新しい順に表示します。このプラグインはrecent-entry2
     とは排他です。どちらか一方を選択してください。
@@ -105,7 +101,7 @@ See README.en if you cannot read Japanese.
     合にしか正しい表示を行えません。最新表示でのみサイドバーを表示するので
     あれば、こちらを使います。
 
-7. recent-entry2.rb
+6. recent-entry2.rb
   6.1 recent-entryプラグイン
     最新の記事一覧を、新しい順に表示します。このプラグインはrecent-entryと
     は排他です。どちらか一方を選択してください。
@@ -113,13 +109,13 @@ See README.en if you cannot read Japanese.
     示でも常に正しいリストを表示します。最新表示以外でもサイドバーを表示す
     るのであれば、こちらを使います。
 
-8. title-navi.rb
+7. title-navi.rb
   tDiaryでは「前日」「翌日」になっていたナビゲーションボタンを、記事のタイ
   トルで置き換えます。ただし、月をまたぐ場合には、「Prev」「Next」という表
   記になります。
   pluginディレクトリにコピーするだけで機能します。
 
-9. whatsnew-list.rb
+8. whatsnew-list.rb
   8.1 whatsnew-listプラグイン
     記事が更新された順に一覧表示を行います。recent-entryと違い、過去の記事
     を更新しても上位に入れ替わります。secureモードでは動きません。
