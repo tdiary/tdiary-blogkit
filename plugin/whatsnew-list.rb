@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.18 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.19 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -109,7 +109,9 @@ end
 
 add_update_proc do
 	diary = @diaries[@date.strftime('%Y%m%d')]
-	new = [diary.date.strftime('%Y%m%d'), diary.title, Time::now.strftime('%Y%m%d')]
+	$stderr.puts diary.methods.sort
+	title = defined?( diary.stripped_title ) ? diary.stripped_title : diary.title
+	new = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime('%Y%m%d')]
 	PStore::new( "#{@cache_path}/whatsnew-list" ).transaction do |db|
 		wn = []
 		begin

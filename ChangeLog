@@ -1,3 +1,6 @@
+2004-01-18 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: hide category in the list.
+
 2003-12-12 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: add whatsnew_list.rdf.image options. thanks Kouhei Sutou <kou@cozmixng.org>.
 
