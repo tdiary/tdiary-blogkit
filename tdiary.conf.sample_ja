@@ -1,5 +1,5 @@
 #
-# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.5 $
+# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.6 $
 #
 
 #
@@ -120,10 +120,11 @@ FOOTER
 ]
 
 @referer_table = [
-	['^http://www.spc.gr.jp/sho/diary/\?date=(\d{4})(\d\d)(\d\d).*', 'Mary日記(\1-\2-\3)'],
-	['^http://www.spc.gr.jp/sho/diary/\?date=(\d{4})(\d\d).*', 'Mary日記(\1-\2)'],
-	['^http://www.spc.gr.jp/sho/diary/.*', 'Mary日記'],
-	['^http://www.spc.gr.jp/tdiary/.*', 'tDiary Official Site'],
+	['^http://sho.tdiary.net/(\d{4})(\d\d)(\d\d).*', 'ただのにっき(\1-\2-\3)'],
+	['^http://sho.tdiary.net/(\d{4})(\d\d).*', 'ただのにっき(\1-\2)'],
+	['^http://sho.tdiary.net/antenna/.*', 'ただのあんてな'],
+	['^http://sho.tdiary.net/.*', 'ただのにっき'],
+	['^http://www.tdiary.org/.*', 'tDiary Official Site'],
 	['^http://([^\.]*)\.tdiary.net/.*', 'tDiary.net(\1)'],
 	['^http://www.google.(com|co\.jp)/search.*?q=([^&]*).*', 'google検索(\2)'],
 	['^http://google.yahoo.(com|co\.jp)/.*?p=([^&]*).*', 'Yahoo内google検索(\2)'],

@@ -1,5 +1,6 @@
 2003-09-10 TADA Tadashi <sho@spc.gr.jp>
 	* blog_style.rb: support to getnerate new date in Append mode.
+	* tdiary.conf.sample_ja: update referer_table.
 
 2003-08-22 TADA Tadashi <sho@spc.gr.jp>
 	* title-navi.rb: show title in the prev/next month.
