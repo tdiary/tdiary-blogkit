@@ -1,4 +1,4 @@
-# blog-style.rb: customize to blog like labels. $Revision: 1.6 $
+# blog-style.rb: customize to blog like labels. $Revision: 1.7 $
 #
 # Copyright (c) 2003 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
@@ -20,3 +20,9 @@ def title_tag
 		return title_tag_
 	end
 end
+
+#
+# disable section specify in sending TrackBack
+#
+@conf['tb.no_section'] = true
+
