@@ -1,5 +1,5 @@
 #
-# tDiary blog kit configuration file (sample) $Revision: 1.4 $
+# tDiary blog kit configuration file (sample) $Revision: 1.5 $
 #
 
 #
@@ -28,11 +28,11 @@
 @options['title_navi.max'] = 30
 
 #
-# IO class and patches for DefaultIO.
+# specify Blog style
 #   - No section anchor in the article.
 #   - automatic generate new date when update.
 #
-require 'tdiary/blogio'
+@style = 'Blog'
 
 #
 # If you want to receive comments via E-mail, set below.

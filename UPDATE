@@ -37,7 +37,7 @@ How to update from Blogkit 1.5.2 or before.
   この結果、旧Blogkitを使っていた場合には、以下の手順で設定を変更してください:
   
     1. 従来のblogio.rbを削除し、新しいblog_style.rbを同じ場所にコピーします。
-    2. tdiary.confの「require 'tdiary/blogkit'」を削除し、代わりに
+    2. tdiary.confの「require 'tdiary/blogio'」を削除し、代わりに
        「@style = 'Blog'」を追加します。
 
   さらに非互換吸収のために、データのコンバートが必要になりました:

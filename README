@@ -34,7 +34,7 @@ See README.en if you cannot read Japanese.
   れています。これらのカスタマイズは、運用開始後に設定画面から行ってく
   ださい。
 
-2. IOクラスをコピー
+2. スタイルをコピー
   tdiary/blog_style.rbを、tDiaryインストールディレクトリのtdiaryの下に
   コピーします。上のtdiary.confに「@style = 'Blog'」の指定があるはずな
   ので、確認してください。
