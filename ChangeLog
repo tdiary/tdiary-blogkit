@@ -1,5 +1,7 @@
-2005-03-22  URABE Shyouhei  <shyouhei@ice.uec.ac.jp>
+2005-03-31 TADA Tadashi <sho@spc.gr.jp>
+	* release 2.0.1.
 
+2005-03-22  URABE Shyouhei  <shyouhei@ice.uec.ac.jp>
 	* tdiary/blogrd_style.rb (RD::RD2BlogVisitor::apply_to_Headline): bug fix in headline levels
 
 2005-03-09 TADA Tadashi <sho@spc.gr.jp>
