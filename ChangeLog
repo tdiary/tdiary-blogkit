@@ -1,3 +1,6 @@
+2003-10-15 Junichiro Kita <kita@kitaj.no-ip.com>
+	* plugin/blog-category.rb: split language resource.
+
 2003-10-14 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/blog-style.rb: split language resource.
 	* plugin/blog-style_ja.rb: marged to blug-style.rb.
