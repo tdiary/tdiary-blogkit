@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.7 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.8 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -39,7 +39,7 @@ def whatsnew_list( max = 5, extra_erb = false, limit = 20 )
 	wl = "#{@cache_path}/whatsnew-list"
 	begin
 		if @mode == 'latest' then
-			diary = @diaries[@diaries.keys.sort[-1]]
+			diary = @diaries[@diaries.keys.sort[0]]
 			diary.last_modified = File::mtime( wl ) if diary
 		end
 	rescue

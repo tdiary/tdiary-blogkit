@@ -1,3 +1,6 @@
+2002-12-24 TADA Tadashi <sho@spc.gr.jp>
+	* whatsnew-list.rb: change last-modified of oldest data in @diaries.
+
 2002-12-20 TADA Tadashi <sho@spc.gr.jp>
 	* whatsnew-list.rb: refine extra_erb.
 
