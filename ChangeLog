@@ -1,3 +1,6 @@
+2003-12-12 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: add whatsnew_list.rdf.image options. thanks Kouhei Sutou <kou@cozmixng.org>.
+
 2003-12-03 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: apply plugin to rdf file.
 

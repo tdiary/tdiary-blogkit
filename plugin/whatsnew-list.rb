@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.17 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.18 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -13,6 +13,8 @@
 #         'index.rdf'), this plugin will generate RDF file.
 #      @options['whatsnew_list.rdf.description']
 #         description of the site in RDF. (@html_title)
+#      @options['whatsnew_list.rdf.image']
+#         image URL of your site (not specified).
 #
 #   notice:
 #     This plugin dose NOT run on secure mode.
@@ -74,12 +76,23 @@ def whatsnew_list_rdf( items )
 	<description>#{desc}</description>
 	]
 
+	rdf_image = @options['whatsnew_list.rdf.image']
+	xml << %Q[<image rdf:resource="#{rdf_image}" />\n] if rdf_image
+
 	xml << %Q[<items><rdf:Seq>\n]
 	items.each do |uri, title, modify|
 		xml << %Q!<rdf:li rdf:resource="#{path}#{anchor uri}"/>\n!
 	end
 	xml << %Q[</rdf:Seq></items>\n]
 	xml << %Q[</channel>\n]
+
+	if rdf_image then
+		xml << %Q[<image rdf:abount="#{rdf_image}">\n]
+		xml << %Q[<title>#{@conf.html_title}</title>\n]
+		xml << %Q[<url>#{rdf_image}</url>\n]
+		xml << %Q[<link>#{path}</link>\n]
+		xml << %Q[</image>\n]
+	end
 
 	items.each do |uri, title, modify|
 		xml << %Q[<item rdf:about="#{path}#{anchor uri}">
@@ -100,7 +113,7 @@ add_update_proc do
 	PStore::new( "#{@cache_path}/whatsnew-list" ).transaction do |db|
 		wn = []
 		begin
-			db['whatsnew'].each_with_index do |item, i|
+			(db['whatsnew'] || []).each_with_index do |item, i|
 				wn << item unless item[0] == new[0]
 				break if i > 15
 			end
