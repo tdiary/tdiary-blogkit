@@ -1,5 +1,5 @@
 #
-# blog_style.rb: tDiary blog kit's style $Revision: 1.1 $
+# blog_style.rb: tDiary blog kit's style $Revision: 1.2 $
 #
 # if you want to use this style, add @style into tdiary.conf below:
 #
@@ -11,14 +11,7 @@
 require 'tdiary/tdiary_style.rb'
 
 module TDiary
-	class BlogDiary < DefaultDiary
-		TDiary::DefaultIO::add_style( 'Blog', self )
-
-		#
-		# If you already use blogkit before 1.5.2, remove '#' below.
-		#
-		#TDiary::DefaultIO::add_style( 'tDiary', self )
-
+	class BlogDiary < TdiaryDiary
 		def style
 			'Blog'
 		end
