@@ -1,3 +1,6 @@
+2004-02-17 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: fix about <link> element in HTML header.
+
 2004-01-18 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: hide category in the list.
 
