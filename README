@@ -44,6 +44,10 @@ See README.en if you cannot read Japanese.
   を導入した上で、blogwiki_style.rbをtdiary下にコピーし、@styleには
   'BlogWiki'を指定します。
 
+  同様に、RDスタイルで記述したい場合には、tDiary本体付属のRDスタイルを
+  導入した上で、blogrd_style.rbをtdiary下にコピーし、@styleには'BlogRD'
+  を指定します。
+
 2. テーマをコピー
   theme/blogを、tDiaryのインストールディレクトリにあるthemeにコピーしま
   す。このblogテーマはtDiaryの標準的テーマですが、サイドバーを使ったレイ

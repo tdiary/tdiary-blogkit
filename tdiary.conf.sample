@@ -1,5 +1,5 @@
 #
-# tDiary blog kit configuration file (sample) $Revision: 1.9 $
+# tDiary blog kit configuration file (sample) $Revision: 1.10 $
 #
 
 #
@@ -45,6 +45,7 @@
 #
 @style = 'Blog'
 #@style = 'BlogWiki' # if you want to write by Wiki style.
+#@style = 'BlogRD'   # if you want to write by RD style.
 
 #
 # If you want to receive comments via E-mail, set below.

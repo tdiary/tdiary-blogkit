@@ -1,5 +1,5 @@
 #
-# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.3 $
+# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.4 $
 #
 
 #
@@ -49,6 +49,7 @@
 #
 @style = 'Blog'
 #@style = 'BlogWiki' # Wikiスタイルを使いたい場合はこっち
+#@style = 'BlogRD'   # RDスタイルを使いたい場合はこっち
 
 #
 # コメントをメールで受けとる場合の設定

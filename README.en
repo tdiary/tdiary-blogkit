@@ -33,6 +33,10 @@ Here, it is assumed that you install tDiary under $INSTALL anew.
   original and copy tdiary/blogwiki_style.rb into $INSTALL/tdiary.
   And specify "@style = 'BlogWiki'" in your tdiary.conf.
 
+  Also if you want to write by RD style, install RD style of tDiary
+  original and copy tdiary/blogrd_style.rb into $INSTALL/tdiary.
+  And specify "@style = 'BlogRD'" in your tdiary.conf.
+
 2. Copy theme 
   Copy theme/blog under $INSTALL/theme. This is one kind of 
   tDiary themes, but it has some settings to enable sidebar etc.

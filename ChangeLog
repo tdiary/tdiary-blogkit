@@ -1,3 +1,6 @@
+2003-05-03 TADA Tadashi <sho@spc.gr.jp>
+	* add BlogRD style.
+
 2003-04-25 TADA Tadashi <sho@spc.gr.jp>
 	* recent-entry, recent-entry2, whatnew-list: remove 2nd parameter and support @options['apply_plugin'].
 	* whatsnew-list: RSS feed support. thanks Kazuhiro NISHIYAMA <zn@mbf.nifty.com>.
