@@ -1,3 +1,6 @@
+2003-10-09 Junichiro Kita <kita@kitaj.no-ip.com>
+	* plugin/blog-category.rb: space character after [category name] is omissible.
+
 2003-09-30 Junichiro Kita <kita@kitaj.no-ip.com>
 	* plugin/category.rb, blog-category.rb: move category.rb to blog-category.rb.
 

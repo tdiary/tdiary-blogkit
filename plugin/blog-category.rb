@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.1 $
+# blog-category.rb $Revision: 1.2 $
 #
 # Copyright (c) 2003 Junichiro KITA <kita@kitaj.no-ip.com>
 # Distributed under the GPL
@@ -32,7 +32,7 @@ if /(latest|month|day|append|replace|saveconf)/ === @mode
 
 				def stripped_title
 					return '' unless @title
-					stripped = @title.sub(/^(\[(.*?)\])+\s+/,'')
+					stripped = @title.sub(/^(\[(.*?)\])+\s*/,'')
 				end
 
 				def categories
