@@ -1,5 +1,5 @@
 #
-# tDiary blog kit configuration file (sample) $Revision: 1.2 $
+# tDiary blog kit configuration file (sample) $Revision: 1.3 $
 #
 
 #
@@ -16,7 +16,7 @@
 @options['lm.style'] = 'Last update on %B %d, %Y %H:%M'
 
 #
-# options of last-modified plugin
+# options of blog-style plugin
 #
 #  date format of blog style.
 @options['blog.date_format'] = 'on %B %d, %Y %H:%M'

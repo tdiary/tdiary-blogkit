@@ -1,9 +1,10 @@
-# recent-entry2.rb $Revision: 1.1 $
+# recent-entry2.rb $Revision: 1.2 $
 #
 # recent_entry2: modified 'recent_list' for Blogkit.
 #   parameters(default):
 #     max:       maximum list items (5)
 #     extra_erb: do ERb to list (false)
+#     limit:     max lengh of each items (20)
 #
 #   notice:
 #     This plugin dose NOT run on secure mode.
@@ -28,8 +29,9 @@ module TDiary
 end
 MODIFY_CLASS
 
-def recent_entry( max = 5, extra_erb = false )
+def recent_entry( max = 5, extra_erb = false, limit = 20 )
 	max = max.to_i
+	limit = limit.to_i
 
 	result = "<ul>\n"
 	cgi = CGI::new
@@ -42,7 +44,7 @@ def recent_entry( max = 5, extra_erb = false )
 				m = TDiaryMonth::new( cgi, '', @conf )
 				m.diaries.keys.sort.reverse_each do |date|
 					next unless m.diaries[date].visible?
-					result << %Q|<li><a href="#{@index}#{anchor date}">#{m.diaries[date].title}</a></li>\n|
+					result << %Q|<li><a href="#{@index}#{anchor date}">#{m.diaries[date].title.shorten( limit )}</a></li>\n|
 					max -= 1
 					throw :exit if max == 0
 				end

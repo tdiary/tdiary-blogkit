@@ -1,9 +1,10 @@
-# recent_entry.rb $Revision: 1.2 $
+# recent_entry.rb $Revision: 1.3 $
 #
 # recent_entry: modified 'title_list' for Blogkit.
 #   parameter(default):
 #     max:       maximum list items (5)
 #     extra_erb: do ERb to list (false)
+#     limit:     max lengh of each items (20)
 #
 #   notice:
 #     This plugin CAN run on secure mode.
@@ -19,16 +20,19 @@
 	* modified for Blogkit.
 =end
 
-def recent_entry( max = 5, extra_erb = false )
+def recent_entry( max = 5, extra_erb = false, limit = 20 )
+	max = max.to_i
+	limit = limit.to_i
+
 	result = "<ul>\n"
 	@diaries.keys.sort.reverse.each_with_index do |date, idx|
 		break if idx >= max
 		diary = @diaries[date]
 		next unless diary.visible?
-		result << %Q[<li><a href="#{@index}#{anchor date}">#{diary.title}</a></li>\n]
+		result << %Q[<li><a href="#{@index}#{anchor date}">#{diary.title.shorten( limit )}</a></li>\n]
 	end
 	result << "</ul>\n"
-	if extra_erb and /<%=/ === result
+	if extra_erb and /<%=/ =~ result
 		result.untaint if $SAFE < 3
 		ERbLight.new( result ).result( binding )
 	else
