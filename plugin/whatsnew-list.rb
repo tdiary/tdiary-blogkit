@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.4 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.5 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -35,9 +35,15 @@ end
 def whatsnew_list( max = 5, extra_erb = false, limit = 20 )
 	max = max.to_i
 	limit = limit.to_i
+	
+	wl = "#{@cache_path}/whatsnew-list"
+	if @mode == 'latest' then
+		diary = @diaries[@diaries.keys.sort[-1]]
+		diary.last_modified = File::mtime( wl ) if diary
+	end
 
 	r = "<ul>\n"
-	PStore::new( "#{@cache_path}/whatsnew-list" ).transaction do |db|
+	PStore::new( wl ).transaction do |db|
 		begin
 			wn = db['whatsnew']
 			wn.each_with_index do |item,i|
