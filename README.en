@@ -2,94 +2,99 @@
 
 What's Blogkit?
 ---------------
-tDiary Blogkit modify tDiary that managed by topics but not daily.
-tDiary with Blogkit is different from original:
+tDiary Blogkit modifies tDiary. This modification enables 
+tDiary to manage articles by topics, not daily.
+tDiary with Blogkit is different from original one:
 
-- Date dose not have mean. It looks like 'serial number'.
-- Each topics have last modified.
-- Each topics in top page are shown only 1st section (like summary).
-- Making new topic number automatically when update.
-- Add new features: 'Recent Entries' and 'What's New'.
+- Date has no meaning. It looks like 'serial number'.
+- Each topic have last-modified.
+- Top page has the 1st section of each topic(like summary).
+- tDiary with Blogkit makes new topic number automatically when update.
+- Blogkit adds new features: 'Recent Entries' and 'What's New'.
 
 You can setup Blogkit without changing tDiary. It is only plugged-in.
 
 how to install
 --------------
-At first, you need tDiary that already installed. So, tDiary has
-installed into $INSTALL below. And use tDiary version 1.5.1 or later.
+First, you need tDiary that is installed. 
+You must use tDiary version 1.5.2 or later.
+Here, it is assumed that you install tDiary under $INSTALL anew. 
 
-1. Making tdiary.conf
+1. Creating tdiary.conf
   Copy tdiary.conf.sample in Blogkit to $INSTALL/tdiary.conf.
-  And rewrite @data_path in the tdiary.conf to your data saving
-  directory. See about @data_path in README of tDiary.
+  And, rewrite @data_path in the tdiary.conf to your data saving
+  directory. Read README of tDiary about @data_path. 
 
-2. Copy BlogIO class
-  Copy tdiary/blogio.rb of Blogkit to under $INSTALL/tdiary.
+2. Copy BlogIO
+  Copy tdiary/blogio.rb of Blogkit under $INSTALL/tdiary.
   You have to confirm there is "require 'tdiary/blogio'" in your
   tdiary.conf.
 
-2. Copy the Theme file
-  Copy theme/blog to under $INSTALL/theme. This is as same as
-  tDiary themes, but it have some settings to make sidebar etc.
+2. Copy theme 
+  Copy theme/blog under $INSTALL/theme. This is one kind of 
+  tDiary themes, but it has some settings to enable sidebar etc.
 
 3. Copy Plugins
-  Copy plugin/*.rb to under $INSTALL/plugin. Do not copy all of
-  files. You have to choice that you need. See each files of plugin,
-  It have more descriptions.
+  Copy plugin/*.rb under $INSTALL/plugin. Don't copy all of the
+  files. You have to choice what you need. See each files of plugin,
+  which have more descriptions.
 
 4. and run tDiary as CGI
-  When you want to add new topic, click 'Update' link in the bottom
-  if the page.
-  If you want to edit existence page, open the topic and click
-  'Edit' link in the bottom of the page.
+  When you want to add a new topic, click 'Update' link 
+  at the bottom of the page.
+  If you want to edit existing page, open the topic and click
+  'Edit' link at the bottom of the page.
 
 About Plugins
 -------------
-See each plugin files if you want more information.
+See each plugin file if you want more information.
 
 1. archive.rb
   1.1 archive plugin
-    Show all topics in groups sorted by new.
+    Shows all the topics in group sorted by topic number.
+    By default, this plugin shows the topics in the sidebar.     
 
   1.2 archive_dropdown plugin
-    same as archive plugin but in dropdown list.
+    Like archive plugin, this plugin shows all the topics 
+    in group. The topics are shown in dropdown list.
 
 2. blog-style.rb
-  Change 'Diary like' labels to 'Blog like'.
-  You can use this plugin only copy to plugin directory.
+  Changes 'Diary like' labels to 'Blog like'.
+  You can use this plugin only by copying this plugin to plugin directory.
 
 3. edit.rb
-  Change 'Update' link to 'Edit' when topic page.
-  You can use this plugin only copy to plugin directory.
+  Changes 'Update' link to 'Edit' when topic page is shown.
+  You can use this plugin only by copying this plugin to plugin directory.
 
 4. lm.rb
-  Show last modified in each topics. You can choice position of
-  the label which under topic title or bottom of article.
-  You can use this plugin only copy to plugin directory.
+  Shows last-modified in each topic. You can choose position of
+  the last-modified, under topic title or bottom of article.
+  You can use this plugin only by copying this plugin to plugin directory.
 
 5. recent-entry.rb
   5.1 recent-entry plugin
-    Show the list of recent topics. You have to choice this or
-	 recent-entry2.
-	 This is lightweight and can run on secure mode, but it can run
-	 right only on latest mode. If you want to show it on monthly
-	 or daily mode, choice recent-entry2.
+    Shows the list of the recent topics. You have to choose 
+    this plugin or recent-entry2.
+    This is lightweight and can be run on secure mode. But, 
+    the list is shown accurately only on latest mode. 
+    If you want to show it on monthly mode
+    or daily mode, choose recent-entry2.
 
 6. recent-entry2.rb
   6.1 recent-entry plugin
-    Show the list of recent topics. You have to choice this or
-	 recent-entry.
-	 This is only run on insecure mode, but show right list on the
-	 latest mode and daily mode.
+    Show the list of recent topics. You have to choose 
+    this or recent-entry.
+    This is run only on insecure mode, but shows an accurate list 
+    on latest mode and daily mode.
 
 7. title-navi.rb
-  Show topic title in navigation label. 
-  You can use this plugin only copy to plugin directory.
+  Shows a topic title as navigation label. 
+  You can use this plugin only by copying this plugin to plugin directory.
 
 8. whatsnew-list.rb
   8.1 whatsnew-list plugin
-    Show list of updated topics like "What's new". It cannot on
-	 secure mode.
+    Shows a list of updated topics like "What's new". 
+    This plugin cannot be used on secure mode.
 
 License
 -------
