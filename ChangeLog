@@ -1,3 +1,6 @@
+2005-03-09 TADA Tadashi <sho@spc.gr.jp>
+	* recent-entry.rb, recent-entry2.rb: remove HTML tag in title.
+
 2004-06-27 TADA Tadashi <sho@spc.gr.jp>
 	* release 2.0.0.
 
