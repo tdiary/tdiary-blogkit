@@ -1,4 +1,4 @@
-# title-navi.rb: navigation label with title of the article. $Revision: 1.4 $
+# title-navi.rb: navigation label with title of the article. $Revision: 1.5 $
 #
 # This plugin run only copy to plugin directory.
 # You can customize in tdiary.conf:
@@ -55,7 +55,7 @@ def navi_prev_diary( date )
 	diary = @diaries[date.strftime( '%Y%m%d' )]
 	if diary and diary.title.length > 0 then
 		len = @options['title_navi.max'] || 30
-		diary.title.shorten( len.to_i )
+		@conf.shorten( diary.title, len.to_i )
 	else
 		"Prev"
 	end
@@ -65,7 +65,7 @@ def navi_next_diary( date )
 	diary = @diaries[date.strftime( '%Y%m%d' )]
 	if diary and diary.title.length > 0 then
 		len = @options['title_navi.max'] || 30
-		diary.title.shorten( len.to_i )
+		@conf.shorten( diary.title, len.to_i )
 	else
 		"Next"
 	end

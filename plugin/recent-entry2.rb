@@ -1,4 +1,4 @@
-# recent-entry2.rb $Revision: 1.3 $
+# recent-entry2.rb $Revision: 1.4 $
 #
 # recent_entry2: modified 'recent_list' for Blogkit.
 #   parameters(default):
@@ -43,7 +43,7 @@ def recent_entry( max = 5, limit = 20 )
 				m = TDiaryMonth::new( cgi, '', @conf )
 				m.diaries.keys.sort.reverse_each do |date|
 					next unless m.diaries[date].visible?
-					result << %Q|<li><a href="#{@index}#{anchor date}">#{m.diaries[date].title.shorten( limit )}</a></li>\n|
+					result << %Q|<li><a href="#{@index}#{anchor date}">#{@conf.shorten( m.diaries[date].title, limit )}</a></li>\n|
 					max -= 1
 					throw :exit if max == 0
 				end

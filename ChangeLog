@@ -1,3 +1,6 @@
+2003-09-25 Junichiro Kita <kita@kitaj.no-ip.com>
+	* plugin/*.rb: use @conf.shorten
+
 2003-09-10 TADA Tadashi <sho@spc.gr.jp>
 	* blog_style.rb: support to getnerate new date in Append mode.
 	* tdiary.conf.sample_ja: update referer_table.
