@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.16 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.17 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -91,7 +91,7 @@ def whatsnew_list_rdf( items )
 	end
 
 	xml << "</rdf:RDF>\n"
-	@whatsnew_list_encoder.call( xml.gsub( /\t/, '' ) )
+	@whatsnew_list_encoder.call( apply_plugin( xml ).gsub( /\t/, '' ) )
 end
 
 add_update_proc do

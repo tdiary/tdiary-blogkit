@@ -1,3 +1,6 @@
+2003-12-03 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: apply plugin to rdf file.
+
 2003-11-27 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: support Config#base_url.
 
