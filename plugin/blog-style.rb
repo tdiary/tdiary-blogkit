@@ -1,5 +1,7 @@
+# blog-style.rb: customize for blog style tDiary. $Revision: 1.2 $
 #
-# blog-style.rb: customize for blog style tDiary.
+# Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
+# Distributed under the GPL
 #
 def no_diary
 	"Article ##{@date.strftime( '%Y%m%d' )} dose not exist."
@@ -18,7 +20,7 @@ def comment_new
 end
 
 def comment_description
-	'Post a comment'
+	'Post a comment please. Your Email address will not show in this page.'
 end
 
 def comment_description_short

@@ -1,8 +1,8 @@
-# edit.rb $Revision: 1.1.1.1 $
+# edit.rb $Revision: 1.2 $
 #
-# navi_admin: 日毎表示で「更新」を「編集」に置き換える。その日の日記を
-#             すぐに編集できます。このファイルをpluginにコピーするだけ
-#             で自動的に置き変わります。
+# navi_admin: replace 'Update' to 'Edit' on day mode.
+#   notice:
+#      You can modify 'Edit' label by to define navi_edit plugin.
 #
 def navi_admin
 	if @mode == 'day' then

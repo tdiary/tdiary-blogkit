@@ -1,5 +1,9 @@
+# title-navi.rb: navigation label with title of the article. $Revision: 1.2 $
 #
-# title-navi.rb: navigation label with title of article.
+# This plugin run only copy to plugin directory.
+#
+# Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
+# Distributed under the GPL
 #
 def navi_prev_diary( date )
 	diary = @diaries[date.strftime( '%Y%m%d' )]

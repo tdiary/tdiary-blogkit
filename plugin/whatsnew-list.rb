@@ -1,5 +1,15 @@
+# whatsnew-list.rb: what's new list plugin $Revision: 1.2 $
 #
-# what's new list plugin
+# whatsnew_list: show what's new list
+#   parameter (default):
+#      max: max of list items (5)
+#
+#   notice:
+#     This plugin dose NOT run on secure mode.
+#     This plugin keep only recent 10 items.
+#
+# Copyright (c) 2002 by TADA Tadashi <sho@spc.gr.jp>
+# Distributed under the GPL
 #
 require 'pstore'
 

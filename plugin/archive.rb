@@ -1,7 +1,14 @@
-# archive.rb $Revision: 1.3 $
+# archive.rb $Revision: 1.4 $
 #
-# archive: 過去記事のアーカイブ一覧を表示する
-#   パラメタ: なし
+# archive: show list of past news archive
+#   parameter: none.
+#
+# archive_dropdown: show list of past news archive in dropdown.
+#   parameter(default):
+#      label: label of submit button ('Go')
+#
+# Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
+# Distributed under the GPL
 #
 def archive_make_list
 	list = []

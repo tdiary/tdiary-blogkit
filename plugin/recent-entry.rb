@@ -1,10 +1,24 @@
-# recent_entry.rb $Revision: 1.1.1.1 $
+# recent_entry.rb $Revision: 1.2 $
 #
-# recent_entry: title_listの表示を改造しただけ
-#   パラメタ(カッコ内は未指定時の値):
-#     max:       
-#     extra_erb: タイトルリスト生成後さらにERbを通すか(false)
+# recent_entry: modified 'title_list' for Blogkit.
+#   parameter(default):
+#     max:       maximum list items (5)
+#     extra_erb: do ERb to list (false)
 #
+#   notice:
+#     This plugin CAN run on secure mode.
+#     This plugin is lightweight. But when on month or day mode,
+#     it will show wrong list sometimes. If you want to show recent entries
+#     on month or day mode, try to use recent-entry2.rb.
+#
+# Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
+# Distributed under the GPL
+#
+=begin ChengeLog
+2002-11-21 TADA Tadashi <sho@spc.gr.jp>
+	* modified for Blogkit.
+=end
+
 def recent_entry( max = 5, extra_erb = false )
 	result = "<ul>\n"
 	@diaries.keys.sort.reverse.each_with_index do |date, idx|
