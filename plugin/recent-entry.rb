@@ -1,4 +1,4 @@
-# recent_entry.rb $Revision: 1.7 $
+# recent_entry.rb $Revision: 1.8 $
 #
 # recent_entry: modified 'title_list' for Blogkit.
 #   parameter(default):
@@ -28,7 +28,7 @@ def recent_entry( max = 5, limit = 20 )
 		break if idx >= max
 		diary = @diaries[date]
 		next unless diary.visible?
-		title = m.diaries[date].title.gsub( /<[^>]*>/, '' )
+		title = diary.title.gsub( /<[^>]*>/, '' )
 		result << %Q[<li><a href="#{@index}#{anchor date}">#{@conf.shorten( title, limit )}</a></li>\n]
 	end
 	result << "</ul>\n"
