@@ -1,5 +1,5 @@
 #
-# tDiary blog kit configuration file (sample) $Revision: 1.3 $
+# tDiary blog kit configuration file (sample) $Revision: 1.4 $
 #
 
 #
@@ -20,6 +20,12 @@
 #
 #  date format of blog style.
 @options['blog.date_format'] = 'on %B %d, %Y %H:%M'
+
+#
+# options of title_navi plugin
+#
+#  max length of navigation button label.
+@options['title_navi.max'] = 30
 
 #
 # IO class and patches for DefaultIO.
