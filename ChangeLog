@@ -1,3 +1,7 @@
+2003-02-23 TADA Tadashi <sho@spc.gr.jp>
+	* BlogWiki style: fix bugs of blockquote grammer.
+	* release 1.5.3.
+
 2003-02-21 TADA Tadashi <sho@spc.gr.jp>
 	* BlogWiki style: modify blockquote grammar.
 	* modify TDiaryForm class only runnning on Blog mode.
