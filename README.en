@@ -25,10 +25,9 @@ Here, it is assumed that you install tDiary under $INSTALL anew.
   And, rewrite @data_path in the tdiary.conf to your data saving
   directory. Read README of tDiary about @data_path. 
 
-2. Copy BlogIO
-  Copy tdiary/blogio.rb of Blogkit under $INSTALL/tdiary.
-  You have to confirm there is "require 'tdiary/blogio'" in your
-  tdiary.conf.
+2. Copy blog_style.rb
+  Copy tdiary/blog_style.rb of Blogkit under $INSTALL/tdiary.
+  You have to confirm there is "@style= 'Blog'" in your tdiary.conf.
 
 2. Copy theme 
   Copy theme/blog under $INSTALL/theme. This is one kind of 

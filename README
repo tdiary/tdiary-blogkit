@@ -35,9 +35,9 @@ See README.en if you cannot read Japanese.
   ださい。
 
 2. IOクラスをコピー
-  tdiary/blogio.rbを、tDiaryインストールディレクトリのtdiaryの下にコピー
-  します。上のtdiary.confに「require 'tdiary/blogio'」の指定があるはず
-  なので、確認してください。
+  tdiary/blog_style.rbを、tDiaryインストールディレクトリのtdiaryの下に
+  コピーします。上のtdiary.confに「@style = 'Blog'」の指定があるはずな
+  ので、確認してください。
 
 2. テーマをコピー
   theme/blogを、tDiaryのインストールディレクトリにあるthemeにコピーしま

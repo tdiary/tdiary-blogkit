@@ -1,10 +1,28 @@
 #
-# blogio.rb: tDiary blog kit's IO class $Revision: 1.1.1.1 $
+# blog_style.rb: tDiary blog kit's style $Revision: 1.1 $
 #
-require 'tdiary/defaultio'
+# if you want to use this style, add @style into tdiary.conf below:
+#
+#    @style = 'Blog'
+#
+# Copyright (C) 2003, TADA Tadashi <sho@spc.gr.jp>
+# You can distribute this under GPL.
+#
+require 'tdiary/tdiary_style.rb'
 
 module TDiary
-	class DefaultDiary
+	class BlogDiary < DefaultDiary
+		TDiary::DefaultIO::add_style( 'Blog', self )
+
+		#
+		# If you already use blogkit before 1.5.2, remove '#' below.
+		#
+		#TDiary::DefaultIO::add_style( 'tDiary', self )
+
+		def style
+			'Blog'
+		end
+	
 		def to_html4( opt )
 			section_id = 0
 			r = %Q[<div class="section">\n]
