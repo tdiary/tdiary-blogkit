@@ -1,6 +1,6 @@
 /*
 Title: tDiary blog style
-Revision: $Revision: 1.1.1.1 $
+Revision: $Revision: 1.2 $
 Author: ただただし
 Access: sho@spc.gr.jp
 License: GPL
@@ -558,6 +558,11 @@ div.sidebar div.sidemenu {
 
 div.sidebar ul {
 	line-height: 120%;
+	margin: 0em 0em 0.5em 2em;
+	padding: 0px;
+}
+
+div.sidebar form {
 	margin: 0em 0em 0.5em 2em;
 	padding: 0px;
 }

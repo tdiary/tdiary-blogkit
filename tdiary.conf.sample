@@ -1,5 +1,5 @@
 #
-# tDiary blog kit configuration file (sample) $Revision: 1.1.1.1 $
+# tDiary blog kit configuration file (sample) $Revision: 1.2 $
 #
 
 #
@@ -41,21 +41,21 @@ require 'tdiary/blogio'
 
 #
 # header
-#   - show sidebar when latest mode only.
+#   - hide sidebar when day mode only.
 #
 @header = <<HEADER
 <div class="adminmenu"><%= navi_user %></div>
 <h1>my blog</h1>
-<% if @mode == 'latest' %><div class="main"><% end %>
+<% unless @mode == 'day' %><div class="main"><% end %>
 HEADER
 
 #
 # footer
-#   - show sidebar when latest mode only.
+#   - hide sidebar when day mode only.
 #   - show 'Recent Entiries', 'Recent Updates' and 'Archives'.
 #
 @footer = <<FOOTER
-<% if @mode == 'latest' %>
+<% unless @mode == 'day' %>
 </div>
 <div class="sidebar">
 
