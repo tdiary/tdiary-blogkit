@@ -1,3 +1,6 @@
+2004-02-18 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: remove debug print. thanks MATSUOKA Kohei <kohei@machu.jp>.
+
 2004-02-17 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: fix about <link> element in HTML header.
 
