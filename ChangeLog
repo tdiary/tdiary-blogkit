@@ -1,3 +1,6 @@
+2004-05-22 TADA Tadashi <sho@spc.gr.jp>
+	* theme/blog/blog.css: add '@charset "euc-jp";'.
+
 2004-05-16 TADA Tadashi <sho@spc.gr.jp>
 	* tdiary.conf.sample*: add self URL into @no_referer. thanks ZnZ <zn@mbf.nifty.com>.
 
