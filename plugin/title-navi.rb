@@ -1,4 +1,4 @@
-# title-navi.rb: navigation label with title of the article. $Revision: 1.7 $
+# title-navi.rb: navigation label with title of the article. $Revision: 1.8 $
 #
 # This plugin run only copy to plugin directory.
 # You can customize in tdiary.conf:
@@ -28,12 +28,10 @@ if @mode == 'day'
 		diary = @diaries[month + ('%02d' % day)]
 		pre = day if diary and diary.visible?
 	end
-	if pre == 0 then
-		if years.index( month ) - 1 >= 0 then
-			cgi.params['date'] = [years[years.index( month ) - 1]]
-			m = TDiaryMonth::new( cgi, '', @conf )
-			@diaries.update( m.diaries )
-		end
+	if pre == 0 and (years.index( month ) || 1) - 1 >= 0 then
+		cgi.params['date'] = [years[(years.index( month ) || 0) - 1]]
+		m = TDiaryMonth::new( cgi, '', @conf )
+		@diaries.update( m.diaries )
 	end
 
 	# search nex
@@ -42,12 +40,10 @@ if @mode == 'day'
 		diary = @diaries[month + ('%02d' % day)]
 		nex = day if diary and diary.visible?
 	end
-	if nex == 0 then
-		if years.index( month ) + 1 < years.size then
-			cgi.params['date'] = [years[years.index( month ) + 1]]
-			m = TDiaryMonth::new( cgi, '', @conf )
-			@diaries.update( m.diaries )
-		end
+	if nex == 0 and (years.index( month ) || years.size-1) + 1 < years.size then
+		cgi.params['date'] = [years[(years.index( month ) || years.size) + 1]]
+		m = TDiaryMonth::new( cgi, '', @conf )
+		@diaries.update( m.diaries )
 	end
 end
 
