@@ -1,3 +1,6 @@
+2003-05-18 TADA Tadashi <sho@spc.gr.jp>
+	* whatsnew-list.rb: call apply_plugin begore shorten.
+
 2003-05-15 TADA Tadashi <sho@spc.gr.jp>
 	* release 1.5.4.
 

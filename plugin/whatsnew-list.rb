@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.11 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.12 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -41,14 +41,14 @@ def whatsnew_list( max = 5, limit = 20 )
 			wn = db['whatsnew']
 			wn.each_with_index do |item,i|
 				break if i >= max
-				item[1].gsub!( /<.*?>/, '' )
-				r << %Q|<li><a href="#{@index}#{anchor item[0]}">#{item[1].shorten( limit )}</a></li>\n|
+				title = apply_plugin( item[1] ).gsub( /<.*?>/, '' ).shorten( limit )
+				r << %Q|<li><a href="#{@index}#{anchor item[0]}">#{title}</a></li>\n|
 			end
 			db.abort
 		rescue
 		end
 	end
-	apply_plugin( r << "</ul>\n" )
+	r << "</ul>\n"
 end
 
 #
