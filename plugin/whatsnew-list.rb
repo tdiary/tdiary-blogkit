@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.22 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.23 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -119,6 +119,7 @@ def whatsnew_list_rdf( items )
 	<title>#{@conf.html_title}</title>
 	<link>#{path}</link>
 	<description>#{desc}</description>
+	<dc:creator>#{CGI::escapeHTML( @conf.author_name )}</dc:creator>
 	]
 
 	rdf_image = @options['whatsnew_list.rdf.image']
@@ -148,6 +149,7 @@ def whatsnew_list_rdf( items )
 		xml << %Q[<item rdf:about="#{path}#{anchor uri}">
 		<title>#{title}</title>
 		<link>#{path}#{anchor uri}</link>
+		<dc:creator>#{CGI::escapeHTML( @conf.author_name )}</dc:creator>
 		<dc:date>#{mod}</dc:date>
 		</item>
 		]

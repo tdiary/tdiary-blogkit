@@ -1,3 +1,6 @@
+2004-02-26 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: add <dc:creator> into RDF.
+
 2004-02-19 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: support conf_proc and split English resource.
 
