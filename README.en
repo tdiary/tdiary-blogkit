@@ -1,32 +1,32 @@
--- tDiary Blogkit: How to run tDiary like blog. --
+-- tDiary BlogKit: How to run tDiary like blog. --
 
-What's Blogkit?
+What's BlogKit?
 ---------------
-tDiary Blogkit modifies tDiary. This modification enables 
+tDiary BlogKit modifies tDiary. This modification enables 
 tDiary to manage articles by topics, not daily.
-tDiary with Blogkit is different from original one:
+tDiary with BlogKit is different from original one:
 
 - Date has no meaning. It looks like 'serial number'.
 - Each topic have last-modified.
 - Top page has the 1st section of each topic(like summary).
-- tDiary with Blogkit makes new topic number automatically when update.
-- Blogkit adds new features: 'Recent Entries' and 'What's New'.
+- tDiary with BlogKit makes new topic number automatically when update.
+- BlogKit adds new features: 'Recent Entries' and 'What's New'.
 
-You can setup Blogkit without changing tDiary. It is only plugged-in.
+You can setup BlogKit without changing tDiary. It is only plugged-in.
 
 how to install
 --------------
 First, you need tDiary that is installed. 
-You must use tDiary version 1.5.5 or later.
+You must use tDiary version 1.5.6 or later.
 Here, it is assumed that you install tDiary under $INSTALL anew. 
 
 1. Creating tdiary.conf
-  Copy tdiary.conf.sample in Blogkit to $INSTALL/tdiary.conf.
+  Copy tdiary.conf.sample in BlogKit to $INSTALL/tdiary.conf.
   And, rewrite @data_path in the tdiary.conf to your data saving
   directory. Read README of tDiary about @data_path. 
 
 2. Copy blog_style.rb
-  Copy tdiary/blog_style.rb of Blogkit under $INSTALL/tdiary.
+  Copy tdiary/blog_style.rb of BlogKit under $INSTALL/tdiary.
   You have to confirm there is "@style= 'Blog'" in your tdiary.conf.
 
   If you want to write by Wiki style, install Wiki style of tDiary
@@ -42,9 +42,14 @@ Here, it is assumed that you install tDiary under $INSTALL anew.
   tDiary themes, but it has some settings to enable sidebar etc.
 
 3. Copy Plugins
-  Copy plugin/*.rb under $INSTALL/plugin. Don't copy all of the
-  files. You have to choice what you need. See each files of plugin,
-  which have more descriptions.
+  After tDiary 1.5.6, you can select plugin in preference page.
+  Add the path of BlogKit plugins into tdiary.conf:
+
+    @options['sp.path'] = ['misc/plugin', 'blogkit/plugin']
+
+  This option can have some pathes of plugins, 1st path is tDiary
+  plugin collection. 2nd path is BlogKit's. Modify path name with
+  your environment.
 
 4. and run tDiary as CGI
   When you want to add a new topic, click 'Update' link 
@@ -69,17 +74,13 @@ See each plugin file if you want more information.
   Changes 'Diary like' labels to 'Blog like'.
   You can use this plugin only by copying this plugin to plugin directory.
 
-3. blog-style_ja.rb
-  Additional plugin for blog-style.rb for Japanese.
-  DO NOT install this if you use tDiary in English.
-
-4. lm.rb
+3. lm.rb
   Shows last-modified in each topic. You can choose position of
   the last-modified, under topic title or bottom of article.
   You can use this plugin only by copying this plugin to plugin directory.
 
-5. recent-entry.rb
-  5.1 recent-entry plugin
+4. recent-entry.rb
+  4.1 recent-entry plugin
     Shows the list of the recent topics. You have to choose 
     this plugin or recent-entry2.
     This is lightweight and can be run on secure mode. But, 
@@ -87,34 +88,34 @@ See each plugin file if you want more information.
     If you want to show it on monthly mode
     or daily mode, choose recent-entry2.
 
-6. recent-entry2.rb
-  6.1 recent-entry plugin
+5. recent-entry2.rb
+  5.1 recent-entry plugin
     Show the list of recent topics. You have to choose 
     this or recent-entry.
     This is run only on insecure mode, but shows an accurate list 
     on latest mode and daily mode.
 
-7. title-navi.rb
+6. title-navi.rb
   Shows a topic title as navigation label. 
   You can use this plugin only by copying this plugin to plugin directory.
 
-8. whatsnew-list.rb
-  8.1 whatsnew-list plugin
+7. whatsnew-list.rb
+  7.1 whatsnew-list plugin
     Shows a list of updated topics like "What's new". 
     This plugin cannot be used on secure mode.
 	 And it can generate RDF file when option setting in tdiary.conf.
 
-9. blog-category.rb
+8. blog-category.rb
   Add category feature.  A word surrounded by '[' and ']' is treated as 
   a name of category.  By clicking this category name, you can move to
   the page which displays articles of the category.
   You should initialize the index of category in the config page of tDiary.
 
-  9.1 blog_category_entry plugin
+  8.1 blog_category_entry plugin
     Show the list of titles which can't be shown in the category specific
     page.
 
-  9.2 blog_category_form plugin
+  8.2 blog_category_form plugin
     Shows all categories in dropdown list.  You can select a category to
     be shown.
 

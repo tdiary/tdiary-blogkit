@@ -1,3 +1,8 @@
+2003-10-14 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/blog-style.rb: split language resource.
+	* plugin/blog-style_ja.rb: marged to blug-style.rb.
+	* README.*: modified using 01sp.rb to select plugins.
+
 2003-10-12 Junichiro Kita <kita@kitaj.no-ip.com>
 	* plugin/blog-category.rb: require 'pstore'.
 

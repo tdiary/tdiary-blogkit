@@ -1,14 +1,14 @@
-# blog-style_ja.rb: customize to blog like labels (Japanese). $Revision: 1.1 $
+# blog-style.rb: English recource of BlogKit. $Revision: 1.1 $
 #
-# Copyright (c) 2003 TADA Tadashi <sho@spc.gr.jp>
+# Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
 #
 def no_diary
-	"記事番号##{@date.strftime( '%Y%m%d' )}は存在しません。"
+	"Article ##{@date.strftime( '%Y%m%d' )} does not exist."
 end
 
 def comment_today
-	'コメント'
+	'Comments'
 end
 
 def comment_total( total )
@@ -16,83 +16,83 @@ def comment_total( total )
 end
 
 def comment_new
-	'コメントを投稿する'
+	'Post a comment'
 end
 
 def comment_description
-	'コメントを投稿してください。E-mailアドレスは公開されません。'
+	'Post a comment please. Your Email address will not show in this page.'
 end
 
 def comment_description_short
-	'コメントを投稿する'
+	'Post a comment'
 end
 
 def comment_name_label
-	'名前'
+	'Name'
 end
 
 def comment_name_label_short
-	'名前'
+	'Name'
 end
 
 def comment_mail_label
-	'E-mail'
+	'Email Address'
 end
 
 def comment_mail_label_short
-	'E-mail'
+	'Email'
 end
 
 def comment_body_label
-	'コメント'
+	'Comments'
 end
 
 def comment_body_label_short
-	'コメント'
+	'Comments'
 end
 
 def comment_submit_label
-	'投稿'
+	'Post'
 end
 
 def comment_submit_label_short
-	'投稿'
+	'Post'
 end
 
 def comment_date( time )
-	format = @options['blog.date_format'] || '(%Y-%m-%d %H:%M)'
+	format = @options['blog.date_format'] || 'on %B %d, %Y %H:%M'
 	time.strftime( format )
 end
 
 def referer_today
-	"本日のリンク元"
+	"Today's Link"
 end
 
 def navi_index
-	'トップ'
+	'Index'
 end
 
 def navi_latest
-	'メイン'
+	'Main'
 end
 
 def navi_update
-	"更新"
+	"Update"
 end
 
 def navi_edit
-	"編集"
+	"Edit"
 end
 
 def navi_preference
-	"設定"
+	"Preference"
 end
 
 def label_hidden_diary
-	'この記事は現在、隠されています。'
+	'This article is now HIDDEN.'
 end
 
 def mobile_label_hidden_diary
-	'この記事は現在、隠されています。'
+	'This article is now HIDDEN.'
 end
 
