@@ -1,3 +1,6 @@
+2002-12-19 TADA Tadashi <sho@spc.gr.jp>
+	* lm.rb: add span.lm.
+
 2002-12-18 TADA Tadashi <sho@spc.gr.jp>
 	* whatsnew-list: adjust last modified of @diaries as whatsnew-list file.
 

@@ -1,4 +1,4 @@
-# lm.rb: show last-modified before/after article body. $Revision: 1.2 $
+# lm.rb: show last-modified before/after article body. $Revision: 1.3 $
 #
 # This plugin run only copy to plugin directory.
 # You can customize in tdiary.conf:
@@ -17,7 +17,7 @@ def lm( date, leave = false )
 	style = @options['lm.style'] || 'Last Update: %Y-%m-%d %H:%M:%S'
 	diary = @diaries[date.strftime( '%Y%m%d' )]
 	if diary and !(leave ^ bottom) then
-			%Q|<div class="lm">#{diary.last_modified.strftime( style )}</div>|
+			%Q|<div class="lm"><span class="lm">#{diary.last_modified.strftime( style )}</span></div>|
 	else
 		''
 	end
