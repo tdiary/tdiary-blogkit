@@ -1,3 +1,7 @@
+2004-06-18 TADA Tadashi <sho@spc.gr.jp>
+	* theme/blog/blog.css: modify sidebar layout.
+	* plugin/blog-category.rb: support trackreceive mode.
+
 2004-05-22 TADA Tadashi <sho@spc.gr.jp>
 	* theme/blog/blog.css: add '@charset "euc-jp";'.
 	* plugin/title-navi.rb: fix bug when specified not existend date.

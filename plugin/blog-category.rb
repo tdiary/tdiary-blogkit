@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.4 $
+# blog-category.rb $Revision: 1.5 $
 #
 # Usage:
 #
@@ -21,7 +21,7 @@ def blog_category
 	end
 end
 
-if /(latest|month|day|append|replace|saveconf)/ === @mode
+if /(latest|month|day|append|replace|saveconf|trackbackreceive)/ === @mode
 	eval(<<-'MODIFY_CLASS', TOPLEVEL_BINDING)
 		module TDiary
 			module DiaryBase
