@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.10 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.11 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -55,8 +55,7 @@ end
 # private methods
 #
 def whatsnew_list_rdf( items )
-	port = ENV['SERVER_PORT'] == '80' ? "" : ":#{ENV['SERVER_PORT']}"
-	path = "http://#{ENV['HTTP_HOST']}#{port}#{ENV['REQUEST_URI']}"
+	path = "http://#{ENV['HTTP_HOST']}#{ENV['REQUEST_URI']}"
 	path.sub!( /#{@conf.update}/, @conf.index )
 	path.sub!( /\/\.\//, '/' )
 
