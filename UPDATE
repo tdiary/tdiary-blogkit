@@ -3,56 +3,62 @@
 How to update from Blogkit 1.5.2 or before.
 
   New blogkit support 'style'. If you have sites using old Blogkit, you have
-  to convert data files.
+  to change below:
 
     1. Remove blogio.rb in $INSTALL/tdiary. And copy new file blog_style.rb
        to same directory.
-    2. Find *.td2 files in your @data_path.
-    3. Open these files by text editor, and replace all of "Format: tDiary"
+    2. Open tdiary.conf by textaeditor, and remove "require 'tdiary/blogio'"
+       and add "@style = 'Blog'".
+
+  And convert data files:
+
+    3. Find *.td2 files in your @data_path.
+    4. Open these files by text editor, and replace all of "Format: tDiary"
        to "Format: Blog".
-    4. Save all changes, and remove @data_path/cache/*.parser and
+    5. Save all changes, and remove @data_path/cache/*.parser and
        @data_path/cache/*.rb.
 
   If you cannot do above, one more method in compatible.
 
-    1. Remove blogio.rb in $INSTALL/tdiary. And copy new file blog_style.rb
-       to same directory.
-    2. Open blog_style.rb in text file, and find a line below.
+    3. Open blog_style.rb in text file, and find a line below.
 
           #TDiary::DefaultIO::add_style( 'tDiary', self )
 
-    3. Change this line to below (remove '#').
+    4. Change this line to below (remove '#').
 
           TDiary::DefaultIO::add_style( 'tDiary', self )
 
-    4. Save the file, and remove *.parser and *.rb in @data_path/cache.
+    5. Save the file, and remove *.parser and *.rb in @data_path/cache.
 
 ---in Japanese
 1.5.2以前のBlogkitからのアップデートについて
 
   新しいBlogkitは、最新のtDiaryからサポートされた「スタイル」に対応しました。
-  この結果、旧Blogkitを使っていた場合には、以下の手順でデータのコンバートが
-  必要になりました。
-
+  この結果、旧Blogkitを使っていた場合には、以下の手順で設定を変更してください:
+  
     1. 従来のblogio.rbを削除し、新しいblog_style.rbを同じ場所にコピーします。
-    2. @data_pathにある*.td2というファイルをすべて見つけてください
-    3. 見つけたファイルをテキストエディタで開き、すべての「Format: tDiary」
+    2. tdiary.confの「require 'tdiary/blogkit'」を削除し、代わりに
+       「@style = 'Blog'」を追加します。
+
+  さらに非互換吸収のために、データのコンバートが必要になりました:
+
+    3. @data_pathにある*.td2というファイルをすべて見つけてください
+    4. 見つけたファイルをテキストエディタで開き、すべての「Format: tDiary」
        を「Format: Blog」に置換します。
-    4. ファイルを保存後、@data_path/cacheディレクトリにある*.parserファイル
+    5. ファイルを保存後、@data_path/cacheディレクトリにある*.parserファイル
        と*.rbファイルを削除してください。
 
   もし、上記の方法が実施できないのであれば、以下の方法を代わりに実施しても
   よいです。
 
-    1. 従来のblogio.rbを削除し、新しいblog_style.rbを同じ場所にコピーします。
-    2. blog_style.rbを開いて、以下の行を見つけます。
+    3. blog_style.rbを開いて、以下の行を見つけます。
 
           #TDiary::DefaultIO::add_style( 'tDiary', self )
 
-    3. この行を以下のように書き換えます(「#」を削除するだけ)。
+    4. この行を以下のように書き換えます(「#」を削除するだけ)。
 
           TDiary::DefaultIO::add_style( 'tDiary', self )
 
-    4. ファイルを保存し、@data_path/cacheにある*.parserと*.rbを削除します。
+    5. ファイルを保存し、@data_path/cacheにある*.parserと*.rbを削除します。
 
   あとの方法は互換性維持のための逃げ手なので、できれば先の方法をお勧めします。
