@@ -1,5 +1,6 @@
 2002-11-20 TADA Tadashi <sho@spc.gr.jp>
 	* add arcgive_dropdown plugin.
+	* archive.rb: list to reverse.
 
 2002-11-18 TADA Tadashi <sho@spc.gr.jp>
 	* Initial revision

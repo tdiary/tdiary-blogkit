@@ -1,4 +1,4 @@
-# archive.rb $Revision: 1.2 $
+# archive.rb $Revision: 1.3 $
 #
 # archive: 過去記事のアーカイブ一覧を表示する
 #   パラメタ: なし
@@ -15,8 +15,11 @@ end
 
 def archive
 	result = %Q[<ul>\n]
-	archive_make_list.each_with_index do |month, count|
-		result << %Q[<li><a href="#{@index}#{anchor "#{month}"}">#{'%05d' % (count+1)}</a></li>\n]
+	list = archive_make_list
+	count = list.length
+	list.each do |month|
+		result << %Q[<li><a href="#{@index}#{anchor "#{month}"}">#{'%05d' % count}</a></li>\n]
+		count -= 1
 	end
 	result << %Q[</ul>\n]
 end
@@ -24,8 +27,11 @@ end
 def archive_dropdown( label = 'Go' )
 	result = %Q[<form method="get" action="#{@index}">\n]
 	result << %Q[<select name="date">\n]
-	archive_make_list.each_with_index do |month, count|
-		result << %Q[<option value="#{month}">#{'%05d' % (count+1)}</option>\n]
+	list = archive_make_list
+	count = list.length
+	list.each do |month|
+		result << %Q[<option value="#{month}">#{'%05d' % count}</option>\n]
+		count -= 1
 	end
 	result << %Q[</select>\n<input type="submit" value="#{label}">\n]
 	result << %Q[</form>\n]
