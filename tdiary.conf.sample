@@ -1,0 +1,134 @@
+#
+# tDiary blog kit configuration file (sample) $Revision: 1.1.1.1 $
+#
+
+#
+# data path
+#
+@data_path = '/home/foo/blog'
+
+#
+# options of last-modified plugin
+#
+#  If you want show last-modified below article, set this true.
+@options['lm.bottom'] = false
+#  last-modified style customize.
+@options['lm.style'] = 'Last update on %B %d, %Y %H:%M'
+
+#
+# options of last-modified plugin
+#
+#  date format of blog style.
+@options['blog.date_format'] = 'on %B %d, %Y %H:%M'
+
+#
+# IO class and patches for DefaultIO.
+#   - No section anchor in the article.
+#   - automatic generate new date when update.
+#
+require 'tdiary/blogio'
+
+#
+# If you want to receive comments via E-mail, set below.
+#
+#@smtp_host = 'smtp.example.net'
+#@smtp_port = 25
+
+#
+# site title
+#
+@html_title = 'my blog'
+
+#
+# header
+#   - show sidebar when latest mode only.
+#
+@header = <<HEADER
+<div class="adminmenu"><%= navi_user %></div>
+<h1>my blog</h1>
+<% if @mode == 'latest' %><div class="main"><% end %>
+HEADER
+
+#
+# footer
+#   - show sidebar when latest mode only.
+#   - show 'Recent Entiries', 'Recent Updates' and 'Archives'.
+#
+@footer = <<FOOTER
+<% if @mode == 'latest' %>
+</div>
+<div class="sidebar">
+
+<div class="sidemenu">Recent Entries:</div>
+<%=recent_entry%>
+
+<div class="sidemenu">Recent Updates:</div>
+<%=whatsnew_list%>
+
+<div class="sidemenu">Archives:</div>
+<%=archive%>
+
+</div>
+<% end %>
+<div class="adminmenu"><%= navi_admin %></div>
+FOOTER
+
+#
+# anchor of each articles
+#
+@date_format = '■'
+
+#
+# no section anchor
+#
+@section_anchor = ''
+
+#
+# specify the blog style theme
+#
+@theme = 'blog'
+
+#
+# default settins below
+#
+@no_referer = [
+	'^http://localhost[:/]',
+	'^http://192.168.',
+	'^http://172.1[6789]',
+	'^http://172.2[0-9]',
+	'^http://172.3[01]',
+	'^http://10.',
+	# 自分の日記のURLは追加しておくと良い
+]
+
+@referer_table = [
+	['^http://www.spc.gr.jp/sho/diary/\?date=(\d{4})(\d\d)(\d\d).*', 'Mary日記(\1-\2-\3)'],
+	['^http://www.spc.gr.jp/sho/diary/\?date=(\d{4})(\d\d).*', 'Mary日記(\1-\2)'],
+	['^http://www.spc.gr.jp/sho/diary/.*', 'Mary日記'],
+	['^http://www.spc.gr.jp/tdiary/.*', 'tDiary Official Site'],
+	['^http://([^\.]*)\.tdiary.net/.*', 'tDiary.net(\1)'],
+	['^http://www.google.(com|co\.jp)/search.*?q=([^&]*).*', 'google検索(\2)'],
+	['^http://google.yahoo.(com|co\.jp)/.*?p=([^&]*).*', 'Yahoo内google検索(\2)'],
+	['^http://www.infoseek.co.jp/.*?qt=([^&]*).*', 'Infoseek検索(\1)'],
+	['^http://www.lycos.co.jp/cgi-bin/.*?query=([^&]*).*', 'Lycos検索(\1)'],
+	["^http://wisenut.lycos.co.jp/.*?q=([^&]*).*", "Lycos内Wisenut検索(\\1)"],
+	['^http://search.fresheye.com/.*?kw=([^&]*).*', 'FreshEye検索(\1)'],
+	['^http://(www|search).goo.ne.jp/.*?MT=([^&]*).*', 'goo検索(\2)'],
+	['^http://(asearch|www).nifty.com/.*?(q|Text)=([^&]*).*', '@nifty検索(\3)'],
+	['^http://search-intl.netscape.com/ja/google.tmpl.*?search=([^&]*).*', 'Netscape内google検索(\1)'],
+	['^http://www.excite.co.jp/.*?(search|s)=([^&]*).*', 'excite検索(\2)'],
+	['^http://odin.ingrid.org/.*?key=([^&]*).*', 'ODiN検索(\1)'],
+	['^http://www.kensaku.(jp|org)/search.cgi.*?key=([^&]*).*', 'kensaku.jp検索(\2)'],
+	['^http://search.msn.co.jp/.*?(q|MT)=([^&]*).*', 'msn検索(\2)'],
+	["^http://cgi.search.biglobe.ne.jp/cgi-bin/search.*?q=([^&]*).*", "BIGLOBE検索(\\1)"],
+	#
+	# 以下の設定は、上記の置換リストで変換されなかったリンク元URLのうち、
+	# 50文字を越えるものの後半を省略するという設定です。これはかならず
+	# @referer_tableの末尾に入っていないと意味がありません。@referer_table
+	# に新しい置換ルールを追加する場合は、この上に挿入してください。
+	#
+	['^(.{50}).*$', '\1...'],
+]
+
+@secure = false
+load_cgi_conf
