@@ -1,3 +1,7 @@
+2003-04-15 TADA Tadashi <sho@spc.gr.jp>
+	* add blog-style_ja.rb plugin for Japanese labels.
+	* add tdiary.conf.sample_ja.
+
 2003-03-03 TADA Tadashi <sho@spc.gr.jp>
 	* fix typo.
 

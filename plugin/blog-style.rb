@@ -1,4 +1,4 @@
-# blog-style.rb: customize for blog style tDiary. $Revision: 1.3 $
+# blog-style.rb: customize to blog like labels. $Revision: 1.4 $
 #
 # Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL

@@ -1,0 +1,144 @@
+#
+# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.1 $
+#
+
+#
+# データを格納するディレクトリ
+#
+@data_path = '/home/foo/blog'
+
+#
+# last-modifiedプラグイン用のオプション設定
+#
+#  更新時刻を記事の末尾にしたい場合は以下の値をfalseからtrueに変更
+@options['lm.bottom'] = false
+#  更新時刻の表示フォーマットを指定
+@options['lm.style'] = '%Y年%m月%d日 %H:%M更新'
+
+#
+# blog-styleプラグイン用のオプション設定
+#
+#  主にコメントの日付・時刻を表示する際のフォーマット指定
+@options['blog.date_format'] = '%Y年%m月%d日 %H:%M'
+
+#
+# title_naviプラグインのオプション設定
+#
+#  ナビゲーションボタンの最大文字数
+@options['title_navi.max'] = 30
+
+#
+# Blogスタイルの指定
+#  通常のtDiaryスタイルと異なり、
+#   - セクションにアンカーが付かない
+#   - 最新表示時に最初のセクションのみ表示して残りは「read more..」にする
+#   - 追加時に自動的に新しい記事番号を付与
+#
+@style = 'Blog'
+#@style = 'BlogWiki' # Wikiスタイルを使いたい場合はこっち
+
+#
+# コメントをメールで受けとる場合の設定
+#
+#@smtp_host = 'smtp.example.net'
+#@smtp_port = 25
+
+#
+# サイトのタイトル
+#
+@html_title = 'my blog'
+
+#
+# ヘッダ
+#   - Dayモードの時にはサイドバーを隠す
+#
+@header = <<HEADER
+<div class="adminmenu"><%= navi_user %></div>
+<h1>my blog</h1>
+<% unless @mode == 'day' %><div class="main"><% end %>
+HEADER
+
+#
+# フッタ
+#   - Dayモードの時にはサイドバーを隠す
+#   - 更新情報などの表示
+#   - 更新用のナビゲーション表示
+#
+@footer = <<FOOTER
+<% unless @mode == 'day' %>
+</div>
+<div class="sidebar">
+
+<div class="sidemenu">最近の記事:</div>
+<%=recent_entry%>
+
+<div class="sidemenu">最近の更新:</div>
+<%=whatsnew_list%>
+
+<div class="sidemenu">記事リスト:</div>
+<%=archive%>
+
+</div>
+<% end %>
+<div class="adminmenu"><%= navi_admin %></div>
+FOOTER
+
+#
+# 各記事のアンカー
+#
+@date_format = '■'
+
+#
+# セクションアンカーはなし
+#
+@section_anchor = ''
+
+#
+# テーマの指定
+#
+@theme = 'blog'
+
+#
+# その他の設定
+#
+@no_referer = [
+	'^http://localhost[:/]',
+	'^http://192.168.',
+	'^http://172.1[6789]',
+	'^http://172.2[0-9]',
+	'^http://172.3[01]',
+	'^http://10.',
+	# 自分の日記のURLは追加しておくと良い
+]
+
+@referer_table = [
+	['^http://www.spc.gr.jp/sho/diary/\?date=(\d{4})(\d\d)(\d\d).*', 'Mary日記(\1-\2-\3)'],
+	['^http://www.spc.gr.jp/sho/diary/\?date=(\d{4})(\d\d).*', 'Mary日記(\1-\2)'],
+	['^http://www.spc.gr.jp/sho/diary/.*', 'Mary日記'],
+	['^http://www.spc.gr.jp/tdiary/.*', 'tDiary Official Site'],
+	['^http://([^\.]*)\.tdiary.net/.*', 'tDiary.net(\1)'],
+	['^http://www.google.(com|co\.jp)/search.*?q=([^&]*).*', 'google検索(\2)'],
+	['^http://google.yahoo.(com|co\.jp)/.*?p=([^&]*).*', 'Yahoo内google検索(\2)'],
+	['^http://www.infoseek.co.jp/.*?qt=([^&]*).*', 'Infoseek検索(\1)'],
+	['^http://www.lycos.co.jp/cgi-bin/.*?query=([^&]*).*', 'Lycos検索(\1)'],
+	["^http://wisenut.lycos.co.jp/.*?q=([^&]*).*", "Lycos内Wisenut検索(\\1)"],
+	['^http://search.fresheye.com/.*?kw=([^&]*).*', 'FreshEye検索(\1)'],
+	['^http://(www|search).goo.ne.jp/.*?MT=([^&]*).*', 'goo検索(\2)'],
+	['^http://(asearch|www).nifty.com/.*?(q|Text)=([^&]*).*', '@nifty検索(\3)'],
+	['^http://search-intl.netscape.com/ja/google.tmpl.*?search=([^&]*).*', 'Netscape内google検索(\1)'],
+	['^http://www.excite.co.jp/.*?(search|s)=([^&]*).*', 'excite検索(\2)'],
+	['^http://odin.ingrid.org/.*?key=([^&]*).*', 'ODiN検索(\1)'],
+	['^http://www.kensaku.(jp|org)/search.cgi.*?key=([^&]*).*', 'kensaku.jp検索(\2)'],
+	['^http://search.msn.co.jp/.*?(q|MT)=([^&]*).*', 'msn検索(\2)'],
+	["^http://cgi.search.biglobe.ne.jp/cgi-bin/search.*?q=([^&]*).*", "BIGLOBE検索(\\1)"],
+	#
+	# 以下の設定は、上記の置換リストで変換されなかったリンク元URLのうち、
+	# 50文字を越えるものの後半を省略するという設定です。これはかならず
+	# @referer_tableの末尾に入っていないと意味がありません。@referer_table
+	# に新しい置換ルールを追加する場合は、この上に挿入してください。
+	#
+	['^(.{50}).*$', '\1...'],
+]
+
+@secure = false
+load_cgi_conf

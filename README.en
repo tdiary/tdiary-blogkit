@@ -65,16 +65,20 @@ See each plugin file if you want more information.
   Changes 'Diary like' labels to 'Blog like'.
   You can use this plugin only by copying this plugin to plugin directory.
 
-3. edit.rb
+3. blog-style_ja.rb
+  Additional plugin for blog-style.rb for Japanese.
+  DO NOT install this if you use tDiary in English.
+
+4. edit.rb
   Changes 'Update' link to 'Edit' when topic page is shown.
   You can use this plugin only by copying this plugin to plugin directory.
 
-4. lm.rb
+5. lm.rb
   Shows last-modified in each topic. You can choose position of
   the last-modified, under topic title or bottom of article.
   You can use this plugin only by copying this plugin to plugin directory.
 
-5. recent-entry.rb
+6. recent-entry.rb
   5.1 recent-entry plugin
     Shows the list of the recent topics. You have to choose 
     this plugin or recent-entry2.
@@ -83,18 +87,18 @@ See each plugin file if you want more information.
     If you want to show it on monthly mode
     or daily mode, choose recent-entry2.
 
-6. recent-entry2.rb
+7. recent-entry2.rb
   6.1 recent-entry plugin
     Show the list of recent topics. You have to choose 
     this or recent-entry.
     This is run only on insecure mode, but shows an accurate list 
     on latest mode and daily mode.
 
-7. title-navi.rb
+8. title-navi.rb
   Shows a topic title as navigation label. 
   You can use this plugin only by copying this plugin to plugin directory.
 
-8. whatsnew-list.rb
+9. whatsnew-list.rb
   8.1 whatsnew-list plugin
     Shows a list of updated topics like "What's new". 
     This plugin cannot be used on secure mode.
