@@ -1,3 +1,6 @@
+2003-11-13 TADA Tadashi <sho@spc.gr.jp>
+	* release 1.5.6.
+
 2003-11-07 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: add information to HTML header for Auto-Discovery.
 	* plugin/whatsnew-list.rb: i18n.
