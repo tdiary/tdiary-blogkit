@@ -1,3 +1,7 @@
+2005-03-22  URABE Shyouhei  <shyouhei@ice.uec.ac.jp>
+
+	* tdiary/blogrd_style.rb (RD::RD2BlogVisitor::apply_to_Headline): bug fix in headline levels
+
 2005-03-09 TADA Tadashi <sho@spc.gr.jp>
 	* recent-entry.rb, recent-entry2.rb: remove HTML tag in title.
 

@@ -23,7 +23,7 @@ require 'tdiary/rd_style'
 module RD
 	class RD2BlogVisitor < RD2tDiaryVisitor
 		def apply_to_Headline( element, title )
-			r = "<h%1$1d>%2$s</h%1$1d>" % [ element.level, title ]
+			r = "<h%1$1d>%2$s</h%1$1d>" % [ element.level + RD::TDIARY_BASE_LEVEL, title ]
 			if element.level == 3 && @td_opt['multi_user'] && @td_author then
 				r << "[" << @td_author << "]"
 			end
@@ -56,3 +56,12 @@ module TDiary
 	end
 end
 
+
+# Local Variables:
+# mode: ruby
+# code: euc-jp-unix
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
+# vi: ts=3 sw=3
