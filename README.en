@@ -102,6 +102,7 @@ See each plugin file if you want more information.
   8.1 whatsnew-list plugin
     Shows a list of updated topics like "What's new". 
     This plugin cannot be used on secure mode.
+	 And it can generate RDF file when option setting in tdiary.conf.
 
 License
 -------

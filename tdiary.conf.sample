@@ -1,11 +1,21 @@
 #
-# tDiary blog kit configuration file (sample) $Revision: 1.7 $
+# tDiary blog kit configuration file (sample) $Revision: 1.8 $
 #
 
 #
 # data path
 #
 @data_path = '/home/foo/blog'
+
+#
+# option of whatsnew-list, recent-entry and recent-entry2
+#
+@options['apply_plugin'] = true
+
+#
+# option of whatsnew-list
+#
+#@options['whatsnew_list.rdf'] = './index.rdf'
 
 #
 # options of last-modified plugin

@@ -119,6 +119,7 @@ See README.en if you cannot read Japanese.
   8.1 whatsnew-listプラグイン
     記事が更新された順に一覧表示を行います。recent-entryと違い、過去の記事
     を更新しても上位に入れ替わります。secureモードでは動きません。
+	 また、オプションの指定によって、RDFファイルを生成することが可能です。
 
 ■ライセンス
 　GPLの元で改造、配布が可能です。作者はただただし<sho@spc.gr.jp>です。

@@ -1,9 +1,8 @@
-# recent-entry2.rb $Revision: 1.2 $
+# recent-entry2.rb $Revision: 1.3 $
 #
 # recent_entry2: modified 'recent_list' for Blogkit.
 #   parameters(default):
 #     max:       maximum list items (5)
-#     extra_erb: do ERb to list (false)
 #     limit:     max lengh of each items (20)
 #
 #   notice:
@@ -29,7 +28,7 @@ module TDiary
 end
 MODIFY_CLASS
 
-def recent_entry( max = 5, extra_erb = false, limit = 20 )
+def recent_entry( max = 5, limit = 20 )
 	max = max.to_i
 	limit = limit.to_i
 
@@ -52,10 +51,6 @@ def recent_entry( max = 5, extra_erb = false, limit = 20 )
 		end
 	}
 	result << "</ul>\n"
-	if extra_erb and /<%=/ =~ result
-		ERbLight.new( result.untaint ).result( binding )
-	else
-		result
-	end
+	apply_plugin( result )
 end
 

@@ -1,11 +1,22 @@
 #
-# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.1 $
+# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.2 $
 #
 
 #
 # データを格納するディレクトリ
 #
 @data_path = '/home/foo/blog'
+
+#
+# whatsnew-list, recent-entry, recent-entry2プラグイン用オプション
+#
+@options['apply_plugin'] = true
+
+#
+# whatsnew-listプラグイン用オプション
+#
+#  RDFファイルを出力する時にパスを指定
+#@options['whatsnew_list.rdf'] = './index.rdf'
 
 #
 # last-modifiedプラグイン用のオプション設定
