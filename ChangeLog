@@ -1,3 +1,6 @@
+2004-05-06 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: output full text into description.
+
 2004-05-04 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: add description of items into rdf.
 

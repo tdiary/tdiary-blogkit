@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.25 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.26 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -168,7 +168,7 @@ add_update_proc do
 	zone = sprintf( "%+03d:%02d", tz / 3600, tz % 3600 / 60 )
 	diary = @diaries[@date.strftime('%Y%m%d')]
 	title = defined?( diary.stripped_title ) ? diary.stripped_title : diary.title
-	desc = diary.to_html( {} )
+	desc = diary.to_html( { 'anchor' => true } )
 	new_item = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime("%Y-%m-%dT%H:%M:%S#{zone}"), desc]
 	PStore::new( "#{@cache_path}/whatsnew-list" ).transaction do |db|
 		wn = []
