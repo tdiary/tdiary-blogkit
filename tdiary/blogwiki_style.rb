@@ -1,5 +1,5 @@
 #
-# blogwiki_style.rb: WikiWiki style for tDiary Blogkit. $Revision: 1.1 $
+# blogwiki_style.rb: WikiWiki style for tDiary Blogkit. $Revision: 1.2 $
 #
 # if you want to use this style,
 #
@@ -51,8 +51,8 @@ module TDiary
 				when :RE
 
 				# blockquote
-				when :QS; r << "<blockquote>\n"
-				when :QE; r << "</blockquote>\n"
+				when :QS; r << "<blockquote>\n<p>"
+				when :QE; r << "</p>\n</blockquote>\n"
 
 				# list
 				when :US; r << "<ul>\n"
@@ -142,7 +142,9 @@ module TDiary
 							end.join
 						end
 					when :QS
-						r << "<p>#{s}</p>\n" if s.class == String
+						if s.class == String then
+							r << (s.length == 0 ? "</p>\n<p>" : s)
+						end
 					else
 						r << s if s.class == String
 					end
@@ -175,8 +177,8 @@ module TDiary
 				when :RE
 
 				# blockquote
-				when :QS; r << "<BLOCKQUOTE>\n"
-				when :QE; r << "</BLOCKQUOTE>\n"
+				when :QS; r << "<BLOCKQUOTE>\n<P>"
+				when :QE; r << "</P>\n</BLOCKQUOTE>\n"
 
 				# list
 				when :US; r << "<UL>\n"
@@ -253,7 +255,9 @@ module TDiary
 					when :XS
 						r << s << '">' << s.sub( /^mailto:/, '' )
 					when :QS
-						r << "<P>#{s}</P>\n" if s.class == String
+						if s.class == String then
+							r << (s.length == 0 ? "</P>\n<P>" : s)
+						end
 					else
 						r << s if s.class == String
 					end

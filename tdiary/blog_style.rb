@@ -1,5 +1,5 @@
 #
-# blog_style.rb: tDiary blog kit's style $Revision: 1.2 $
+# blog_style.rb: tDiary blog kit's style $Revision: 1.3 $
 #
 # if you want to use this style, add @style into tdiary.conf below:
 #
@@ -56,18 +56,20 @@ module TDiary
 	class TDiaryForm
 		alias eval_rhtml_blogkit eval_rhtml
 		def eval_rhtml( prefix = '' )
-			calendar
-			year = @years.keys.sort[-1]
-			if year then
-				month = @years[year].sort[-1]
-				if month then
-					@io.transaction( Time::local( year.to_i, month.to_i ) ) do |diaries|
-						recent = diaries.keys.sort[-1]
-						if @date.strftime( '%Y%m%d' ) <= recent then
-							@date = Time::local( *recent.scan( /(\d{4})(\d\d)(\d\d)/ )[0] ) + 24*60*60
-							@diary = @io.diary_factory( @date, '', '' )
+			if /^blog/i =~ @conf.style then
+				calendar
+				year = @years.keys.sort[-1]
+				if year then
+					month = @years[year].sort[-1]
+					if month then
+						@io.transaction( Time::local( year.to_i, month.to_i ) ) do |diaries|
+							recent = diaries.keys.sort[-1]
+							if @date.strftime( '%Y%m%d' ) <= recent then
+								@date = Time::local( *recent.scan( /(\d{4})(\d\d)(\d\d)/ )[0] ) + 24*60*60
+								@diary = @io.diary_factory( @date, '', '' )
+							end
+							DIRTY_NONE
 						end
-						DIRTY_NONE
 					end
 				end
 			end
