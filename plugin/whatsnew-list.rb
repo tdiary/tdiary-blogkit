@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.21 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.22 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -60,8 +60,53 @@ def whatsnew_list( max = 5, limit = 20 )
 end
 
 #
+# preferences
+#
+add_conf_proc( 'whatsnew_list', "What's New List" ) do
+	if @mode == 'saveconf' then
+		@conf['whatsnew_list.rdf.out'] = (@cgi.params['whatsnew_list.rdf.out'][0] == 'true')
+		@conf['whatsnew_list.rdf.description'] = @cgi.params['whatsnew_list.rdf.description'][0]
+		@conf['whatsnew_list.rdf.description'] = nil if @conf['whatsnew_list.rdf.description'].length == 0
+		@conf['whatsnew_list.rdf.image'] = @cgi.params['whatsnew_list.rdf.image'][0]
+		@conf['whatsnew_list.rdf.image'] = nil if @conf['whatsnew_list.rdf.image'].length == 0
+	end
+
+	if @conf['whatsnew_list.rdf.out'] == nil then
+		@conf['whatsnew_list.rdf.out'] = @conf['whatsnew_list.rdf'] ? true : false
+	end
+
+	result = ''
+	result << <<-HTML
+		<h3>#{@whatsnew_list_label_rdf_out}</h3>
+		<p>#{@whatsnew_list_label_rdf_out_notice}</p>
+		<p><select name="whatsnew_list.rdf.out">
+			<option value="true"#{if @conf['whatsnew_list.rdf.out'] then " selected" end}>#{@whatsnew_list_label_rdf_out_yes}</option>
+			<option value="false"#{if not @conf['whatsnew_list.rdf.out'] then " selected" end}>#{@whatsnew_list_label_rdf_out_no}</option>
+		</select></p>
+		<h3>#{@whatsnew_list_label_rdf_description}</h3>
+		<p>#{@whatsnew_list_label_rdf_description_notice}</p>
+		<p><input name='whatsnew_list.rdf.description' size="40" value="#{@conf['whatsnew_list.rdf.description']}"></p>
+		<h3>#{@whatsnew_list_label_rdf_image}</h3>
+		<p>#{@whatsnew_list_label_rdf_image_notice}</p>
+		<p><input name='whatsnew_list.rdf.image' size="40" value="#{@conf['whatsnew_list.rdf.image']}"></p>
+	HTML
+	result
+end
+
+#
 # private methods
 #
+def whatsnew_list_rdf_file
+	rdf_file = @conf['whatsnew_list.rdf']
+	if @conf['whatsnew_list.rdf.out'] == nil then
+		@conf['whatsnew_list.rdf.out'] = rdf_file ? true : false
+	end
+	if @conf['whatsnew_list.rdf.out'] then
+		rdf_file = 'index.rdf' unless rdf_file
+	end
+	rdf_file
+end
+
 def whatsnew_list_rdf( items )
 	path = @conf.base_url + @conf.index
 	path.sub!( /\/\.\//, '/' )
@@ -95,10 +140,15 @@ def whatsnew_list_rdf( items )
 	end
 
 	items.each do |uri, title, modify|
+		if /^\d{8}$/ =~ modify then
+			mod = modify.sub( /(\d{4})(\d\d)(\d\d)/, '\1-\2-\3T00:00:00+00:00' )
+		else
+			mod = modify
+		end
 		xml << %Q[<item rdf:about="#{path}#{anchor uri}">
 		<title>#{title}</title>
 		<link>#{path}#{anchor uri}</link>
-		<dc:date>#{modify.sub( /(\d{4})(\d\d)(\d\d)/, '\1-\2-\3' )}</dc:date>
+		<dc:date>#{mod}</dc:date>
 		</item>
 		]
 	end
@@ -108,23 +158,29 @@ def whatsnew_list_rdf( items )
 end
 
 add_update_proc do
+	now = Time::now
+	g = now.dup.gmtime
+	l = Time::local( g.year, g.month, g.day, g.hour, g.min, g.sec )
+	tz = (g.to_i - l.to_i)
+	zone = sprintf( "%+03d:%02d", tz / 3600, tz % 3600 / 60 )
 	diary = @diaries[@date.strftime('%Y%m%d')]
 	title = defined?( diary.stripped_title ) ? diary.stripped_title : diary.title
-	new = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime('%Y%m%d')]
+	new_item = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime("%Y-%m-%dT%H:%M:%S#{zone}")]
 	PStore::new( "#{@cache_path}/whatsnew-list" ).transaction do |db|
 		wn = []
 		begin
 			(db['whatsnew'] || []).each_with_index do |item, i|
-				wn << item unless item[0] == new[0]
+				wn << item unless item[0] == new_item[0]
 				break if i > 15
 			end
 		rescue PStore::Error
 		end
-		wn.unshift new if diary.visible?
+		wn.unshift new_item if diary.visible?
 		db['whatsnew'] = wn
 
-		if @conf.options['whatsnew_list.rdf'] then
-			open( @conf.options['whatsnew_list.rdf'], 'w' ) do |f|
+		rdf = whatsnew_list_rdf_file
+		if @conf['whatsnew_list.rdf.out'] then
+			open( rdf, 'w' ) do |f|
 				f.write( whatsnew_list_rdf( wn ) )
 			end
 		end
@@ -132,8 +188,9 @@ add_update_proc do
 end
 
 add_header_proc {
+	rdf = whatsnew_list_rdf_file
 	if @conf['whatsnew_list.rdf'] then
-		%Q|\t<link rel="alternate" type="application/rss+xml" title="#{@conf.html_title}" href="#{@conf.base_url}#{File::basename( @conf['whatsnew_list.rdf'] )}">\n|
+		%Q|\t<link rel="alternate" type="application/rss+xml" title="#{@conf.html_title}" href="#{@conf.base_url}#{File::basename( rdf )}">\n|
 	else
 		''
 	end
