@@ -1,5 +1,5 @@
 #
-# tDiary blog kit configuration file (sample) $Revision: 1.11 $
+# tDiary blog kit configuration file (sample) $Revision: 1.12 $
 #
 
 #
@@ -105,13 +105,13 @@ FOOTER
 # default settins below
 #
 @no_referer = [
+	'^' + Regexp.quote( base_url ),  # your blog
 	'^http://localhost[:/]',
 	'^http://192.168.',
 	'^http://172.1[6789]',
 	'^http://172.2[0-9]',
 	'^http://172.3[01]',
 	'^http://10.',
-	# and append your site's URL.
 ]
 
 @referer_table = [

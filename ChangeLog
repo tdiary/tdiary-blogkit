@@ -1,3 +1,6 @@
+2004-05-16 TADA Tadashi <sho@spc.gr.jp>
+	* tdiary.conf.sample*: add self URL into @no_referer. thanks ZnZ <zn@mbf.nifty.com>.
+
 2004-05-09 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: support absolute path of @conf.index.
 

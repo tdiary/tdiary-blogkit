@@ -1,5 +1,5 @@
 #
-# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.6 $
+# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.7 $
 #
 
 #
@@ -110,13 +110,13 @@ FOOTER
 # その他の設定
 #
 @no_referer = [
+	'^' + Regexp.quote( base_url ),  # 自分のウェブログ
 	'^http://localhost[:/]',
 	'^http://192.168.',
 	'^http://172.1[6789]',
 	'^http://172.2[0-9]',
 	'^http://172.3[01]',
 	'^http://10.',
-	# 自分の日記のURLは追加しておくと良い
 ]
 
 @referer_table = [
