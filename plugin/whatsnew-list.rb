@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.13 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.14 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -21,6 +21,11 @@
 # Distributed under the GPL
 #
 require 'pstore'
+
+unless @resource_loaded then
+	@whatsnew_list_encode = 'UTF-8'
+	@whatsnew_list_encoder = Proc::new {|s| s }
+end
 
 def whatsnew_list( max = 5, limit = 20 )
 	max = max.to_i
@@ -61,8 +66,8 @@ def whatsnew_list_rdf( items )
 
 	desc = @options['whatsnew_list.rdf.description'] || @conf.html_title
 
-	xml = %Q[<?xml version="1.0" encoding="#{charset}"?>
-	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="#{@conf.lang ? @conf.lang : 'ja'}">
+	xml = %Q[<?xml version="1.0" encoding="#{@whatsnew_list_encode}"?>
+	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="#{@conf.html_lang}">
 	<channel>
 	<title>#{@conf.html_title}</title>
 	<link>#{path}</link>
@@ -86,7 +91,7 @@ def whatsnew_list_rdf( items )
 	end
 
 	xml << "</rdf:RDF>\n"
-	xml.gsub( /\t/, '' )
+	@whatsnew_list_encoder.call( xml.gsub( /\t/, '' ) )
 end
 
 add_update_proc do
