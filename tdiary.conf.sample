@@ -1,5 +1,5 @@
 #
-# tDiary blog kit configuration file (sample) $Revision: 1.5 $
+# tDiary blog kit configuration file (sample) $Revision: 1.6 $
 #
 
 #
@@ -33,6 +33,7 @@
 #   - automatic generate new date when update.
 #
 @style = 'Blog'
+#@style = 'BlogWiki' # if you want to write by Wiki style.
 
 #
 # If you want to receive comments via E-mail, set below.
