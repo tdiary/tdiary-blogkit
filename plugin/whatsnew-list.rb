@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.6 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.7 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -51,6 +51,11 @@ def whatsnew_list( max = 5, extra_erb = false, limit = 20 )
 			wn = db['whatsnew']
 			wn.each_with_index do |item,i|
 				break if i >= max
+				if extra_erb and /<%=/ =~ item[1] then
+					item[1].untaint if $SAFE < 3
+					item[1] = ERbLight.new( item[1] ).result( binding )
+				end
+				item[1].gsub!( /<.*?>/, '' )
 				r << %Q|<li><a href="#{@index}#{anchor item[0]}">#{item[1].shorten( limit )}</a></li>\n|
 			end
 			db.abort
@@ -58,11 +63,5 @@ def whatsnew_list( max = 5, extra_erb = false, limit = 20 )
 		end
 	end
 	r << "</ul>\n"
-	if extra_erb and /<%=/ =~ result
-		r.untaint if $SAFE < 3
-		ERbLight.new( r ).result( binding )
-	else
-		r
-	end
 end
 

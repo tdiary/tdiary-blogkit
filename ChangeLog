@@ -1,3 +1,6 @@
+2002-12-20 TADA Tadashi <sho@spc.gr.jp>
+	* whatsnew-list.rb: refine extra_erb.
+
 2002-12-19 TADA Tadashi <sho@spc.gr.jp>
 	* lm.rb: add span.lm.
 
