@@ -104,17 +104,17 @@ See each plugin file if you want more information.
     This plugin cannot be used on secure mode.
 	 And it can generate RDF file when option setting in tdiary.conf.
 
-9. category.rb
+9. blog-category.rb
   Add category feature.  A word surrounded by '[' and ']' is treated as 
   a name of category.  By clicking this category name, you can move to
   the page which displays articles of the category.
   You should initialize the index of category in the config page of tDiary.
 
-  9.1 category_entry plugin
+  9.1 blog_category_entry plugin
     Show the list of titles which can't be shown in the category specific
     page.
 
-  9.2 category_form plugin
+  9.2 blog_category_form plugin
     Shows all categories in dropdown list.  You can select a category to
     be shown.
 

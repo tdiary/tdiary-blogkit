@@ -1,3 +1,6 @@
+2003-09-30 Junichiro Kita <kita@kitaj.no-ip.com>
+	* plugin/category.rb, blog-category.rb: move category.rb to blog-category.rb.
+
 2003-09-29 Junichiro Kita <kita@kitaj.no-ip.com>
 	* README, README.en: document for category.rb.
 
