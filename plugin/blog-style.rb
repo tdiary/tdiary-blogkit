@@ -1,4 +1,4 @@
-# blog-style.rb: customize to blog like labels. $Revision: 1.4 $
+# blog-style.rb: customize to blog like labels. $Revision: 1.5 $
 #
 # Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
@@ -104,7 +104,7 @@ def title_tag
 	return title_tag_ unless @mode == 'day'
 	diary = @diaries[@date.strftime('%Y%m%d')]
 	if diary
-		title = %Q|#{diary.title}|
+		title = %Q|#{DiaryBase.method_defined?(:stripped_title) ? diary.stripped_title : diary.title}|
 		return "<title>#{@html_title} - #{title}</title>"
 	else
 		return title_tag_

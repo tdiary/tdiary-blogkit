@@ -1,4 +1,4 @@
-# recent_entry.rb $Revision: 1.5 $
+# recent_entry.rb $Revision: 1.6 $
 #
 # recent_entry: modified 'title_list' for Blogkit.
 #   parameter(default):
@@ -28,9 +28,8 @@ def recent_entry( max = 5, limit = 20 )
 		break if idx >= max
 		diary = @diaries[date]
 		next unless diary.visible?
-		result << %Q[<li><a href="#{@index}#{anchor date}">#{@conf.shorten( diary.title, limit )}</a></li>\n]
+		result << %Q[<li><a href="#{@index}#{anchor date}">#{@conf.shorten( DiaryBase.method_defined?(:stripped_title) ? diary.stripped_title : diary.title, limit )}</a></li>\n]
 	end
 	result << "</ul>\n"
 	apply_plugin( result )
 end
-
