@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.23 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.24 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -115,7 +115,7 @@ def whatsnew_list_rdf( items )
 
 	xml = %Q[<?xml version="1.0" encoding="#{@whatsnew_list_encode}"?>
 	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="#{@conf.html_lang}">
-	<channel>
+	<channel rdf:about="#{@conf.base_url}#{File::basename( whatsnew_list_rdf_file )}">
 	<title>#{@conf.html_title}</title>
 	<link>#{path}</link>
 	<description>#{desc}</description>
