@@ -1,5 +1,5 @@
 #
-# tDiary blog kit configuration file (sample) $Revision: 1.8 $
+# tDiary blog kit configuration file (sample) $Revision: 1.9 $
 #
 
 #
@@ -16,6 +16,7 @@
 # option of whatsnew-list
 #
 #@options['whatsnew_list.rdf'] = './index.rdf'
+@options['whatsnew_list.rdf.description'] = 'description of your site.'
 
 #
 # options of last-modified plugin

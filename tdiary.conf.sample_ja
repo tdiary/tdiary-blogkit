@@ -1,5 +1,5 @@
 #
-# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.2 $
+# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.3 $
 #
 
 #
@@ -17,6 +17,8 @@
 #
 #  RDFファイルを出力する時にパスを指定
 #@options['whatsnew_list.rdf'] = './index.rdf'
+#  RDFに埋め込むサイトの説明
+@options['whatsnew_list.rdf.description'] = 'description of your site.'
 
 #
 # last-modifiedプラグイン用のオプション設定
