@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.2 $
+# blog-category.rb $Revision: 1.3 $
 #
 # Copyright (c) 2003 Junichiro KITA <kita@kitaj.no-ip.com>
 # Distributed under the GPL
@@ -9,6 +9,8 @@
 #  カテゴリインデックスの初期化を行って下さい．
 #  その他，利用方法の概要は設定画面に記述してあります．
 #
+
+require 'pstore'
 
 def blog_category
 	cat = @cgi.params['blogcategory'][0]
