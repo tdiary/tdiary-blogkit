@@ -1,4 +1,4 @@
-# archive.rb $Revision: 1.6 $
+# archive.rb $Revision: 1.7 $
 #
 # archive: show list of past news archive
 #   parameter: none.
@@ -47,18 +47,18 @@ end
 if @mode == 'month'
 	alias navi_user_archive navi_user
 	def navi_user
-		list = archive_make_list.push(nil).unshift(nil)
+		list = archive_make_list.sort.push(nil).unshift(nil)
 		this = @date.strftime("%Y%m")
 		index = list.index(this)
-		nex, cur, pre = list[index - 1, 3]
+		pre, cur, nex = list[index - 1, 3]
 		r = ''
 
 		if pre
-			r << %Q[<span class="adminmenu"><a href="#{@index}#{anchor pre}">&laquo;#{'%05d' % (index + 1)}</a></span>\n]
+			r << %Q[<span class="adminmenu"><a href="#{@index}#{anchor pre}">&laquo;#{'%05d' % (index - 1)}</a></span>\n]
 		end
 		r << navi_user_archive
 		if nex
-			r << %Q[<span class="adminmenu"><a href="#{@index}#{anchor nex}">#{'%05d' % (index - 1)}&raquo;</a></span>\n]
+			r << %Q[<span class="adminmenu"><a href="#{@index}#{anchor nex}">#{'%05d' % (index + 1)}&raquo;</a></span>\n]
 		end
 		r
 	end
