@@ -1,4 +1,4 @@
-# archive.rb $Revision: 1.5 $
+# archive.rb $Revision: 1.6 $
 #
 # archive: show list of past news archive
 #   parameter: none.
@@ -43,3 +43,24 @@ def archive_dropdown( label = 'Go' )
 	result << %Q[</select>\n<input type="submit" value="#{label}">\n]
 	result << %Q[</div></form>\n]
 end
+
+if @mode == 'month'
+	alias navi_user_archive navi_user
+	def navi_user
+		list = archive_make_list.push(nil).unshift(nil)
+		this = @date.strftime("%Y%m")
+		index = list.index(this)
+		nex, cur, pre = list[index - 1, 3]
+		r = ''
+
+		if pre
+			r << %Q[<span class="adminmenu"><a href="#{@index}#{anchor pre}">&laquo;#{'%05d' % (index + 1)}</a></span>\n]
+		end
+		r << navi_user_archive
+		if nex
+			r << %Q[<span class="adminmenu"><a href="#{@index}#{anchor nex}">#{'%05d' % (index - 1)}&raquo;</a></span>\n]
+		end
+		r
+	end
+end
+
