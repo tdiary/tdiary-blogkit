@@ -1,3 +1,7 @@
+2003-08-22 TADA Tadashi <sho@spc.gr.jp>
+	* title-navi.rb: show title in the prev/next month.
+	* tdiary.conf.sample*: remove comment mail setting.
+
 2003-08-05 TADA Tadashi <sho@spc.gr.jp>
 	* remove plugin/edit.rb.
 	* release 1.5.5.
