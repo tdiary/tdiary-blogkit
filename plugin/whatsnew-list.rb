@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.24 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.25 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -114,7 +114,7 @@ def whatsnew_list_rdf( items )
 	desc = @options['whatsnew_list.rdf.description'] || @conf.html_title
 
 	xml = %Q[<?xml version="1.0" encoding="#{@whatsnew_list_encode}"?>
-	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="#{@conf.html_lang}">
+	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xml:lang="#{@conf.html_lang}">
 	<channel rdf:about="#{@conf.base_url}#{File::basename( whatsnew_list_rdf_file )}">
 	<title>#{@conf.html_title}</title>
 	<link>#{path}</link>
@@ -126,7 +126,7 @@ def whatsnew_list_rdf( items )
 	xml << %Q[<image rdf:resource="#{rdf_image}" />\n] if rdf_image
 
 	xml << %Q[<items><rdf:Seq>\n]
-	items.each do |uri, title, modify|
+	items.each do |uri, title, modify, description|
 		xml << %Q!<rdf:li rdf:resource="#{path}#{anchor uri}"/>\n!
 	end
 	xml << %Q[</rdf:Seq></items>\n]
@@ -140,7 +140,7 @@ def whatsnew_list_rdf( items )
 		xml << %Q[</image>\n]
 	end
 
-	items.each do |uri, title, modify|
+	items.each do |uri, title, modify, description|
 		if /^\d{8}$/ =~ modify then
 			mod = modify.sub( /(\d{4})(\d\d)(\d\d)/, '\1-\2-\3T00:00:00+00:00' )
 		else
@@ -151,6 +151,7 @@ def whatsnew_list_rdf( items )
 		<link>#{path}#{anchor uri}</link>
 		<dc:creator>#{CGI::escapeHTML( @conf.author_name )}</dc:creator>
 		<dc:date>#{mod}</dc:date>
+		<content:encoded><![CDATA[#{description}]]></content:encoded>
 		</item>
 		]
 	end
@@ -167,7 +168,8 @@ add_update_proc do
 	zone = sprintf( "%+03d:%02d", tz / 3600, tz % 3600 / 60 )
 	diary = @diaries[@date.strftime('%Y%m%d')]
 	title = defined?( diary.stripped_title ) ? diary.stripped_title : diary.title
-	new_item = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime("%Y-%m-%dT%H:%M:%S#{zone}")]
+	desc = diary.to_html( {} )
+	new_item = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime("%Y-%m-%dT%H:%M:%S#{zone}"), desc]
 	PStore::new( "#{@cache_path}/whatsnew-list" ).transaction do |db|
 		wn = []
 		begin
