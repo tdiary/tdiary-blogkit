@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.26 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.27 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -108,8 +108,9 @@ def whatsnew_list_rdf_file
 end
 
 def whatsnew_list_rdf( items )
-	path = @conf.base_url + @conf.index
-	path.sub!( /\/\.\//, '/' )
+	path = @conf.index.dup
+	path[0, 0] = @conf.base_url if %r|^https?://|i !~ @conf.index
+	path.gsub!( %r|/\./|, '/' )
 
 	desc = @options['whatsnew_list.rdf.description'] || @conf.html_title
 
