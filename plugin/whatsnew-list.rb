@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.3 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.4 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -23,11 +23,11 @@ add_update_proc do
 		begin
 			db['whatsnew'].each_with_index do |item, i|
 				wn << item unless item[0] == new[0]
-				break if i > 10
+				break if i > 30
 			end
 		rescue PStore::Error
 		end
-		wn.unshift new
+		wn.unshift new if diary.visible?
 		db['whatsnew'] = wn
 	end
 end
