@@ -1,4 +1,4 @@
-# blog-style.rb: English recource of BlogKit. $Revision: 1.1 $
+# blog-style.rb: English recource of BlogKit. $Revision: 1.2 $
 #
 # Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
@@ -86,6 +86,14 @@ end
 
 def navi_preference
 	"Preference"
+end
+
+def navi_prev_ndays
+	"Prev #{@conf.latest_limit} entries"
+end
+
+def navi_next_ndays
+	"Next #{@conf.latest_limit} entries"
 end
 
 def label_hidden_diary

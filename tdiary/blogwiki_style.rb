@@ -1,5 +1,5 @@
 #
-# blogwiki_style.rb: WikiWiki style for tDiary Blogkit. $Revision: 1.3 $
+# blogwiki_style.rb: WikiWiki style for tDiary Blogkit. $Revision: 1.4 $
 #
 # if you want to use this style,
 #
@@ -116,7 +116,7 @@ module TDiary
 					when :KS
 						if /\|/ =~ s
 							k, u = s.split( '|', 2 )
-							if /^(\d{4}|\d{6}|\d{8})[^\d]*?#?([pc]\d\d)?$/ =~ u then
+							if /^(\d{4}|\d{6}|\d{8}|\d{8}-\d+)[^\d]*?#?([pct]\d+)?$/ =~ u then
 								r << "%=my '" << $1
 								r << $2 if $2
 								r << "', '" << k << "'%"
@@ -238,7 +238,7 @@ module TDiary
 					when :KS
 						if /\|/ =~ s
 							k, u = s.split( '|', 2 )
-							if /^(\d{4}|\d{6}|\d{8})[^\d]*?#?([pc]\d\d)?$/ =~ u then
+							if /^(\d{4}|\d{6}|\d{8}|\d{8}-\d+)[^\d]*?#?([pct]\d+)?$/ =~ u then
 								r << "%=my '" << $1
 								r << $2 if $2
 								r << "', '" << k << "'%"

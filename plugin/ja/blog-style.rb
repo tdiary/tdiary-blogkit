@@ -1,4 +1,4 @@
-# blog-style.rb: Japanese resource of BlogKit. $Revision: 1.1 $
+# blog-style.rb: Japanese resource of BlogKit. $Revision: 1.2 $
 #
 # Copyright (c) 2003 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
@@ -73,7 +73,7 @@ def navi_index
 end
 
 def navi_latest
-	'メイン'
+	'最新'
 end
 
 def navi_update
@@ -86,6 +86,14 @@ end
 
 def navi_preference
 	"設定"
+end
+
+def navi_prev_ndays
+	"前#{@conf.latest_limit}件"
+end
+
+def navi_next_ndays
+	"次#{@conf.latest_limit}件"
 end
 
 def label_hidden_diary
