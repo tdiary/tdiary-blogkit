@@ -1,3 +1,6 @@
+2005-06-04 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/archive.rb: support navi_user_month.
+
 2005-06-03 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/blog-style.b, tdiary/blogwiki_style.rb: support 'before/after n days' mode.
 
