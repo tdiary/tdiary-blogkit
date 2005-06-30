@@ -1,3 +1,6 @@
+2005-06-30 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/blog-style.rb: show archive serial in <title> when month mode.
+
 2005-06-22 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/blog_category.rb: define Diary#stripped_title in comment mode.
 
