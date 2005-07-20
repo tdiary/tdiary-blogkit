@@ -1,3 +1,9 @@
+2005-07-20 TADA Tadashi <sho@spc.gr.jp>
+	* release 2.1.2.
+
+2005-07-13 TADA Tadashi <sho@spc.gr.jp>
+	* tdiary.conf.sample: add list of bots.
+
 2005-06-30 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/blog-style.rb: show archive serial in <title> when month mode.
 

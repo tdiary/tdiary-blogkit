@@ -1,5 +1,5 @@
 #
-# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.7 $
+# tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.8 $
 #
 
 #
@@ -147,6 +147,24 @@ FOOTER
 	# に新しい置換ルールを追加する場合は、この上に挿入してください。
 	#
 	['^(.{50}).*$', '\1...'],
+]
+
+#
+# search engine robots
+#
+@options['bot'] = [
+	'^(Naverbot|Cowbot)-',
+	'^BlogLines/',
+	'^blogmap',
+	'^FAST-WebCrawler/',
+	'^Hatena Antenna/',
+	'MI[CK]AN/',
+	'^msnbot/',
+	'^NG/',
+	'^Openbot/',
+	'^samidare',
+	'^TAMATEBAKO/',
+	'^TomSoftAntenna'
 ]
 
 @secure = false

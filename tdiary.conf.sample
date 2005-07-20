@@ -1,5 +1,5 @@
 #
-# tDiary blog kit configuration file (sample) $Revision: 1.12 $
+# tDiary blog kit configuration file (sample) $Revision: 1.13 $
 #
 
 #
@@ -125,6 +125,24 @@ FOOTER
 	# above and have more than 50 characters. 
 	#
 	['^(.{50}).*$', '\1...'],
+]
+
+#
+# search engine robots
+#
+@options['bot'] = [
+	'^(Naverbot|Cowbot)-',
+	'^BlogLines/',
+	'^blogmap',
+	'^FAST-WebCrawler/',
+	'^Hatena Antenna/',
+	'MI[CK]AN/',
+	'^msnbot/',
+	'^NG/',
+	'^Openbot/',
+	'^samidare',
+	'^TAMATEBAKO/',
+	'^TomSoftAntenna'
 ]
 
 @secure = false
