@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.7 $
+# blog-category.rb $Revision: 1.8 $
 #
 # Usage:
 #
@@ -21,7 +21,7 @@ def blog_category
 	end
 end
 
-if /(latest|month|day|append|replace|comment|saveconf|trackbackreceive|pingbackreceive)/ === @mode
+if /^(latest|month|day|append|replace|comment|showcomment|saveconf|trackbackreceive|pingbackreceive)$/ =~ @mode
 	eval(<<-'MODIFY_CLASS', TOPLEVEL_BINDING)
 		module TDiary
 			module DiaryBase
@@ -49,6 +49,17 @@ if /(latest|month|day|append|replace|comment|saveconf|trackbackreceive|pingbackr
 
 			class TDiaryMonth
 				attr_reader :diaries
+			end
+		end
+	MODIFY_CLASS
+end
+if /^showcomment$/ =~ @mode then
+	eval(<<-'MODIFY_CLASS', TOPLEVEL_BINDING)
+		module TDiary
+			module DiaryBase
+				def title
+					return @title ? @title : ''
+				end
 			end
 		end
 	MODIFY_CLASS

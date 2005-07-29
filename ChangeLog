@@ -1,3 +1,6 @@
+2005-07-29 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/blog-category.rb: fix broken title after changing comment status.
+
 2005-07-20 TADA Tadashi <sho@spc.gr.jp>
 	* release 2.1.2.
 
