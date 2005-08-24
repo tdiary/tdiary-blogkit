@@ -1,3 +1,6 @@
+2002-08-25 TADA Tadahi <sho@spc.gr.jp>
+	* plugin/blog-category.rb: specify genre of preference.
+
 2005-07-29 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/blog-category.rb: fix broken title after changing comment status.
 

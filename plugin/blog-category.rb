@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.8 $
+# blog-category.rb $Revision: 1.9 $
 #
 # Usage:
 #
@@ -199,7 +199,7 @@ def blog_category_cache_initialize
 	end
 end
 
-add_conf_proc('blog_category', @blog_category_conf_label) do
+add_conf_proc( 'blog_category', @blog_category_conf_label, 'basic' ) do
 	if @mode == 'saveconf' and @cgi.valid?('blog_category_initialize')
 		blog_category_cache_initialize
 	end
