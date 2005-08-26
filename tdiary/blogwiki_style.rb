@@ -1,5 +1,5 @@
 #
-# blogwiki_style.rb: WikiWiki style for tDiary Blogkit. $Revision: 1.4 $
+# blogwiki_style.rb: WikiWiki style for tDiary Blogkit. $Revision: 1.5 $
 #
 # if you want to use this style,
 #
@@ -134,12 +134,6 @@ module TDiary
 							r << %Q[<img src="#{s}" alt="#{File::basename( s )}">]
 						else
 							r << %Q[<a href="#{s}">#{s}</a>]
-						end
-					when :HS1
-						r << s.gsub(/\[(.*?)\]/) do
-							$1.split(/,/).collect do |c|
-								%Q|<%= category_anchor("#{c}") %>|
-							end.join
 						end
 					else
 						r << s if s.class == String

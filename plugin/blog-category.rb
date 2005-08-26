@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.9 $
+# blog-category.rb $Revision: 1.10 $
 #
 # Usage:
 #
@@ -21,17 +21,26 @@ def blog_category
 	end
 end
 
+# NOTICE: very illegal usage
+@title_procs.insert( 0, Proc::new {|d, t| categorized_title_of_day( d, t ) } )
+
+def categorized_title_of_day( date, title )
+	r = ''
+	cats, stripped = title.scan( /^((?:\[[^\]]+\])+)\s*(.*)/ )[0]
+	if cats then
+		cats.scan( /\[([^\]]+)\]+/ ).flatten.each do |c|
+			r << %Q|[<a href="#{@index}?blogcategory=#{CGI::escape(c)}">#{c}</a>]|
+		end
+	else
+		stripped = title
+	end
+	r + ' ' + stripped
+end
+
 if /^(latest|month|day|append|replace|comment|showcomment|saveconf|trackbackreceive|pingbackreceive)$/ =~ @mode
 	eval(<<-'MODIFY_CLASS', TOPLEVEL_BINDING)
 		module TDiary
 			module DiaryBase
-				def title
-					return '' unless @title
-					categories.map do |c|
-						%Q|<%= blog_category_anchor("#{c}") %>|
-					end.join + " #{stripped_title}"
-				end
-
 				def stripped_title
 					return '' unless @title
 					stripped = @title.sub(/^(\[(.*?)\])+\s*/,'')
@@ -49,17 +58,6 @@ if /^(latest|month|day|append|replace|comment|showcomment|saveconf|trackbackrece
 
 			class TDiaryMonth
 				attr_reader :diaries
-			end
-		end
-	MODIFY_CLASS
-end
-if /^showcomment$/ =~ @mode then
-	eval(<<-'MODIFY_CLASS', TOPLEVEL_BINDING)
-		module TDiary
-			module DiaryBase
-				def title
-					return @title ? @title : ''
-				end
 			end
 		end
 	MODIFY_CLASS
@@ -104,10 +102,6 @@ def navi_user
 	r = navi_user_blog_category
 	r << %Q[<span class="adminmenu"><a href="#{@index}">#{navi_latest}</a></span>\n] if @mode == 'latest' and blog_category
 	r
-end
-
-def blog_category_anchor(c)
-	%Q|[<a href="#{@index}?blogcategory=#{CGI::escape(c)}">#{c}</a>]|
 end
 
 def blog_category_cache
