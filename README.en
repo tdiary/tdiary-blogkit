@@ -119,8 +119,11 @@ See each plugin file if you want more information.
     Shows all categories in dropdown list.  You can select a category to
     be shown.
 
+9. title-link.rb
+  Make whole title to link to Permalink.
+
 License
 -------
   Copyright (C) by TADA Tadashi <sho@spc.gr.jp>.
-¡¡You can distribute or modify this under GPL.
+  You can distribute or modify this under GPL.
 
