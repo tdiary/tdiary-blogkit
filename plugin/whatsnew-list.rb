@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.27 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.28 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -195,7 +195,7 @@ end
 add_header_proc {
 	rdf = whatsnew_list_rdf_file
 	if @conf['whatsnew_list.rdf'] then
-		%Q|\t<link rel="alternate" type="application/rss+xml" title="#{@conf.html_title}" href="#{@conf.base_url}#{File::basename( rdf )}">\n|
+		%Q|\t<link rel="alternate" type="application/rss+xml" title="RSS" href="#{@conf.base_url}#{File::basename( rdf )}">\n|
 	else
 		''
 	end
