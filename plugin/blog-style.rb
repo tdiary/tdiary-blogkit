@@ -1,4 +1,4 @@
-# blog-style.rb: customize to blog like labels. $Revision: 1.8 $
+# blog-style.rb: customize to blog like labels. $Revision: 1.9 $
 #
 # Copyright (c) 2003 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
@@ -27,6 +27,32 @@ def title_tag
 	else
 		return title_tag_
 	end
+end
+
+#
+# without anchor in subtitle
+#
+def subtitle_link( date, index, subtitle )
+	r = ''
+
+	if @conf.mobile_agent? then
+		r << subtitle if subtitle
+	else
+		if subtitle
+			if respond_to?( :category_anchor ) then
+				r << subtitle.sub( /^(\[([^\[]+?)\])+/ ) do
+					$&.gsub( /\[(.*?)\]/ ) do
+						$1.split( /,/ ).collect do |c|
+							category_anchor( "#{c}" )
+						end.join
+					end
+				end
+			else
+				r << subtitle
+			end
+		end
+	end
+	r
 end
 
 #
