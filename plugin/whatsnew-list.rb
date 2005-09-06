@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.31 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.32 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -125,8 +125,10 @@ def whatsnew_list_rdf( items )
 
 	if /^http/ =~ @options['whatsnew_list.rdf.image']
 		rdf_image = @options['whatsnew_list.rdf.image']
+	elsif @options['whatsnew_list.rdf.image'] and @options['whatsnew_list.rdf.image'].length > 0
+		rdf_image = @conf.base_url + @options['whatsnew_list.rdf.image']
 	else
-		rdf_image = @conf.base_url + (@options['whatsnew_list.rdf.image'] || '')
+		rdf_image = nil
 	end
 	xml << %Q[<image rdf:resource="#{rdf_image}" />\n] if rdf_image
 
