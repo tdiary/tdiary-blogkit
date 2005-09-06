@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.28 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.29 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -123,7 +123,11 @@ def whatsnew_list_rdf( items )
 	<dc:creator>#{CGI::escapeHTML( @conf.author_name )}</dc:creator>
 	]
 
-	rdf_image = @options['whatsnew_list.rdf.image']
+	if /^http/ =~ @options['whatsnew_list.rdf.image']
+		rdf_image = @options['whatsnew_list.rdf.image']
+	else
+		rdf_image = @conf.base_url + @options['whatsnew_list.rdf.image']
+	end
 	xml << %Q[<image rdf:resource="#{rdf_image}" />\n] if rdf_image
 
 	xml << %Q[<items><rdf:Seq>\n]
@@ -134,7 +138,7 @@ def whatsnew_list_rdf( items )
 	xml << %Q[</channel>\n]
 
 	if rdf_image then
-		xml << %Q[<image rdf:abount="#{rdf_image}">\n]
+		xml << %Q[<image rdf:about="#{rdf_image}">\n]
 		xml << %Q[<title>#{@conf.html_title}</title>\n]
 		xml << %Q[<url>#{rdf_image}</url>\n]
 		xml << %Q[<link>#{path}</link>\n]

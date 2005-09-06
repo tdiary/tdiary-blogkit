@@ -1,3 +1,6 @@
+2002-09-06 vette <vette at mail.ne.jp>
+	* plugin/whatsnew-list.rb: fix about relative path of image and typo.
+
 2002-09-05 TADA Tadahi <sho@spc.gr.jp>
 	* tdiary/blogwiki_style.rb: support new Wiki style in tDiary 2.1.2.20050905.
 	* plugin/blog-style.rb: overwrite subtitle_link to delete section anchor.
