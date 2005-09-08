@@ -1,3 +1,6 @@
+2002-09-08 TADA Tadahi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: use description and benner in system preferences.
+
 2002-09-06 TADA Tadahi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: fix bad condition to output link element into
 	HTML header.

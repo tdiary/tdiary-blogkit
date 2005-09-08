@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.32 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.33 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -13,8 +13,6 @@
 #         'index.rdf'), this plugin will generate RDF file.
 #      @options['whatsnew_list.rdf.description']
 #         description of the site in RDF. (@html_title)
-#      @options['whatsnew_list.rdf.image']
-#         image URL of your site (not specified).
 #
 #   notice:
 #     This plugin dose NOT run on secure mode.
@@ -62,13 +60,11 @@ end
 #
 # preferences
 #
-add_conf_proc( 'whatsnew_list', "What's New List" ) do
+add_conf_proc( 'whatsnew_list', "What's New List", 'update' ) do
 	if @mode == 'saveconf' then
 		@conf['whatsnew_list.rdf.out'] = (@cgi.params['whatsnew_list.rdf.out'][0] == 'true')
 		@conf['whatsnew_list.rdf.description'] = @cgi.params['whatsnew_list.rdf.description'][0]
 		@conf['whatsnew_list.rdf.description'] = nil if @conf['whatsnew_list.rdf.description'].length == 0
-		@conf['whatsnew_list.rdf.image'] = @cgi.params['whatsnew_list.rdf.image'][0]
-		@conf['whatsnew_list.rdf.image'] = nil if @conf['whatsnew_list.rdf.image'].length == 0
 	end
 
 	if @conf['whatsnew_list.rdf.out'] == nil then
@@ -83,12 +79,6 @@ add_conf_proc( 'whatsnew_list', "What's New List" ) do
 			<option value="true"#{if @conf['whatsnew_list.rdf.out'] then " selected" end}>#{@whatsnew_list_label_rdf_out_yes}</option>
 			<option value="false"#{if not @conf['whatsnew_list.rdf.out'] then " selected" end}>#{@whatsnew_list_label_rdf_out_no}</option>
 		</select></p>
-		<h3>#{@whatsnew_list_label_rdf_description}</h3>
-		<p>#{@whatsnew_list_label_rdf_description_notice}</p>
-		<p><input name='whatsnew_list.rdf.description' size="40" value="#{@conf['whatsnew_list.rdf.description']}"></p>
-		<h3>#{@whatsnew_list_label_rdf_image}</h3>
-		<p>#{@whatsnew_list_label_rdf_image_notice}</p>
-		<p><input name='whatsnew_list.rdf.image' size="40" value="#{@conf['whatsnew_list.rdf.image']}"></p>
 	HTML
 	result
 end
@@ -112,7 +102,7 @@ def whatsnew_list_rdf( items )
 	path[0, 0] = @conf.base_url if %r|^https?://|i !~ @conf.index
 	path.gsub!( %r|/\./|, '/' )
 
-	desc = @options['whatsnew_list.rdf.description'] || @conf.html_title
+	desc = @conf.description || @conf.html_title
 
 	xml = %Q[<?xml version="1.0" encoding="#{@whatsnew_list_encode}"?>
 	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xml:lang="#{@conf.html_lang}">
@@ -123,10 +113,10 @@ def whatsnew_list_rdf( items )
 	<dc:creator>#{CGI::escapeHTML( @conf.author_name )}</dc:creator>
 	]
 
-	if /^http/ =~ @options['whatsnew_list.rdf.image']
-		rdf_image = @options['whatsnew_list.rdf.image']
-	elsif @options['whatsnew_list.rdf.image'] and @options['whatsnew_list.rdf.image'].length > 0
-		rdf_image = @conf.base_url + @options['whatsnew_list.rdf.image']
+	if /^http/ =~ @conf.banner
+		rdf_image = @conf.banner
+	elsif @conf.banner and !@conf.banner.empty?
+		rdf_image = @conf.base_url + @conf.banner
 	else
 		rdf_image = nil
 	end
