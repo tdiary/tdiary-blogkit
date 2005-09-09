@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.33 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.34 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -29,6 +29,8 @@ unless @resource_loaded then
 end
 
 def whatsnew_list( max = 5, limit = 20 )
+	return 'DO NOT USE IN SECURE MODE' if @conf.secure
+
 	max = max.to_i
 	limit = limit.to_i
 	

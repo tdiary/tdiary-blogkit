@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.10 $
+# blog-category.rb $Revision: 1.11 $
 #
 # Usage:
 #
@@ -129,6 +129,8 @@ def blog_category_cache_restore
 end
 
 def blog_category_entry(limit = 20)
+	return 'DO NOT USE IN SECURE MODE' if @conf.secure
+
 	cache = blog_category_cache_restore
 	return '' if (blog_category.nil? or cache.nil?)
 

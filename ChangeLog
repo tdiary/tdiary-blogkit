@@ -1,5 +1,8 @@
 2002-09-09 TADA Tadahi <sho@spc.gr.jp>
 	* README: document improved.
+	* recent-entry.rb: merge recent-entry2.rb into recent-entry.rb.
+	* recent-entry2.rb: delete.
+	* blog-category.rb, whatsnew-list.rb: show denial message in seure mode.
 
 2002-09-08 TADA Tadahi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: use description and benner in system preferences.
