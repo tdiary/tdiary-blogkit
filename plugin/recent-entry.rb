@@ -1,4 +1,4 @@
-# recent_entry.rb $Revision: 1.9 $
+# recent_entry.rb $Revision: 1.10 $
 #
 # recent_entry: modified 'title_list' for Blogkit.
 #   parameter(default):
@@ -27,6 +27,7 @@ def recent_entry_secure( max = 5, limit = 20 )
 	max = max.to_i
 	limit = limit.to_i
 
+	result = ''
 	@diaries.keys.sort.reverse.each_with_index do |date, idx|
 		break if idx >= max
 		diary = @diaries[date]
@@ -52,6 +53,7 @@ def recent_entry_insecure( max = 5, limit = 20 )
 	cgi = CGI::new
 	def cgi.referer; nil; end
 
+	result = ''
 	catch( :exit ) {
 		@years.keys.sort.reverse_each do |year|
 			@years[year].sort.reverse_each do |month|
