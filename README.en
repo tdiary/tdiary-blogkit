@@ -83,43 +83,31 @@ See each plugin file if you want more information.
   4.1 recent-entry plugin
     Shows the list of the recent topics. You have to choose 
     this plugin or recent-entry2.
-    This is lightweight and can be run on secure mode. But, 
-    the list is shown accurately only on latest mode. 
-    If you want to show it on monthly mode
-    or daily mode, choose recent-entry2.
 
-5. recent-entry2.rb
-  5.1 recent-entry plugin
-    Show the list of recent topics. You have to choose 
-    this or recent-entry.
-    This is run only on insecure mode, but shows an accurate list 
-    on latest mode and daily mode.
-
-6. title-navi.rb
+5. title-navi.rb
   Shows a topic title as navigation label. 
   You can use this plugin only by copying this plugin to plugin directory.
 
-7. whatsnew-list.rb
-  7.1 whatsnew-list plugin
-    Shows a list of updated topics like "What's new". 
-    This plugin cannot be used on secure mode.
-	 And it can generate RDF file when option setting in tdiary.conf.
+6. whatsnew-list.rb
+   Shows a list of updated topics like "What's new". 
+   This plugin cannot be used on secure mode.
+	And it can generate RDF file when option setting in tdiary.conf.
 
-8. blog-category.rb
+7. blog-category.rb
   Add category feature.  A word surrounded by '[' and ']' is treated as 
   a name of category.  By clicking this category name, you can move to
   the page which displays articles of the category.
   You should initialize the index of category in the config page of tDiary.
 
-  8.1 blog_category_entry plugin
+  7.1 blog_category_entry plugin
     Show the list of titles which can't be shown in the category specific
     page.
 
-  8.2 blog_category_form plugin
+  7.2 blog_category_form plugin
     Shows all categories in dropdown list.  You can select a category to
     be shown.
 
-9. title-link.rb
+8. title-link.rb
   Make whole title to link to Permalink.
 
 License
