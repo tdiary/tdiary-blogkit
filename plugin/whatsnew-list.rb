@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.34 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.35 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -64,9 +64,19 @@ end
 #
 add_conf_proc( 'whatsnew_list', "What's New List", 'update' ) do
 	if @mode == 'saveconf' then
-		@conf['whatsnew_list.rdf.out'] = (@cgi.params['whatsnew_list.rdf.out'][0] == 'true')
-		@conf['whatsnew_list.rdf.description'] = @cgi.params['whatsnew_list.rdf.description'][0]
-		@conf['whatsnew_list.rdf.description'] = nil if @conf['whatsnew_list.rdf.description'].length == 0
+		if @cgi.params['whatsnew_list.rdf.out'][0] == 'true' then
+			rdf = whatsnew_list_rdf_file
+			begin
+				open( rdf, 'w+' ) {|f|}
+				@conf['whatsnew_list.rdf.out'] = true
+			rescue Errno::EACCES
+				@conf['whatsnew_list.rdf.out'] = false
+				error_message = %Q|<p class="message">#{rdf}#{@whatsnew_list_msg_access}</p>|
+	
+			end
+		else
+			@conf['whatsnew_list.rdf.out'] = false
+		end
 	end
 
 	if @conf['whatsnew_list.rdf.out'] == nil then
@@ -75,6 +85,7 @@ add_conf_proc( 'whatsnew_list', "What's New List", 'update' ) do
 
 	result = ''
 	result << <<-HTML
+		#{error_message}
 		<h3>#{@whatsnew_list_label_rdf_out}</h3>
 		<p>#{@whatsnew_list_label_rdf_out_notice}</p>
 		<p><select name="whatsnew_list.rdf.out">
@@ -89,14 +100,7 @@ end
 # private methods
 #
 def whatsnew_list_rdf_file
-	rdf_file = @conf['whatsnew_list.rdf']
-	if @conf['whatsnew_list.rdf.out'] == nil then
-		@conf['whatsnew_list.rdf.out'] = rdf_file ? true : false
-	end
-	if @conf['whatsnew_list.rdf.out'] then
-		rdf_file = 'index.rdf' unless rdf_file
-	end
-	rdf_file
+	@conf['whatsnew_list.rdf'] || 'index.rdf'
 end
 
 def whatsnew_list_rdf( items )

@@ -1,4 +1,4 @@
-# title-navi.rb: navigation label with title of the article. $Revision: 1.8 $
+# title-navi.rb: navigation label with title of the article. $Revision: 1.9 $
 #
 # This plugin run only copy to plugin directory.
 # You can customize in tdiary.conf:
@@ -8,7 +8,7 @@
 # Distributed under the GPL
 #
 
-if @mode == 'day'
+if /^(day|edit)$/ =~ @mode then
 	eval( <<-MODIFY_CLASS, TOPLEVEL_BINDING )
 	module TDiary
 		class TDiaryMonth
@@ -26,7 +26,7 @@ if @mode == 'day'
 	pre = 0
 	(@date.day - 1).downto( 1 ) do |day|
 		diary = @diaries[month + ('%02d' % day)]
-		pre = day if diary and diary.visible?
+		pre = day if diary and ((@mode == 'edit') or diary.visible?)
 	end
 	if pre == 0 and (years.index( month ) || 1) - 1 >= 0 then
 		cgi.params['date'] = [years[(years.index( month ) || 0) - 1]]
@@ -38,7 +38,7 @@ if @mode == 'day'
 	nex = 0
 	(@date.day + 1).upto( 31 ) do |day|
 		diary = @diaries[month + ('%02d' % day)]
-		nex = day if diary and diary.visible?
+		nex = day if diary and ((@mode == 'edit') or diary.visible?)
 	end
 	if nex == 0 and (years.index( month ) || years.size-1) + 1 < years.size then
 		cgi.params['date'] = [years[(years.index( month ) || years.size) + 1]]
@@ -53,7 +53,7 @@ def navi_prev_diary( date )
 		len = @options['title_navi.max'] || 30
 		@conf.shorten( apply_plugin( DiaryBase.method_defined?(:stripped_title) ? diary.stripped_title : diary.title, true ), len.to_i )
 	else
-		"Prev"
+		"Prev(#{date.strftime '%Y%m%d'})"
 	end
 end
 
@@ -63,7 +63,23 @@ def navi_next_diary( date )
 		len = @options['title_navi.max'] || 30
 		@conf.shorten( apply_plugin( DiaryBase.method_defined?(:stripped_title) ? diary.stripped_title : diary.title, true ), len.to_i )
 	else
-		"Next"
+		"Next(#{date.strftime '%Y%m%d'})"
 	end
 end
 
+add_header_proc do
+	if /^(form|edit|preview)$/ =~ @mode then
+		<<-HTML
+		<style type="text/css"><!--
+		form.update span.year,
+		form.update span.month,
+		form.update span.day,
+		form.update span.edit {
+			display: none;
+		}
+		--></style>
+		HTML
+	else
+		''
+	end
+end
