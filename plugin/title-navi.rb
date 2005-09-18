@@ -1,4 +1,4 @@
-# title-navi.rb: navigation label with title of the article. $Revision: 1.9 $
+# title-navi.rb: navigation label with title of the article. $Revision: 1.10 $
 #
 # This plugin run only copy to plugin directory.
 # You can customize in tdiary.conf:
@@ -68,7 +68,7 @@ def navi_next_diary( date )
 end
 
 add_header_proc do
-	if /^(form|edit|preview)$/ =~ @mode then
+	if /^(form|edit|preview|showcomment)$/ =~ @mode then
 		<<-HTML
 		<style type="text/css"><!--
 		form.update span.year,

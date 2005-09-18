@@ -1,3 +1,8 @@
+2002-09-18 TADA Tadahi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: append 'Comments(N)' and 'TrackBacks(M)' into
+	description of RSS.
+	* plugin/title-navi.rb: hide date fields also in showcomment mode.
+
 2002-09-16 TADA Tadahi <sho@spc.gr.jp>
 	* plugin/title-navi.rb: prev/next navigation in edit mode.
 	* plugin/title-navi.rb: hide date fields in edit mode by CSS.

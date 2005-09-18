@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.35 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.36 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -172,6 +172,13 @@ add_update_proc do
 	diary = @diaries[@date.strftime('%Y%m%d')]
 	title = defined?( diary.stripped_title ) ? diary.stripped_title : diary.title
 	desc = diary.to_html( { 'anchor' => true } )
+	desc << "<p>Comments(#{diary.count_comments})"
+	if diary.respond_to?( :each_visible_trackback ) then
+		tb = 0
+		diary.each_visible_trackback {|i| tb += 1}
+		desc << " TrackBacks(#{tb})"
+	end
+	desc << "</p>\n"
 	new_item = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime("%Y-%m-%dT%H:%M:%S#{zone}"), desc]
 	PStore::new( "#{@cache_path}/whatsnew-list" ).transaction do |db|
 		wn = []
