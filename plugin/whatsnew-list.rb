@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.36 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.37 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -163,7 +163,7 @@ def whatsnew_list_rdf( items )
 	@whatsnew_list_encoder.call( apply_plugin( xml ).gsub( /\t/, '' ) )
 end
 
-add_update_proc do
+def whatsnew_list_update
 	now = Time::now
 	g = now.dup.gmtime
 	l = Time::local( g.year, g.month, g.day, g.hour, g.min, g.sec )
@@ -175,7 +175,7 @@ add_update_proc do
 	desc << "<p>Comments(#{diary.count_comments})"
 	if diary.respond_to?( :each_visible_trackback ) then
 		tb = 0
-		diary.each_visible_trackback {|i| tb += 1}
+		diary.each_visible_trackback( 100 ) {|t,i| tb += 1}
 		desc << " TrackBacks(#{tb})"
 	end
 	desc << "</p>\n"
@@ -201,11 +201,25 @@ add_update_proc do
 	end
 end
 
-add_header_proc {
+add_update_proc do
+	whatsnew_list_update unless @cgi.params['whatsnew_list_update'][0] == 'false'
+end
+
+add_header_proc do
 	rdf = whatsnew_list_rdf_file
 	if @conf['whatsnew_list.rdf.out'] then
 		%Q|\t<link rel="alternate" type="application/rss+xml" title="RSS" href="#{@conf.base_url}#{File::basename( rdf )}">\n|
 	else
 		''
 	end
-}
+end
+
+add_edit_proc do
+	checked = @cgi.params['whatsnew_list_update'][0] == 'false' ? ' checked' : ''
+	r = <<-HTML
+	<div class="whatsnew-list">
+	<input type="checkbox" name="whatsnew_list_update" value="false"#{checked} tabindex="520" />
+	#{@whatsnew_list_edit_label}
+	</div>
+	HTML
+end

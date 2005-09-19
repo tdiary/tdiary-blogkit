@@ -15,3 +15,5 @@ if /conf/ =~ @mode then
 	@whatsnew_list_label_rdf_out_no = '生成しない'
 	@whatsnew_list_msg_access = 'に書き込めません。パーミッションを確認してください。'
 end
+
+@whatsnew_list_edit_label = 'ちょっとした修正(RSSを更新しない)'
