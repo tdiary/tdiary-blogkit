@@ -1,3 +1,6 @@
+2002-09-21 vette <vette at mail.ne.jp>
+	* plugin/blog-category.rb: insert category list into update form.
+
 2002-09-19 TADA Tadahi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: add a checkbox for don't update RSS, and some bug fix.
 

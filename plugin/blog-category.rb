@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.11 $
+# blog-category.rb $Revision: 1.12 $
 #
 # Usage:
 #
@@ -204,6 +204,36 @@ add_conf_proc( 'blog_category', @blog_category_conf_label, 'basic' ) do
 	r << @blog_category_desc_label unless @conf.mobile_agent?
 	r << @blog_category_desc_label_for_mobile if @conf.mobile_agent?
 	r
+end
+
+add_edit_proc do
+	cache = blog_category_cache_restore
+	return '' if cache.nil?
+
+	ret = ''
+   unless cache.keys.size == 0 then
+		ret << %Q[
+		<script type="text/javascript">
+		<!--
+		function inj_c(val){
+			target = window.document.forms[0].title
+			target.focus();
+			target.value += val
+		}
+		//-->
+		</script>
+		]
+
+		ret << '<div class="field title">'
+		ret << "#{@blog_category_conf_label}:\n"
+
+		cache.keys.sort.each do |cat|
+			e_c = CGI.escapeHTML(cat)
+
+			ret << %Q!| <a href="javascript:inj_c(&quot;[#{e_c}]&quot;)">#{e_c}</a>\n!
+		end
+		ret << "|\n</div>\n<br>\n"
+	end
 end
 
 # vim: ts=3
