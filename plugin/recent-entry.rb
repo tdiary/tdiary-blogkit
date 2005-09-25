@@ -1,4 +1,4 @@
-# recent_entry.rb $Revision: 1.11 $
+# recent_entry.rb $Revision: 1.12 $
 #
 # recent_entry: modified 'title_list' for Blogkit.
 #   parameter(default):
@@ -32,7 +32,12 @@ def recent_entry_secure( max = 5, limit = 20 )
 		break if idx >= max
 		diary = @diaries[date]
 		next unless diary.visible?
-		title = diary.stripped_title.gsub( /<[^>]*>/, '' )
+		title = if diary.respond_to?( :stripped_title ) then
+			diary.stripped_title.gsub( /<[^>]*>/, '' )
+		else
+			diary.title.gsub( /<[^>]*>/, '' )
+		end
+		title = 'no title' if title.empty?
 		result << %Q[<li><a href="#{@index}#{anchor date}">#{@conf.shorten( title, limit )}</a></li>\n]
 	end
 	result
@@ -61,7 +66,12 @@ def recent_entry_insecure( max = 5, limit = 20 )
 				m = TDiaryMonth::new( cgi, '', @conf )
 				m.diaries.keys.sort.reverse_each do |date|
 					next unless m.diaries[date].visible?
-					title = m.diaries[date].stripped_title.gsub( /<[^>]*>/, '' )
+					title = if m.diaries[date].respond_to?( :stripped_title ) then
+						title = m.diaries[date].stripped_title.gsub( /<[^>]*>/, '' )
+					else
+						title = m.diaries[date].title.gsub( /<[^>]*>/, '' )
+					end
+					title = 'no title' if title.empty?
 					result << %Q|<li><a href="#{@index}#{anchor date}">#{@conf.shorten( title, limit )}</a></li>\n|
 					max -= 1
 					throw :exit if max == 0
