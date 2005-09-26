@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.38 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.39 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -186,7 +186,7 @@ def whatsnew_list_update
 	body_enter_proc( @date )
 	desc = apply_plugin( desc )
 	@conf['apply_plugin'] = old_apply_plugin
-	body_leave_proc( date )
+	body_leave_proc( @date )
 
 	new_item = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime("%Y-%m-%dT%H:%M:%S#{zone}"), desc]
 	PStore::new( "#{@cache_path}/whatsnew-list" ).transaction do |db|
