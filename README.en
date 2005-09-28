@@ -17,7 +17,7 @@ You can setup BlogKit without changing tDiary. It is only plugged-in.
 how to install
 --------------
 First, you need tDiary that is installed. 
-You must use tDiary version 2.1.2.20050916 or later.
+You must use tDiary version 2.1.3 or later.
 Here, it is assumed that you install tDiary under $INSTALL anew. 
 
 1. Creating tdiary.conf
