@@ -1,3 +1,6 @@
+2005-10-07 TADA Tadashi <sho@spc.gr.jp>
+	* tdiary/blogwiki_style.rb: delete duplicated div.section.
+
 2005-09-29 TADA Tadashi <sho@spc.gr.jp>
 	* release 2.1.3.
 

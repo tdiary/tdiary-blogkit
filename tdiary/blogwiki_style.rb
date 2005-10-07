@@ -1,5 +1,5 @@
 #
-# blogwiki_style.rb: WikiWiki style for tDiary Blogkit. $Revision: 1.6 $
+# blogwiki_style.rb: WikiWiki style for tDiary Blogkit. $Revision: 1.7 $
 #
 # if you want to use this style,
 #
@@ -44,7 +44,7 @@ module TDiary
 		end
 
 		def to_html4( opt )
-			r = %Q[<div class="section">\n]
+			r = ''
 			idx = 1
 			each_section do |section|
 				if idx > 1 and not opt['anchor'] then
@@ -54,7 +54,7 @@ module TDiary
 				r << section.html4( date, idx, opt )
 				idx += 1
 			end
-			r << "</div>\n"
+			r
 		end
 	
 		def to_chtml( opt )
