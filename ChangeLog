@@ -1,3 +1,6 @@
+2005-10-09 TADA Tadashi <sho@spc.gr.jp>
+	* README: fix about style file settings.
+
 2005-10-07 TADA Tadashi <sho@spc.gr.jp>
 	* tdiary/blogwiki_style.rb: delete duplicated div.section.
 
