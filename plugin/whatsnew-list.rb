@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.40 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.41 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -149,12 +149,22 @@ def whatsnew_list_rdf( items )
 		else
 			mod = modify
 		end
+		cats, stripped = title.scan( /^((?:\[[^\]]+\])+)\s*(.*)/ )[0]
+		if cats then
+			cats = cats.scan( /\[([^\]]+)\]+/ ).flatten.collect {|tag|
+				"<dc:subject>#{tag}</dc:subject>"
+			}.join( "\n" )
+		else
+			stripped = title
+		end
+		stripped
 		xml << %Q[<item rdf:about="#{path}#{anchor uri}">
-		<title>#{title}</title>
+		<title>#{stripped}</title>
 		<link>#{path}#{anchor uri}</link>
 		<dc:creator>#{CGI::escapeHTML( @conf.author_name )}</dc:creator>
 		<dc:date>#{mod}</dc:date>
-		<content:encoded><![CDATA[#{description}]]></content:encoded>
+		#{cats}
+		<content:encoded><![CDATA[#{apply_plugin( description )}]]></content:encoded>
 		</item>
 		]
 	end
@@ -171,7 +181,8 @@ def whatsnew_list_update
 	zone = sprintf( "%+03d:%02d", tz / 3600, tz % 3600 / 60 )
 	diary = @diaries[@date.strftime('%Y%m%d')]
 
-	title = defined?( diary.stripped_title ) ? diary.stripped_title : diary.title
+	#title = defined?( diary.stripped_title ) ? diary.stripped_title : diary.title
+	title = diary.title
 	desc = diary.to_html( { 'anchor' => true } )
 	desc << "<p>Comments(#{diary.count_comments})"
 	if Comment::instance_methods.include?( 'visible_true?' ) then
