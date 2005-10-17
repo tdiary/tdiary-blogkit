@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.41 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.42 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -184,12 +184,14 @@ def whatsnew_list_update
 	#title = defined?( diary.stripped_title ) ? diary.stripped_title : diary.title
 	title = diary.title
 	desc = diary.to_html( { 'anchor' => true } )
-	desc << "<p>Comments(#{diary.count_comments})"
+	trackback = 0
 	if Comment::instance_methods.include?( 'visible_true?' ) then
-		tb = 0
-		diary.each_visible_trackback( 100 ) {|t,i| tb += 1}
-		desc << " TrackBacks(#{tb})"
+		diary.each_visible_trackback( 100 ) {|t,i| trackback += 1}
 	end
+	comment = diary.count_comments - trackback
+	desc << "<p>"
+	desc << "Comments(#{comment})" if comment > 0
+	desc << "&nbps;TrackBacks(#{trackback})" trackback > 0
 	desc << "</p>\n"
 	old_apply_plugin = @conf['apply_plugin']
 	@conf['apply_plugin'] = true

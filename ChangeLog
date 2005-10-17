@@ -1,3 +1,6 @@
+2005-10-16 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: insert correct counts of comments and TrackBacks.
+
 2005-10-13 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: support dc:subject element in RSS for categories.
 
