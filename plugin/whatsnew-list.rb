@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.42 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.43 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -191,7 +191,7 @@ def whatsnew_list_update
 	comment = diary.count_comments - trackback
 	desc << "<p>"
 	desc << "Comments(#{comment})" if comment > 0
-	desc << "&nbps;TrackBacks(#{trackback})" trackback > 0
+	desc << "&nbps;TrackBacks(#{trackback})" if trackback > 0
 	desc << "</p>\n"
 	old_apply_plugin = @conf['apply_plugin']
 	@conf['apply_plugin'] = true
