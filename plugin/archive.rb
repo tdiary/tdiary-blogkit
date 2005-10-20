@@ -1,4 +1,4 @@
-# archive.rb $Revision: 1.8 $
+# archive.rb $Revision: 1.9 $
 #
 # archive: show list of past news archive
 #   parameter: none.
@@ -10,6 +10,7 @@
 # Copyright (c) 2002 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
 #
+
 def archive_make_list
 	list = []
 	@years.keys.sort.reverse_each do |year|
@@ -44,17 +45,19 @@ def archive_dropdown( label = 'Go' )
 	result << %Q[</div></form>\n]
 end
 
-if @mode == 'month'
+def archive_make_index
 	list = archive_make_list.sort.push( nil ).unshift( nil )
 	this = @date.strftime( "%Y%m" )
 	@archive_index = list.index( this )
 end
 
 def navi_prev_month
+	archive_make_index unless @archive_index
 	'%05d' % (@archive_index - 1)
 end
 
 def navi_next_month
+	archive_make_index unless @archive_index
 	'%05d' % (@archive_index + 1)
 end
 

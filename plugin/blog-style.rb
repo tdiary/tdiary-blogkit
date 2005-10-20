@@ -1,4 +1,4 @@
-# blog-style.rb: customize to blog like labels. $Revision: 1.9 $
+# blog-style.rb: customize to blog like labels. $Revision: 1.10 $
 #
 # Copyright (c) 2003 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
@@ -21,7 +21,7 @@ def title_tag
 			return title_tag_
 		end
 	when 'month'
-		list = archive_make_list.sort.push( nil ).unshift( nil )
+		list = @years.keys.collect {|y| @years[y].collect {|m| "#{y}#{m}"}}.flatten.push( nil ).unshift( nil )
 		index = list.index( @date.strftime("%Y%m") )
 		return "<title>#{@html_title} - #{'%05d' % (index)}</title>"
 	else

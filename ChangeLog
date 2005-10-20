@@ -1,3 +1,7 @@
+2005-10-20 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/archive.rb: fix error under running tdiary_search.
+	* plugin/blog-style.rb: separate from archive.rb.
+
 2005-10-16 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: insert correct counts of comments and TrackBacks.
 
