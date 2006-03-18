@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.43 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.44 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -186,7 +186,7 @@ def whatsnew_list_update
 	desc = diary.to_html( { 'anchor' => true } )
 	trackback = 0
 	if Comment::instance_methods.include?( 'visible_true?' ) then
-		diary.each_visible_trackback( 100 ) {|t,i| trackback += 1}
+		diary.each_visible_trackback {|t,i| trackback += 1}
 	end
 	comment = diary.count_comments - trackback
 	desc << "<p>"
