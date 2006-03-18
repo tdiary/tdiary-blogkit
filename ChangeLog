@@ -1,5 +1,6 @@
 2006-03-18 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatnew-list.rb: follow core 2.1.3.20060318.
+	* plugin/whatnew-list.rb: support Mobile Link Discovery.
 
 2005-10-20 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/archive.rb: fix error under running tdiary_search.

@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.44 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.45 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -111,10 +111,11 @@ def whatsnew_list_rdf( items )
 	desc = @conf.description || @conf.html_title
 
 	xml = %Q[<?xml version="1.0" encoding="#{@whatsnew_list_encode}"?>
-	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xml:lang="#{@conf.html_lang}">
+	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="#{@conf.html_lang}">
 	<channel rdf:about="#{@conf.base_url}#{File::basename( whatsnew_list_rdf_file )}">
 	<title>#{@conf.html_title}</title>
 	<link>#{path}</link>
+	<xhtml:link xhtml:rel="alternate" xhtml:media="handheld" xhtml:type="text/html" xhtml:href="#{path}" />
 	<description>#{desc}</description>
 	<dc:creator>#{CGI::escapeHTML( @conf.author_name )}</dc:creator>
 	]
@@ -161,6 +162,7 @@ def whatsnew_list_rdf( items )
 		xml << %Q[<item rdf:about="#{path}#{anchor uri}">
 		<title>#{stripped}</title>
 		<link>#{path}#{anchor uri}</link>
+		<xhtml:link xhtml:rel="alternate" xhtml:media="handheld" xhtml:type="text/html" xhtml:href="#{path}#{anchor uri}" />
 		<dc:creator>#{CGI::escapeHTML( @conf.author_name )}</dc:creator>
 		<dc:date>#{mod}</dc:date>
 		#{cats}
