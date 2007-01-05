@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.45 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.46 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -176,6 +176,8 @@ def whatsnew_list_rdf( items )
 end
 
 def whatsnew_list_update
+	return if @mode == 'comment' and !@comment.visible?
+
 	now = Time::now
 	g = now.dup.gmtime
 	l = Time::local( g.year, g.month, g.day, g.hour, g.min, g.sec )
