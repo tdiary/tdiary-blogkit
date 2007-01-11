@@ -1,4 +1,4 @@
-# recent_entry.rb $Revision: 1.12 $
+# recent_entry.rb $Revision: 1.13 $
 #
 # recent_entry: modified 'title_list' for Blogkit.
 #   parameter(default):
@@ -38,7 +38,7 @@ def recent_entry_secure( max = 5, limit = 20 )
 			diary.title.gsub( /<[^>]*>/, '' )
 		end
 		title = 'no title' if title.empty?
-		result << %Q[<li><a href="#{@index}#{anchor date}">#{@conf.shorten( title, limit )}</a></li>\n]
+		result << %Q[<li><a href="#{h @index}#{anchor date}">#{@conf.shorten( title, limit )}</a></li>\n]
 	end
 	result
 end
@@ -72,7 +72,7 @@ def recent_entry_insecure( max = 5, limit = 20 )
 						title = m.diaries[date].title.gsub( /<[^>]*>/, '' )
 					end
 					title = 'no title' if title.empty?
-					result << %Q|<li><a href="#{@index}#{anchor date}">#{@conf.shorten( title, limit )}</a></li>\n|
+					result << %Q|<li><a href="#{h @index}#{anchor date}">#{@conf.shorten( title, limit )}</a></li>\n|
 					max -= 1
 					throw :exit if max == 0
 				end

@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.46 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.47 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -50,7 +50,7 @@ def whatsnew_list( max = 5, limit = 20 )
 			wn.each_with_index do |item,i|
 				break if i >= max
 				title = @conf.shorten(apply_plugin( item[1] ).gsub( /<.*?>/, '' ), limit )
-				r << %Q|<li><a href="#{@index}#{anchor item[0]}">#{title}</a></li>\n|
+				r << %Q|<li><a href="#{h @index}#{anchor item[0]}">#{title}</a></li>\n|
 			end
 			db.abort
 		rescue
@@ -89,8 +89,8 @@ add_conf_proc( 'whatsnew_list', "What's New List", 'update' ) do
 		<h3>#{@whatsnew_list_label_rdf_out}</h3>
 		<p>#{@whatsnew_list_label_rdf_out_notice}</p>
 		<p><select name="whatsnew_list.rdf.out">
-			<option value="true"#{if @conf['whatsnew_list.rdf.out'] then " selected" end}>#{@whatsnew_list_label_rdf_out_yes}</option>
-			<option value="false"#{if not @conf['whatsnew_list.rdf.out'] then " selected" end}>#{@whatsnew_list_label_rdf_out_no}</option>
+			<option value="true"#{" selected" if @conf['whatsnew_list.rdf.out']}>#{@whatsnew_list_label_rdf_out_yes}</option>
+			<option value="false"#{" selected" unless @conf['whatsnew_list.rdf.out']}>#{@whatsnew_list_label_rdf_out_no}</option>
 		</select></p>
 	HTML
 	result
@@ -111,13 +111,13 @@ def whatsnew_list_rdf( items )
 	desc = @conf.description || @conf.html_title
 
 	xml = %Q[<?xml version="1.0" encoding="#{@whatsnew_list_encode}"?>
-	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="#{@conf.html_lang}">
-	<channel rdf:about="#{@conf.base_url}#{File::basename( whatsnew_list_rdf_file )}">
-	<title>#{@conf.html_title}</title>
-	<link>#{path}</link>
-	<xhtml:link xhtml:rel="alternate" xhtml:media="handheld" xhtml:type="text/html" xhtml:href="#{path}" />
-	<description>#{desc}</description>
-	<dc:creator>#{CGI::escapeHTML( @conf.author_name )}</dc:creator>
+	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="#{h @conf.html_lang}">
+	<channel rdf:about="#{h @conf.base_url}#{h File::basename( whatsnew_list_rdf_file )}">
+	<title>#{h @conf.html_title}</title>
+	<link>#{h path}</link>
+	<xhtml:link xhtml:rel="alternate" xhtml:media="handheld" xhtml:type="text/html" xhtml:href="#{h path}" />
+	<description>#{h desc}</description>
+	<dc:creator>#{h @conf.author_name}</dc:creator>
 	]
 
 	if /^http/ =~ @conf.banner
@@ -127,20 +127,20 @@ def whatsnew_list_rdf( items )
 	else
 		rdf_image = nil
 	end
-	xml << %Q[<image rdf:resource="#{rdf_image}" />\n] if rdf_image
+	xml << %Q[<image rdf:resource="#{h rdf_image}" />\n] if rdf_image
 
 	xml << %Q[<items><rdf:Seq>\n]
 	items.each do |uri, title, modify, description|
-		xml << %Q!<rdf:li rdf:resource="#{path}#{anchor uri}"/>\n!
+		xml << %Q!<rdf:li rdf:resource="#{h path}#{anchor uri}"/>\n!
 	end
 	xml << %Q[</rdf:Seq></items>\n]
 	xml << %Q[</channel>\n]
 
 	if rdf_image then
-		xml << %Q[<image rdf:about="#{rdf_image}">\n]
-		xml << %Q[<title>#{@conf.html_title}</title>\n]
-		xml << %Q[<url>#{rdf_image}</url>\n]
-		xml << %Q[<link>#{path}</link>\n]
+		xml << %Q[<image rdf:about="#{h rdf_image}">\n]
+		xml << %Q[<title>#{h @conf.html_title}</title>\n]
+		xml << %Q[<url>#{h rdf_image}</url>\n]
+		xml << %Q[<link>#{h path}</link>\n]
 		xml << %Q[</image>\n]
 	end
 
@@ -153,17 +153,17 @@ def whatsnew_list_rdf( items )
 		cats, stripped = title.scan( /^((?:\[[^\]]+\])+)\s*(.*)/ )[0]
 		if cats then
 			cats = cats.scan( /\[([^\]]+)\]+/ ).flatten.collect {|tag|
-				"<dc:subject>#{tag}</dc:subject>"
+				"<dc:subject>#{h tag}</dc:subject>"
 			}.join( "\n" )
 		else
 			stripped = title
 		end
 		stripped
-		xml << %Q[<item rdf:about="#{path}#{anchor uri}">
-		<title>#{stripped}</title>
-		<link>#{path}#{anchor uri}</link>
-		<xhtml:link xhtml:rel="alternate" xhtml:media="handheld" xhtml:type="text/html" xhtml:href="#{path}#{anchor uri}" />
-		<dc:creator>#{CGI::escapeHTML( @conf.author_name )}</dc:creator>
+		xml << %Q[<item rdf:about="#{h path}#{anchor uri}">
+		<title>#{h stripped}</title>
+		<link>#{h path}#{anchor uri}</link>
+		<xhtml:link xhtml:rel="alternate" xhtml:media="handheld" xhtml:type="text/html" xhtml:href="#{h path}#{anchor uri}" />
+		<dc:creator>#{h @conf.author_name}</dc:creator>
 		<dc:date>#{mod}</dc:date>
 		#{cats}
 		<content:encoded><![CDATA[#{apply_plugin( description )}]]></content:encoded>
@@ -234,7 +234,7 @@ end
 add_header_proc do
 	rdf = whatsnew_list_rdf_file
 	if @conf['whatsnew_list.rdf.out'] then
-		%Q|\t<link rel="alternate" type="application/rss+xml" title="RSS" href="#{@conf.base_url}#{File::basename( rdf )}">\n|
+		%Q|\t<link rel="alternate" type="application/rss+xml" title="RSS" href="#{h @conf.base_url}#{h File::basename( rdf )}">\n|
 	else
 		''
 	end

@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.2 $
+# blog-category.rb $Revision: 1.3 $
 #
 #  resource file for blog-category.rb
 #
@@ -13,7 +13,7 @@
 	<p>例：</p>
 	<pre>[BlogKit] カテゴリ機能を導入しました</pre>
 	<p>このように書くと，実際に記事を表示する際に [BlogKit] の部分がカテゴリ表示画面へのリンクへ自動的に変換されます．一つの記事にいくつでもカテゴリを指定することができます．</p>
-	<p>サイドバーなどにカテゴリに関連する情報を表示させたい場合は，<a href="#{@update}?conf=header">ヘッダ・フッタ</a>でヘッダやフッタに次のような設定を追加しましょう．</p>
+	<p>サイドバーなどにカテゴリに関連する情報を表示させたい場合は，<a href="#{h @update}?conf=header">ヘッダ・フッタ</a>でヘッダやフッタに次のような設定を追加しましょう．</p>
 	<pre>&lt;div class="sidemenu"&gt;Category: &lt;/div&gt;
 &lt;%=blog_category_form%&gt;
 &lt;%=blog_category_entry%&gt;</pre>

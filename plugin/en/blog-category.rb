@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.2 $
+# blog-category.rb $Revision: 1.3 $
 #
 #  resource file for blog-category.rb
 #
@@ -12,7 +12,7 @@
 	<p>In tDiary with BlogKit, you can specify the category of the article in the title, in the form of:</p>
 	<pre>[category] the title of the article</pre>
 	<p>In the generated HTML, '[category]' is a link to the view of the category.  You can specify as many categories as you want.</p>
-	<p>If you want to show the information of categories in the sidebar, add the followings to <a href="#{@update}?conf=header">Header/Footer</a></p>
+	<p>If you want to show the information of categories in the sidebar, add the followings to <a href="#{h @update}?conf=header">Header/Footer</a></p>
 	<pre>&lt;div class="sidemenu"&gt;Category: &lt;/div&gt;
 &lt;%=blog_category_form%&gt;
 &lt;%=blog_category_entry%&gt;</pre>

@@ -1,4 +1,4 @@
-# blog-style.rb: customize to blog like labels. $Revision: 1.10 $
+# blog-style.rb: customize to blog like labels. $Revision: 1.11 $
 #
 # Copyright (c) 2003 TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
@@ -16,14 +16,14 @@ def title_tag
 		diary = @diaries[@date.strftime('%Y%m%d')]
 		if diary
 			title = %Q|#{DiaryBase.method_defined?(:stripped_title) ? diary.stripped_title : diary.title}|
-			return "<title>#{@html_title} - #{title}</title>"
+			return "<title>#{h @html_title} - #{h title}</title>"
 		else
 			return title_tag_
 		end
 	when 'month'
 		list = @years.keys.collect {|y| @years[y].collect {|m| "#{y}#{m}"}}.flatten.push( nil ).unshift( nil )
 		index = list.index( @date.strftime("%Y%m") )
-		return "<title>#{@html_title} - #{'%05d' % (index)}</title>"
+		return "<title>#{h @html_title} - #{'%05d' % index}</title>"
 	else
 		return title_tag_
 	end

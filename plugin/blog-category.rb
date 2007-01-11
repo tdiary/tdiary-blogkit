@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.12 $
+# blog-category.rb $Revision: 1.13 $
 #
 # Usage:
 #
@@ -29,7 +29,7 @@ def categorized_title_of_day( date, title )
 	cats, stripped = title.scan( /^((?:\[[^\]]+\])+)\s*(.*)/ )[0]
 	if cats then
 		cats.scan( /\[([^\]]+)\]+/ ).flatten.each do |c|
-			r << %Q|[<a href="#{@index}?blogcategory=#{CGI::escape(c)}">#{c}</a>]|
+			r << %Q|[<a href="#{h @index}?blogcategory=#{h c}">#{c}</a>]|
 		end
 	else
 		stripped = title
@@ -100,7 +100,7 @@ end
 alias :navi_user_blog_category :navi_user
 def navi_user
 	r = navi_user_blog_category
-	r << %Q[<span class="adminmenu"><a href="#{@index}">#{navi_latest}</a></span>\n] if @mode == 'latest' and blog_category
+	r << %Q[<span class="adminmenu"><a href="#{h @index}">#{navi_latest}</a></span>\n] if @mode == 'latest' and blog_category
 	r
 end
 
@@ -141,7 +141,7 @@ def blog_category_entry(limit = 20)
 
 	r = "<ul>\n"
 	dates.each do |date|
-		r << %Q|	<li><a href="#{@index}#{anchor date}">#{@conf.shorten(cache[blog_category][date], limit)}</a></li>\n|
+		r << %Q|	<li><a href="#{h @index}#{anchor date}">#{@conf.shorten(cache[blog_category][date], limit)}</a></li>\n|
 	end
 	r << "</ul>\n"
 end
@@ -151,13 +151,13 @@ def blog_category_form
 	return '' if cache.nil?
 
 	r = <<HTML
-<form method="get" action="#{@index}">
+<form method="get" action="#{h @index}">
 	<div>
 		<select name="blogcategory">
 			<option value="">select...</option>
 HTML
 	cache.keys.sort.each do |cat|
-		r << %Q|			<option value="#{cat}"#{cat == blog_category ? " selected" : ""}>#{cat}</option>\n|
+		r << %Q|			<option value="#{h cat}"#{" selected" if cat == blog_category}>#{cat}</option>\n|
 	end
 	r << <<HTML
 		</select>
@@ -228,9 +228,7 @@ add_edit_proc do
 		ret << "#{@blog_category_conf_label}:\n"
 
 		cache.keys.sort.each do |cat|
-			e_c = CGI.escapeHTML(cat)
-
-			ret << %Q!| <a href="javascript:inj_c(&quot;[#{e_c}]&quot;)">#{e_c}</a>\n!
+			ret << %Q!| <a href="javascript:inj_c(&quot;[#{h cat}]&quot;)">#{h cat}</a>\n!
 		end
 		ret << "|\n</div>\n<br>\n"
 	end

@@ -1,4 +1,4 @@
-# archive.rb $Revision: 1.9 $
+# archive.rb $Revision: 1.10 $
 #
 # archive: show list of past news archive
 #   parameter: none.
@@ -26,14 +26,14 @@ def archive
 	list = archive_make_list
 	count = list.length
 	list.each do |month|
-		result << %Q[<li><a href="#{@index}#{anchor "#{month}"}">#{'%05d' % count}</a></li>\n]
+		result << %Q[<li><a href="#{h @index}#{anchor "#{month}"}">#{'%05d' % count}</a></li>\n]
 		count -= 1
 	end
 	result << %Q[</ul>\n]
 end
 
 def archive_dropdown( label = 'Go' )
-	result = %Q[<form method="get" action="#{@index}"><div>\n]
+	result = %Q[<form method="get" action="#{h @index}"><div>\n]
 	result << %Q[<select name="date">\n]
 	list = archive_make_list
 	count = list.length
@@ -41,7 +41,7 @@ def archive_dropdown( label = 'Go' )
 		result << %Q[<option value="#{month}">#{'%05d' % count}</option>\n]
 		count -= 1
 	end
-	result << %Q[</select>\n<input type="submit" value="#{label}">\n]
+	result << %Q[</select>\n<input type="submit" value="#{h label}">\n]
 	result << %Q[</div></form>\n]
 end
 
