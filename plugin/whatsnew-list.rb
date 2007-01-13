@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.47 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.48 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -156,11 +156,11 @@ def whatsnew_list_rdf( items )
 				"<dc:subject>#{h tag}</dc:subject>"
 			}.join( "\n" )
 		else
-			stripped = title
+			stripped = h( title.gsub( /<.*?>/, '' ) )
 		end
 		stripped
 		xml << %Q[<item rdf:about="#{h path}#{anchor uri}">
-		<title>#{h stripped}</title>
+		<title>#{stripped}</title>
 		<link>#{h path}#{anchor uri}</link>
 		<xhtml:link xhtml:rel="alternate" xhtml:media="handheld" xhtml:type="text/html" xhtml:href="#{h path}#{anchor uri}" />
 		<dc:creator>#{h @conf.author_name}</dc:creator>

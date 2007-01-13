@@ -1,3 +1,6 @@
+2007-01-13 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/whatnew-list.rb: rewind about over escape in <title> of feed's item.
+
 2007-01-11 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/*.rb: modified to use ERB::Util.h instead of CGI::escpaeHTML and
 	escape base-html.
