@@ -1,3 +1,6 @@
+2007-01-17 TADA Tadashi <sho@spc.gr.jp>
+	* ja/whatsnew-list.rb: use NKF insted of Uconv.
+
 2007-01-13 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatnew-list.rb: rewind about over escape in <title> of feed's item.
 

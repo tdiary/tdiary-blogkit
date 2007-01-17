@@ -1,4 +1,4 @@
-# blog-category.rb $Revision: 1.13 $
+# blog-category.rb $Revision: 1.14 $
 #
 # Usage:
 #
@@ -206,7 +206,7 @@ add_conf_proc( 'blog_category', @blog_category_conf_label, 'basic' ) do
 	r
 end
 
-add_edit_proc do
+def blog_category_edit
 	cache = blog_category_cache_restore
 	return '' if cache.nil?
 
@@ -232,6 +232,10 @@ add_edit_proc do
 		end
 		ret << "|\n</div>\n<br>\n"
 	end
+end
+
+add_edit_proc do
+	blog_category_edit
 end
 
 # vim: ts=3
