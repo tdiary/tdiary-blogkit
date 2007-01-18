@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.48 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.49 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -22,11 +22,6 @@
 # Distributed under the GPL
 #
 require 'pstore'
-
-unless @resource_loaded then
-	@whatsnew_list_encode = 'UTF-8'
-	@whatsnew_list_encoder = Proc::new {|s| s }
-end
 
 def whatsnew_list( max = 5, limit = 20 )
 	return 'DO NOT USE IN SECURE MODE' if @conf.secure
@@ -110,7 +105,7 @@ def whatsnew_list_rdf( items )
 
 	desc = @conf.description || @conf.html_title
 
-	xml = %Q[<?xml version="1.0" encoding="#{@whatsnew_list_encode}"?>
+	xml = %Q[<?xml version="1.0" encoding="UTF-8"?>
 	<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="#{h @conf.html_lang}">
 	<channel rdf:about="#{h @conf.base_url}#{h File::basename( whatsnew_list_rdf_file )}">
 	<title>#{h @conf.html_title}</title>
@@ -172,7 +167,7 @@ def whatsnew_list_rdf( items )
 	end
 
 	xml << "</rdf:RDF>\n"
-	@whatsnew_list_encoder.call( xml.gsub( /\t/, '' ) )
+	to_utf8( xml.gsub( /\t/, '' ) )
 end
 
 def whatsnew_list_update

@@ -1,3 +1,6 @@
+2007-01-18 TADA Tadashi <sho@spc.gr.jp>
+	* whatsnew-list.rb: fix charset to UTF-8, and using to_utf8 method.
+
 2007-01-17 TADA Tadashi <sho@spc.gr.jp>
 	* ja/whatsnew-list.rb: use NKF insted of Uconv.
 

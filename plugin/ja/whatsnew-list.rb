@@ -1,6 +1,4 @@
 # whatsnew-list.rb Japanese resources
-@whatsnew_list_encode = 'UTF-8'
-@whatsnew_list_encoder = Proc::new {|s| NKF::nkf( "-m0 -Ew", s ) }
 
 if /conf/ =~ @mode then
 	@whatsnew_list_label_rdf_out = 'フィード(RSS)ファイルの生成'

@@ -1,6 +1,4 @@
 # whatsnew-list.rb English resources
-@whatsnew_list_encode = 'UTF-8'
-@whatsnew_list_encoder = Proc::new {|s| s }
 
 if /conf/ =~ @mode then
 	@whatsnew_list_label_rdf_out = 'Generate feed(RSS) file'
