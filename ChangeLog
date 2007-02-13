@@ -1,3 +1,7 @@
+2007-02-13 TADA Tadashi <sho@spc.gr.jp>
+	* whatsnew-list.rb: support footnote.rb and add 'feed?' method.
+	* lm.rb: no output in generating feed.
+
 2007-01-18 TADA Tadashi <sho@spc.gr.jp>
 	* whatsnew-list.rb: fix charset to UTF-8, and using to_utf8 method.
 

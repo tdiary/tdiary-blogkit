@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.49 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.50 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -170,6 +170,10 @@ def whatsnew_list_rdf( items )
 	to_utf8( xml.gsub( /\t/, '' ) )
 end
 
+def feed?
+	@whatsnew_list_in_feed
+end
+
 def whatsnew_list_update
 	return if @mode == 'comment' and !@comment.visible?
 
@@ -180,7 +184,8 @@ def whatsnew_list_update
 	zone = sprintf( "%+03d:%02d", tz / 3600, tz % 3600 / 60 )
 	diary = @diaries[@date.strftime('%Y%m%d')]
 
-	#title = defined?( diary.stripped_title ) ? diary.stripped_title : diary.title
+	@whatsnew_list_in_feed = true
+
 	title = diary.title
 	desc = diary.to_html( { 'anchor' => true } )
 	trackback = 0
@@ -195,10 +200,10 @@ def whatsnew_list_update
 	old_apply_plugin = @conf['apply_plugin']
 	@conf['apply_plugin'] = true
 	title = apply_plugin( title )
-	body_enter_proc( @date )
-	desc = apply_plugin( desc )
+	desc = body_enter_proc( @date ) + apply_plugin( desc ) + body_leave_proc( @date )
 	@conf['apply_plugin'] = old_apply_plugin
-	body_leave_proc( @date )
+
+	@whatsnew_list_in_feed = false
 
 	new_item = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime("%Y-%m-%dT%H:%M:%S#{zone}"), desc]
 	PStore::new( "#{@cache_path}/whatsnew-list" ).transaction do |db|
