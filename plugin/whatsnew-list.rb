@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.50 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.51 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -243,9 +243,9 @@ end
 add_edit_proc do
 	checked = @cgi.params['whatsnew_list_update'][0] == 'false' ? ' checked' : ''
 	r = <<-HTML
-	<div class="whatsnew-list">
-	<input type="checkbox" name="whatsnew_list_update" value="false"#{checked} tabindex="520" />
+	<div class="whatsnew-list"><label for="whatsnew_list_update">
+	<input type="checkbox" id="whatsnew_list_update" name="whatsnew_list_update" value="false"#{checked} tabindex="520" />
 	#{@whatsnew_list_edit_label}
-	</div>
+	</label></div>
 	HTML
 end
