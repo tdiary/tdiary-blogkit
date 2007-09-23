@@ -1,4 +1,4 @@
-# whatsnew-list.rb: what's new list plugin $Revision: 1.51 $
+# whatsnew-list.rb: what's new list plugin $Revision: 1.52 $
 #
 # whatsnew_list: show what's new list
 #   parameter (default):
@@ -161,7 +161,7 @@ def whatsnew_list_rdf( items )
 		<dc:creator>#{h @conf.author_name}</dc:creator>
 		<dc:date>#{mod}</dc:date>
 		#{cats}
-		<content:encoded><![CDATA[#{apply_plugin( description )}]]></content:encoded>
+		<content:encoded><![CDATA[#{apply_plugin( description ).gsub( /\]\]>/, ']]]]><![CDATA[>' )}]]></content:encoded>
 		</item>
 		]
 	end

@@ -1,3 +1,6 @@
+2007-09-23 TADA Tadashi <sho@spc.gr.jp>
+	* whatsnew-list.rb: splited CDATA section by each ']]>'.
+
 2007-05-01 TADA Tadashi <sho@spc.gr.jp>
 	* whatsnew-list.rb: add label elements in update form.
 
