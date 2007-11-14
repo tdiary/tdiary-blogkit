@@ -1,3 +1,7 @@
+2007-11-14 TADA Tadashi <sho@spc.gr.jp>
+	* tdiary/blog_style.rb: fixed bug of newdate that dose not generate right
+	date.
+
 2007-09-23 TADA Tadashi <sho@spc.gr.jp>
 	* whatsnew-list.rb: splited CDATA section by each ']]>'.
 

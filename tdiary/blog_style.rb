@@ -1,5 +1,5 @@
 #
-# blog_style.rb: tDiary blog kit's style $Revision: 1.4 $
+# blog_style.rb: tDiary blog kit's style $Revision: 1.5 $
 #
 # if you want to use this style, add @style into tdiary.conf below:
 #
@@ -95,9 +95,8 @@ module TDiary
 				blog_newdate( newdate_blogkit ) do |recent|
 					date = Time::local( *recent.scan( /(\d{4})(\d\d)(\d\d)/ )[0] ) + 24*60*60
 				end
-			else
-				date = newdate_blogkit
 			end
+			date = newdate_blogkit unless date
 			date
 		end
 	end
