@@ -1,3 +1,7 @@
+2008-01-05 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/whatsnew-list.rb: delete category tags from whatsnew_list's
+	output.
+
 2007-12-16 TADA Tadashi <sho@spc.gr.jp>
 	* release 2.2.0.
 
