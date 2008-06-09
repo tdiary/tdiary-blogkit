@@ -6,17 +6,17 @@
 # Distributed under the GPL
 #
 
-@blog_category_conf_label = 'BlogKit���ƥ���'
+@blog_category_conf_label = 'BlogKitカテゴリ'
 @blog_category_desc_label = <<HTML
-	<h3 class="subtitle">���ƥ��ꥤ�ǥå����ν����</h3>
-	<p>BlogKit�Υ��ƥ��굡ǽ�ϥ��ƥ��ꥤ��ǥå������������ʤ��Ȼ��ѤǤ��ޤ��󡣲���OK�ܥ���򲡤��ȥ��ƥ��ꥤ��ǥå����ν������¹Ԥ��ޤ����������̤�¿������¿�����֤������뤫�⤷��ޤ���</p>
-	<p>�������ɲä����깹���������ϡ���ưŪ�˥��ƥ�����󤬥���ǥå������ɲä���ޤ��Τǡ�������ϰ��٤Ƿ빽�Ǥ���</p>
-	<p>����å���ǥ��쥯�ȥ�ˤ���blog_category�Ȥ����ե������ä��Ƥ��ޤä��ꡢ���ƥ���ξ��󤬤��������ʤäƤ��ޤä����ϡ����٥��ƥ��ꥤ��ǥå������������Ƥ���������</p>
+	<h3 class="subtitle">カテゴリイデックスの初期化</h3>
+	<p>BlogKitのカテゴリ機能はカテゴリインデックスを初期化しないと使用できません。下のOKボタンを押すとカテゴリインデックスの初期化を実行します。記事の量が多い場合は多少時間がかかるかもしれません。</p>
+	<p>記事を追加したり更新した時は，自動的にカテゴリ情報がインデックスに追加されますので、初期化は一度で結構です。</p>
+	<p>キャッシュディレクトリにあるblog_categoryというファイルを消してしまったり、カテゴリの情報がおかしくなってしまった場合は、再度カテゴリインデックスを初期化してください。</p>
 	<input type="hidden" name="blog_category_initialize" value="true">
 HTML
 @blog_category_desc_label_for_mobile = <<HTML
-	<H3>���ƥ��ꥤ��ǥå����ν����</H3>
-	<P>���Υܥ���򲡤��ȥ��ƥ��ꥤ��ǥå��������������ޤ���</P>
+	<H3>カテゴリインデックスの初期化</H3>
+	<P>下のボタンを押すとカテゴリインデックスが初期化されます。</P>
 HTML
 
 # vim: ts=3

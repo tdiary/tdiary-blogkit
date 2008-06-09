@@ -4,11 +4,11 @@
 # Distributed under the GPL
 #
 def no_diary
-	"µ­»öÈÖ¹æ##{@date.strftime( '%Y%m%d' )}¤ÏÂ¸ºß¤·¤Ş¤»¤ó¡£"
+	"è¨˜äº‹ç•ªå·##{@date.strftime( '%Y%m%d' )}ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚"
 end
 
 def comment_today
-	'¥³¥á¥ó¥È'
+	'ã‚³ãƒ¡ãƒ³ãƒˆ'
 end
 
 def comment_total( total )
@@ -16,23 +16,23 @@ def comment_total( total )
 end
 
 def comment_new
-	'¥³¥á¥ó¥È¤òÅê¹Æ¤¹¤ë'
+	'ã‚³ãƒ¡ãƒ³ãƒˆã‚’æŠ•ç¨¿ã™ã‚‹'
 end
 
 def comment_description
-	'¥³¥á¥ó¥È¤òÅê¹Æ¤·¤Æ¤¯¤À¤µ¤¤¡£E-mail¥¢¥É¥ì¥¹¤Ï¸ø³«¤µ¤ì¤Ş¤»¤ó¡£'
+	'ã‚³ãƒ¡ãƒ³ãƒˆã‚’æŠ•ç¨¿ã—ã¦ãã ã•ã„ã€‚E-mailã‚¢ãƒ‰ãƒ¬ã‚¹ã¯å…¬é–‹ã•ã‚Œã¾ã›ã‚“ã€‚'
 end
 
 def comment_description_short
-	'¥³¥á¥ó¥È¤òÅê¹Æ¤¹¤ë'
+	'ã‚³ãƒ¡ãƒ³ãƒˆã‚’æŠ•ç¨¿ã™ã‚‹'
 end
 
 def comment_name_label
-	'Ì¾Á°'
+	'åå‰'
 end
 
 def comment_name_label_short
-	'Ì¾Á°'
+	'åå‰'
 end
 
 def comment_mail_label
@@ -44,19 +44,19 @@ def comment_mail_label_short
 end
 
 def comment_body_label
-	'¥³¥á¥ó¥È'
+	'ã‚³ãƒ¡ãƒ³ãƒˆ'
 end
 
 def comment_body_label_short
-	'¥³¥á¥ó¥È'
+	'ã‚³ãƒ¡ãƒ³ãƒˆ'
 end
 
 def comment_submit_label
-	'Åê¹Æ'
+	'æŠ•ç¨¿'
 end
 
 def comment_submit_label_short
-	'Åê¹Æ'
+	'æŠ•ç¨¿'
 end
 
 def comment_date( time )
@@ -65,42 +65,42 @@ def comment_date( time )
 end
 
 def referer_today
-	"ËÜÆü¤Î¥ê¥ó¥¯¸µ"
+	"æœ¬æ—¥ã®ãƒªãƒ³ã‚¯å…ƒ"
 end
 
 def navi_index
-	'¥È¥Ã¥×'
+	'ãƒˆãƒƒãƒ—'
 end
 
 def navi_latest
-	'ºÇ¿·'
+	'æœ€æ–°'
 end
 
 def navi_update
-	"¹¹¿·"
+	"æ›´æ–°"
 end
 
 def navi_edit
-	"ÊÔ½¸"
+	"ç·¨é›†"
 end
 
 def navi_preference
-	"ÀßÄê"
+	"è¨­å®š"
 end
 
 def navi_prev_ndays
-	"Á°#{@conf.latest_limit}·ï"
+	"å‰#{@conf.latest_limit}ä»¶"
 end
 
 def navi_next_ndays
-	"¼¡#{@conf.latest_limit}·ï"
+	"æ¬¡#{@conf.latest_limit}ä»¶"
 end
 
 def label_hidden_diary
-	'¤³¤Îµ­»ö¤Ï¸½ºß¡¢±£¤µ¤ì¤Æ¤¤¤Ş¤¹¡£'
+	'ã“ã®è¨˜äº‹ã¯ç¾åœ¨ã€éš ã•ã‚Œã¦ã„ã¾ã™ã€‚'
 end
 
 def mobile_label_hidden_diary
-	'¤³¤Îµ­»ö¤Ï¸½ºß¡¢±£¤µ¤ì¤Æ¤¤¤Ş¤¹¡£'
+	'ã“ã®è¨˜äº‹ã¯ç¾åœ¨ã€éš ã•ã‚Œã¦ã„ã¾ã™ã€‚'
 end
 

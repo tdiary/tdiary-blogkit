@@ -1,11 +1,11 @@
 # whatsnew-list.rb Japanese resources
 
 if /conf/ =~ @mode then
-	@whatsnew_list_label_rdf_out = '¥Õ¥£¡¼¥É(RSS)¥Õ¥¡¥¤¥ë¤ÎÀ¸À®'
-	@whatsnew_list_label_rdf_out_notice = '¹¹¿·¤¬¤¢¤ë¤¿¤Ó¤Ë¡¢Æüµ­¤Î¥È¥Ã¥×¥Ú¡¼¥¸¤Ëindex.rdf¤È¤¤¤¦¥Õ¥¡¥¤¥ë¤òÀ¸À®¤·¤Ş¤¹¡£index.rdf¤Ë¤ÏWeb¥µ¡¼¥Ğ¤¬½ñ¤­¹ş¤á¤ë¸¢¸Â¤¬É¬Í×¤Ç¤¹¡£'
-	@whatsnew_list_label_rdf_out_yes = 'À¸À®¤¹¤ë'
-	@whatsnew_list_label_rdf_out_no = 'À¸À®¤·¤Ê¤¤'
-	@whatsnew_list_msg_access = '¤Ë½ñ¤­¹ş¤á¤Ş¤»¤ó¡£¥Ñ¡¼¥ß¥Ã¥·¥ç¥ó¤ò³ÎÇ§¤·¤Æ¤¯¤À¤µ¤¤¡£'
+	@whatsnew_list_label_rdf_out = 'ãƒ•ã‚£ãƒ¼ãƒ‰(RSS)ãƒ•ã‚¡ã‚¤ãƒ«ã®ç”Ÿæˆ'
+	@whatsnew_list_label_rdf_out_notice = 'æ›´æ–°ãŒã‚ã‚‹ãŸã³ã«ã€æ—¥è¨˜ã®ãƒˆãƒƒãƒ—ãƒšãƒ¼ã‚¸ã«index.rdfã¨ã„ã†ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç”Ÿæˆã—ã¾ã™ã€‚index.rdfã«ã¯Webã‚µãƒ¼ãƒãŒæ›¸ãè¾¼ã‚ã‚‹æ¨©é™ãŒå¿…è¦ã§ã™ã€‚'
+	@whatsnew_list_label_rdf_out_yes = 'ç”Ÿæˆã™ã‚‹'
+	@whatsnew_list_label_rdf_out_no = 'ç”Ÿæˆã—ãªã„'
+	@whatsnew_list_msg_access = 'ã«æ›¸ãè¾¼ã‚ã¾ã›ã‚“ã€‚ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚'
 end
 
-@whatsnew_list_edit_label = '¤Á¤ç¤Ã¤È¤·¤¿½¤Àµ(¥Õ¥£¡¼¥É¤ò¹¹¿·¤·¤Ê¤¤)'
+@whatsnew_list_edit_label = 'ã¡ã‚‡ã£ã¨ã—ãŸä¿®æ­£(ãƒ•ã‚£ãƒ¼ãƒ‰ã‚’æ›´æ–°ã—ãªã„)'
