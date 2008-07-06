@@ -11,6 +11,9 @@
 #      @options['whatsnew_list.rdf']
 #         RDF file path. (nil). If this options is existent (usually
 #         'index.rdf'), this plugin will generate RDF file.
+#      @options['whatsnew_list.url']
+#         RDF's URL. (nil). If this options is existent (usually
+#         'index.rdf'), this plugin will generate RDF file.
 #      @options['whatsnew_list.rdf.description']
 #         description of the site in RDF. (@html_title)
 #
@@ -232,9 +235,9 @@ add_update_proc do
 end
 
 add_header_proc do
-	rdf = whatsnew_list_rdf_file
 	if @conf['whatsnew_list.rdf.out'] then
-		%Q|\t<link rel="alternate" type="application/rss+xml" title="RSS" href="#{h @conf.base_url}#{h File::basename( rdf )}">\n|
+		url = @conf['whatsnew_list.url'] || "#{h @conf.base_url}#{h File::basename( whatsnew_list_rdf_file )}"
+		%Q|\t<link rel="alternate" type="application/rss+xml" title="RSS" href="#{h url}">\n|
 	else
 		''
 	end
