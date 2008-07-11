@@ -60,3 +60,26 @@ end
 #
 @conf['tb.no_section'] = true
 
+#
+# hide date fields on form
+#
+def blog_style_date_field
+	if /^(form|edit|preview|showcomment)$/ =~ @mode then
+		<<-HTML
+		<style type="text/css"><!--
+		form.update span.year,
+		form.update span.month,
+		form.update span.day,
+		form.update span.edit {
+			display: none;
+		}
+		--></style>
+		HTML
+	else
+		''
+	end
+end
+
+add_header_proc do
+	blog_style_date_field
+end

@@ -1,3 +1,7 @@
+2008-07-11 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/blog-style.rb, title-navi.rb: moved CSS to hide date fields from
+	title-navi.rb to blog-style.rb.
+
 2008-07-06 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/whatsnew-list.rb: added option 'whatsnew_list.url'.
 
