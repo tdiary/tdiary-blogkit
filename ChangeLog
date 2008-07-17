@@ -1,3 +1,6 @@
+2008-07-17 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/title-navi.rb: dirty hack for #116.
+
 2008-07-11 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/blog-style.rb, title-navi.rb: moved CSS to hide date fields from
 	title-navi.rb to blog-style.rb.
