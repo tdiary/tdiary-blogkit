@@ -1,3 +1,6 @@
+2008-08-01 TADA Tadashi <sho@spc.gr.jp>
+	* plugin/title-navi.rb: reverted dirty hack of #116.
+
 2008-07-17 TADA Tadashi <sho@spc.gr.jp>
 	* plugin/title-navi.rb: dirty hack for #116.
 

@@ -17,8 +17,6 @@ if /^(day|edit)$/ =~ @mode then
 	end
 	MODIFY_CLASS
 
-	@date = Time::local( *@cgi.params['date'][0].scan( /^(\d{4})(\d\d)(\d\d)/ ).flatten ) unless @date
-
 	month = @date.strftime( '%Y%m' )
 	years = @years.collect{|y,ms| ms.collect{|m| "#{y}#{m}"}}.flatten.sort
 	cgi = CGI::new
