@@ -1,3 +1,4 @@
+# -*- coding: utf-8; -*-
 #
 # blogwiki_style.rb: WikiWiki style for tDiary Blogkit. $Revision: 1.7 $
 #

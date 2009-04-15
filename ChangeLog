@@ -1,3 +1,6 @@
+2009-04-15 SHIBATA Hiroshi <shibata.hiroshi@gmail.com>
+	* tdiary/*.rb: converted to utf-8.
+	
 2008-10-19 TADA Tadashi <sho@spc.gr.jp>
 	* release 2.3.1.
 

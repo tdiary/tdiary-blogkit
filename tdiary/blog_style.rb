@@ -1,3 +1,4 @@
+# -*- coding: utf-8; -*-
 #
 # blog_style.rb: tDiary blog kit's style $Revision: 1.5 $
 #
@@ -30,7 +31,7 @@ module TDiary
 				if /^</ =~ section.body then
 					r << %Q[#{section.body}\n]
 				else
-					r << %Q[<p>#{section.body.collect{|l|l.chomp.sub( /^[ ¡¡]/e, '' )}.join( "</p>\n<p>" )}</p>\n]
+					r << %Q[<p>#{section.body.collect{|l|l.chomp.sub( /^[ ã€€]/u, '' )}.join( "</p>\n<p>" )}</p>\n]
 				end
 				section_id += 1
 			end
@@ -46,7 +47,7 @@ module TDiary
 				if /^</ =~ section.body then
 					r << section.body
 				else
-					r << %Q[<P>#{section.body.collect{|l|l.chomp.sub( /^[ ¡¡]/e, '' )}.join( "</P>\n<P>" )}</P>]
+					r << %Q[<P>#{section.body.collect{|l|l.chomp.sub( /^[ ã€€]/u, '' )}.join( "</P>\n<P>" )}</P>]
 				end
 			end
 			r

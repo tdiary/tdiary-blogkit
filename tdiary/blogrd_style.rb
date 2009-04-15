@@ -1,3 +1,4 @@
+# -*- coding: utf-8; -*-
 # Copyright (c) 2003 URABE, Shyouhei <root@mput.dip.jp>
 #
 # Permission is hereby granted, free of charge, to any person obtaining
