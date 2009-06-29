@@ -31,34 +31,34 @@ How to update from Blogkit 1.5.2 or before.
     5. Save the file, and remove *.parser and *.rb in @data_path/cache.
 
 ---in Japanese
-1.5.2������Blogkit����Υ��åץǡ��ȤˤĤ���
+1.5.2以前のBlogkitからのアップデートについて
 
-  ������Blogkit�ϡ��ǿ���tDiary���饵�ݡ��Ȥ��줿�֥�������פ��б����ޤ�����
-  ���η�̡���Blogkit��ȤäƤ������ˤϡ��ʲ��μ���������ѹ����Ƥ�������:
+  新しいBlogkitは、最新のtDiaryからサポートされた「スタイル」に対応しました。
+  この結果、旧Blogkitを使っていた場合には、以下の手順で設定を変更してください:
   
-    1. �����blogio.rb��������������blog_style.rb��Ʊ�����˥��ԡ����ޤ���
-    2. tdiary.conf�Ρ�require 'tdiary/blogio'�פ������������
-       ��@style = 'Blog'�פ��ɲä��ޤ���
+    1. 従来のblogio.rbを削除し、新しいblog_style.rbを同じ場所にコピーします。
+    2. tdiary.confの「require 'tdiary/blogio'」を削除し、代わりに
+       「@style = 'Blog'」を追加します。
 
-  �������ߴ��ۼ��Τ���ˡ��ǡ����Υ���С��Ȥ�ɬ�פˤʤ�ޤ���:
+  さらに非互換吸収のために、データのコンバートが必要になりました:
 
-    3. @data_path�ˤ���*.td2�Ȥ����ե�����򤹤٤Ƹ��Ĥ��Ƥ�������
-    4. ���Ĥ����ե������ƥ����ȥ��ǥ����ǳ��������٤ƤΡ�Format: tDiary��
-       ���Format: Blog�פ��ִ����ޤ���
-    5. �ե��������¸�塢@data_path/cache�ǥ��쥯�ȥ�ˤ���*.parser�ե�����
-       ��*.rb�ե�����������Ƥ���������
+    3. @data_pathにある*.td2というファイルをすべて見つけてください
+    4. 見つけたファイルをテキストエディタで開き、すべての「Format: tDiary」
+       を「Format: Blog」に置換します。
+    5. ファイルを保存後、@data_path/cacheディレクトリにある*.parserファイル
+       と*.rbファイルを削除してください。
 
-  �⤷���嵭����ˡ���»ܤǤ��ʤ��ΤǤ���С��ʲ�����ˡ������˼»ܤ��Ƥ�
-  �褤�Ǥ���
+  もし、上記の方法が実施できないのであれば、以下の方法を代わりに実施しても
+  よいです。
 
-    3. blog_style.rb�򳫤��ơ��ʲ��ιԤ򸫤Ĥ��ޤ���
+    3. blog_style.rbを開いて、以下の行を見つけます。
 
           #TDiary::DefaultIO::add_style( 'tDiary', self )
 
-    4. ���ιԤ�ʲ��Τ褦�˽񤭴����ޤ�(��#�פ����������)��
+    4. この行を以下のように書き換えます(「#」を削除するだけ)。
 
           TDiary::DefaultIO::add_style( 'tDiary', self )
 
-    5. �ե��������¸����@data_path/cache�ˤ���*.parser��*.rb�������ޤ���
+    5. ファイルを保存し、@data_path/cacheにある*.parserと*.rbを削除します。
 
-  ���Ȥ���ˡ�ϸߴ����ݻ��Τ����ƨ����ʤΤǡ��Ǥ���������ˡ�򤪴��ᤷ�ޤ���
+  あとの方法は互換性維持のための逃げ手なので、できれば先の方法をお勧めします。
