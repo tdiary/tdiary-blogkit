@@ -19,7 +19,7 @@ def comment_new
 	'Post a comment'
 end
 
-def comment_description
+def comment_description_default
 	'Post a comment please. Your Email address will not show in this page.'
 end
 

@@ -19,7 +19,7 @@ def comment_new
 	'コメントを投稿する'
 end
 
-def comment_description
+def comment_description_default
 	'コメントを投稿してください。E-mailアドレスは公開されません。'
 end
 
