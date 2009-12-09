@@ -82,3 +82,10 @@ def recent_entry_insecure( max = 5, limit = 20 )
 	result
 end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

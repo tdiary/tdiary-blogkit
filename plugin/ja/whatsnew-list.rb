@@ -9,3 +9,10 @@ if /conf/ =~ @mode then
 end
 
 @whatsnew_list_edit_label = 'ちょっとした修正(フィードを更新しない)'
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

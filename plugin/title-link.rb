@@ -30,3 +30,10 @@ def title_of_day( date, title )
 	return r.gsub( /^\t+/, '' ).chomp
 end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

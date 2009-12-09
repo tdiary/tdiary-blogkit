@@ -104,3 +104,10 @@ def mobile_label_hidden_diary
 	'この記事は現在、隠されています。'
 end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

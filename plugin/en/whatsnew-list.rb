@@ -9,3 +9,10 @@ if /conf/ =~ @mode then
 end
 
 @whatsnew_list_edit_label = "A little modify (don't update feed)"
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

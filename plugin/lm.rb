@@ -33,3 +33,10 @@ add_body_leave_proc do |date|
 	lm( date, true )
 end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

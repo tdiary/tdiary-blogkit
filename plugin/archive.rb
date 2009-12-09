@@ -61,3 +61,10 @@ def navi_next_month
 	'%05d' % (@archive_index + 1)
 end
 
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:

@@ -238,4 +238,10 @@ add_edit_proc do
 	blog_category_edit
 end
 
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
 # vim: ts=3

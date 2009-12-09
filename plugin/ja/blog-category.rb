@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # blog-category.rb $Revision: 1.4 $
 #
 #  resource file for blog-category.rb
@@ -19,4 +20,10 @@ HTML
 	<P>下のボタンを押すとカテゴリインデックスが初期化されます。</P>
 HTML
 
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
 # vim: ts=3

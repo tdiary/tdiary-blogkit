@@ -19,4 +19,10 @@ HTML
 	<P>Push the button bellow to initialize category index.</P>
 HTML
 
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
 # vim: ts=3

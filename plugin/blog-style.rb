@@ -83,3 +83,10 @@ end
 add_header_proc do
 	blog_style_date_field
 end
+
+# Local Variables:
+# mode: ruby
+# indent-tabs-mode: t
+# tab-width: 3
+# ruby-indent-level: 3
+# End:
