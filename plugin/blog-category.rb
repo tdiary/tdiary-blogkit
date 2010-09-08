@@ -63,7 +63,7 @@ if /^(latest|month|day|append|replace|comment|showcomment|saveconf|trackbackrece
 	MODIFY_CLASS
 end
 
-if blog_category and @mode == 'latest'
+if category_param = blog_category and @mode == 'latest'
 	eval(<<-'MODIFY_CLASS', TOPLEVEL_BINDING)
 		module TDiary
 			class TDiaryBase
@@ -81,7 +81,7 @@ if blog_category and @mode == 'latest'
 	@diaries.keys.each {|date| years.delete(date[0, 6])}
 
 	@diaries.delete_if do |date, diary|
-		!diary.categories.include?(blog_category)
+		!diary.categories.include?(category_param)
 	end
 
 	cgi = CGI.new
@@ -91,7 +91,7 @@ if blog_category and @mode == 'latest'
 		cgi.params['date'] = [ym]
 		m = TDiaryMonth.new(cgi, '', @conf)
 		m.diaries.delete_if do |date, diary|
-			!diary.categories.include?(blog_category)
+			!diary.categories.include?(category_param)
 		end
 		@diaries.update(m.diaries)
 	end
@@ -133,7 +133,6 @@ def blog_category_entry(limit = 20)
 
 	cache = blog_category_cache_restore
 	return '' if (blog_category.nil? or cache.nil?)
-
 	n_shown = @diaries.keys.size
 	n_shown = @conf.latest_limit if n_shown > @conf.latest_limit
 	dates = cache[blog_category].keys.sort.reverse[n_shown..-1]
