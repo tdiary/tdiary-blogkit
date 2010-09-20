@@ -1,3 +1,6 @@
+2010-09-20 TADA Tadashi <t@tdtds.jp>
+	* Release 3.0.1.
+
 2010-09-08 TADA Tadashi <t@tdtds.jp>
 	* plugin/blog-category.rb: decreased times of method calling.
 
