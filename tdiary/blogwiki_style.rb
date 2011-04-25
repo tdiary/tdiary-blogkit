@@ -29,7 +29,7 @@ module TDiary
 
 		def append( body, author = nil )
 			section = nil
-			body.each do |l|
+			body.each_line do |l|
 				case l
 				when /^\![^!]/
 					@sections << BlogwikiSection::new( section, author ) if section
@@ -57,7 +57,7 @@ module TDiary
 			end
 			r
 		end
-	
+
 		def to_chtml( opt )
 			r = ''
 			idx = 1
