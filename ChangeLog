@@ -1,4 +1,7 @@
 2011-04-29 TADA Tadashi <t@tdtds.jp>
+	* tdiary/blog_style.rb: a workaround for error on ruby 1.9.2.
+
+2011-04-29 TADA Tadashi <t@tdtds.jp>
 	* Release 3.0.2.
 
 2011-04-25  SHIBATA Hiroshi  <shibata.hiroshi@gmail.com>

@@ -31,7 +31,7 @@ module TDiary
 				if /^</ =~ section.body then
 					r << %Q[#{section.body}\n]
 				else
-					r << %Q[<p>#{section.body.collect{|l|l.chomp.sub( /^[ 　]/u, '' )}.join( "</p>\n<p>" )}</p>\n]
+					r << %Q[<p>#{section.body.lines.collect{|l|l.chomp.sub( /^[ 　]/u, '' )}.join( "</p>\n<p>" )}</p>\n]
 				end
 				section_id += 1
 			end
