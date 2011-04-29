@@ -36,9 +36,11 @@ end
 module TDiary
 	class BlogrdDiary < RdDiary
 		include RD
+
 		def style
 			'BlogRD'
 		end
+
 		def to_html( opt, mode=:HTML )
 			v = RD2BlogVisitor.new( date, 0, opt, @author )
 			r = ''

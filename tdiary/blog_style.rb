@@ -9,14 +9,14 @@
 # Copyright (C) 2003, TADA Tadashi <sho@spc.gr.jp>
 # You can distribute this under GPL.
 #
-require 'tdiary/tdiary_style.rb'
+require 'tdiary/tdiary_style'
 
 module TDiary
 	class BlogDiary < TdiaryDiary
 		def style
 			'Blog'
 		end
-	
+
 		def to_html4( opt )
 			section_id = 0
 			r = %Q[<div class="section">\n]
@@ -37,7 +37,7 @@ module TDiary
 			end
 			r << %Q[</div>]
 		end
-	
+
 		def to_chtml( opt )
 			r = ''
 			each_section do |section|
@@ -47,7 +47,7 @@ module TDiary
 				if /^</ =~ section.body then
 					r << section.body
 				else
-					r << %Q[<P>#{section.body.collect{|l|l.chomp.sub( /^[ 　]/u, '' )}.join( "</P>\n<P>" )}</P>]
+					r << %Q[<P>#{section.body.lines.collect{|l|l.chomp.sub( /^[ 　]/u, '' )}.join( "</P>\n<P>" )}</P>]
 				end
 			end
 			r
@@ -102,7 +102,6 @@ module TDiary
 		end
 	end
 end
-
 
 # Local Variables:
 # mode: ruby

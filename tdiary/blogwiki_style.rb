@@ -70,7 +70,6 @@ module TDiary
 	end
 end
 
-
 # Local Variables:
 # mode: ruby
 # indent-tabs-mode: t
