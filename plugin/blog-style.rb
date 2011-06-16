@@ -1,10 +1,14 @@
 # blog-style.rb: customize to blog like labels. $Revision: 1.11 $
 #
-# Copyright (c) 2003 TADA Tadashi <sho@spc.gr.jp>
+# Copyright (c) 2011 TADA Tadashi <t@tdtds.jp>
 # Distributed under the GPL
 #
 # THIS PLUGIN IS ALMOST MADE BY LANGUAGE RESOURCE. SEE ja OR en DIRECTORY.
 #
+
+def blogkit?
+	true
+end
 
 #
 # title

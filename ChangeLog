@@ -1,3 +1,6 @@
+2011-06-16 TADA Tadashi <t@tdtds.jp>
+	* plugin/blog-style.rb: defined 'blogkit?' method. #48
+
 2011-04-29 TADA Tadashi <t@tdtds.jp>
 	* tdiary/blog_style.rb: a workaround for error on ruby 1.9.2.
 
