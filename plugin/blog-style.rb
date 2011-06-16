@@ -9,6 +9,7 @@
 def blogkit?
 	true
 end
+add_js_setting( '$tDiary.blogkit', "true" )
 
 #
 # title
