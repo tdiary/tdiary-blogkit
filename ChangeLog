@@ -1,3 +1,6 @@
+2011-12-15 TADA Tadashi <t@tdtds.jp>
+	* tdiary.conf.sample, tdiary.conf.sample_ja: added @lang. #1
+
 2011-07-29 TADA Tadashi <t@tdtds.jp>
 	* Release 3.1.0.
 

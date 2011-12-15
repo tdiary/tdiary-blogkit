@@ -1,6 +1,7 @@
 #
 # tDiary BlogKit設定ファイルサンプル(日本語) $Revision: 1.8 $
 #
+@lang = 'ja'
 
 #
 # データを格納するディレクトリ
