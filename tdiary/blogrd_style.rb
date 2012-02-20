@@ -19,7 +19,11 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE CODE
 # OR THE USE OR OTHER DEALINGS IN THE CODE.
 
-require 'tdiary/rd_style'
+begin
+	require 'tdiary/style/rd_style'
+rescue LoadError
+	require 'tdiary/rd_style'
+end
 
 module RD
 	class RD2BlogVisitor < RD2tDiaryVisitor

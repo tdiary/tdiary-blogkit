@@ -16,7 +16,11 @@
 # Copyright (C) 2003, TADA Tadashi <sho@spc.gr.jp>
 # You can distribute this under GPL.
 #
-require 'tdiary/wiki_style'
+begin
+	require 'tdiary/style/wiki_style'
+rescue LoadError
+	require 'tdiary/wiki_style'
+end
 
 module TDiary
 	class BlogwikiSection < WikiSection

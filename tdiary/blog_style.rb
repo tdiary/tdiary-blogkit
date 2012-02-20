@@ -9,7 +9,11 @@
 # Copyright (C) 2003, TADA Tadashi <sho@spc.gr.jp>
 # You can distribute this under GPL.
 #
-require 'tdiary/tdiary_style'
+begin
+	require 'tdiary/style/tdiary_style'
+rescue LoadError
+	require 'tdiary/tdiary_style'
+end
 
 module TDiary
 	class BlogDiary < TdiaryDiary
