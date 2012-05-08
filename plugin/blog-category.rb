@@ -66,7 +66,7 @@ end
 if category_param = blog_category and @mode == 'latest'
 	eval(<<-'MODIFY_CLASS', TOPLEVEL_BINDING)
 		module TDiary
-			class TDiaryBase
+			class CacheIO
 				def cache_enable?( prefix )
 					false
 				end
