@@ -1,3 +1,6 @@
+2012-05-08 TADA Tadashi <t@tdtds.jp>
+	* plugin/blog-category.rb: follow chenges of TDiaryBase to CacheIO.
+
 2012-04-29 TADA Tadashi <t@tdtds.jp>
 	* Release 3.1.3.
 
