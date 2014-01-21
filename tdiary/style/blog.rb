@@ -10,51 +10,53 @@
 # You can distribute this under GPL.
 #
 begin
-	require 'tdiary/style/tdiary_style'
+	require 'tdiary/style/tdiary'
 rescue LoadError
 	require 'tdiary/tdiary_style'
 end
 
 module TDiary
-	class BlogDiary < TdiaryDiary
-		def style
-			'Blog'
-		end
-
-		def to_html4( opt )
-			section_id = 0
-			r = %Q[<div class="section">\n]
-			each_section do |section|
-				if section_id > 0 and not opt['anchor'] then
-					r << %Q|<p class="readmore"><a href="#{opt['index']}<%=anchor "#{date.strftime( '%Y%m%d' )}"%>">Read more...</a></p>\n|
-					break
-				end
-				if section.subtitle then
-					r << %Q[<h3>#{section.subtitle}</h3>\n]
-				end
-				if /^</ =~ section.body then
-					r << %Q[#{section.body}\n]
-				else
-					r << %Q[<p>#{section.body.lines.collect{|l|l.chomp.sub( /^[ 　]/u, '' )}.join( "</p>\n<p>" )}</p>\n]
-				end
-				section_id += 1
+	module Style
+		class BlogDiary < TdiaryDiary
+			def style
+				'Blog'
 			end
-			r << %Q[</div>]
-		end
-
-		def to_chtml( opt )
-			r = ''
-			each_section do |section|
-				if section.subtitle then
-					r << %Q[<H3>#{section.subtitle}</H3>]
+	
+			def to_html4( opt )
+				section_id = 0
+				r = %Q[<div class="section">\n]
+				each_section do |section|
+					if section_id > 0 and not opt['anchor'] then
+						r << %Q|<p class="readmore"><a href="#{opt['index']}<%=anchor "#{date.strftime( '%Y%m%d' )}"%>">Read more...</a></p>\n|
+						break
+					end
+					if section.subtitle then
+						r << %Q[<h3>#{section.subtitle}</h3>\n]
+					end
+					if /^</ =~ section.body then
+						r << %Q[#{section.body}\n]
+					else
+						r << %Q[<p>#{section.body.lines.collect{|l|l.chomp.sub( /^[ 　]/u, '' )}.join( "</p>\n<p>" )}</p>\n]
+					end
+					section_id += 1
 				end
-				if /^</ =~ section.body then
-					r << section.body
-				else
-					r << %Q[<P>#{section.body.lines.collect{|l|l.chomp.sub( /^[ 　]/u, '' )}.join( "</P>\n<P>" )}</P>]
-				end
+				r << %Q[</div>]
 			end
-			r
+	
+			def to_chtml( opt )
+				r = ''
+				each_section do |section|
+					if section.subtitle then
+						r << %Q[<H3>#{section.subtitle}</H3>]
+					end
+					if /^</ =~ section.body then
+						r << section.body
+					else
+						r << %Q[<P>#{section.body.lines.collect{|l|l.chomp.sub( /^[ 　]/u, '' )}.join( "</P>\n<P>" )}</P>]
+					end
+				end
+				r
+			end
 		end
 	end
 

@@ -20,7 +20,7 @@
 # OR THE USE OR OTHER DEALINGS IN THE CODE.
 
 begin
-	require 'tdiary/style/rd_style'
+	require 'tdiary/style/rd'
 rescue LoadError
 	require 'tdiary/rd_style'
 end
@@ -38,27 +38,29 @@ module RD
 end
 
 module TDiary
-	class BlogrdDiary < RdDiary
-		include RD
-
-		def style
-			'BlogRD'
-		end
-
-		def to_html( opt, mode=:HTML )
-			v = RD2BlogVisitor.new( date, 0, opt, @author )
-			r = ''
-			@sections.each_with_index do | section, i |
-				if i == 0 or opt['anchor'] then
-					t = RDTree.new( ("=begin\n%s\n=end" % section.to_src).to_a, nil, nil )
-					t.parse
-					r << %Q[<div class="section">%s</div>] % v.visit( t )
-				else
-					r << %Q[<p class="readmore"><a href="%s<%%=anchor "%s"%%>">Read more ...</a></p>\n] % [opt['index'], date.strftime('%Y%m%d')]
-					break;
-				end
+	module Style
+		class BlogrdDiary < RdDiary
+			include RD
+	
+			def style
+				'BlogRD'
 			end
-			r
+	
+			def to_html( opt, mode=:HTML )
+				v = RD2BlogVisitor.new( date, 0, opt, @author )
+				r = ''
+				@sections.each_with_index do | section, i |
+					if i == 0 or opt['anchor'] then
+						t = RDTree.new( ("=begin\n%s\n=end" % section.to_src).to_a, nil, nil )
+						t.parse
+						r << %Q[<div class="section">%s</div>] % v.visit( t )
+					else
+						r << %Q[<p class="readmore"><a href="%s<%%=anchor "%s"%%>">Read more ...</a></p>\n] % [opt['index'], date.strftime('%Y%m%d')]
+						break;
+					end
+				end
+				r
+			end
 		end
 	end
 end
