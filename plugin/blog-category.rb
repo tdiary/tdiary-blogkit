@@ -119,7 +119,7 @@ def blog_category_cache_add(diary)
 end
 
 def blog_category_cache_restore
-	return nil unless File.exists?(blog_category_cache)
+	return nil unless File.exist?(blog_category_cache)
 	cache = {}
 	PStore.new(blog_category_cache).transaction do |db|
 		cache.update(db['blog_category'])
