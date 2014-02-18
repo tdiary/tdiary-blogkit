@@ -16,11 +16,7 @@
 # Copyright (C) 2003, TADA Tadashi <sho@spc.gr.jp>
 # You can distribute this under GPL.
 #
-begin
-	require 'tdiary/style/wiki'
-rescue LoadError
-	require 'tdiary/wiki_style'
-end
+require 'tdiary/style/wiki'
 
 module TDiary
 	module Style

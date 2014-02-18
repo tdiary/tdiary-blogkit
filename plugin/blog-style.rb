@@ -20,7 +20,7 @@ def title_tag
 	when 'day'
 		diary = @diaries[@date.strftime('%Y%m%d')]
 		if diary
-			title = %Q|#{DiaryBase.method_defined?(:stripped_title) ? diary.stripped_title : diary.title}|
+			title = %Q|#{Style::BaseDiary.method_defined?(:stripped_title) ? diary.stripped_title : diary.title}|
 			return "<title>#{h @html_title} - #{h title}</title>"
 		else
 			return title_tag_

@@ -40,19 +40,21 @@ end
 if /^(latest|month|day|append|replace|comment|showcomment|saveconf|trackbackreceive|pingbackreceive)$/ =~ @mode
 	eval(<<-'MODIFY_CLASS', TOPLEVEL_BINDING)
 		module TDiary
-			module DiaryBase
-				def stripped_title
-					return '' unless @title
-					stripped = @title.sub(/^(\[(.*?)\])+\s*/,'')
-				end
-
-				def categories
-					return [] unless @title
-					cat = /^(\[([^\[]+?)\])+/.match(@title).to_a[0]
-					return [] unless cat
-					cat.scan(/\[(.*?)\]/).collect do |c|
-						c[0].split(/,/)
-					end.flatten
+			module Style
+				module BaseDiary
+					def stripped_title
+						return '' unless @title
+						stripped = @title.sub(/^(\[(.*?)\])+\s*/,'')
+					end
+	
+					def categories
+						return [] unless @title
+						cat = /^(\[([^\[]+?)\])+/.match(@title).to_a[0]
+						return [] unless cat
+						cat.scan(/\[(.*?)\]/).collect do |c|
+							c[0].split(/,/)
+						end.flatten
+					end
 				end
 			end
 
@@ -66,7 +68,7 @@ end
 if category_param = blog_category and @mode == 'latest'
 	eval(<<-'MODIFY_CLASS', TOPLEVEL_BINDING)
 		module TDiary
-			module CacheIO
+			module Cache
 				def cache_enable?( prefix )
 					false
 				end
