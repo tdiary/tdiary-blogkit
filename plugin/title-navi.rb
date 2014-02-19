@@ -51,7 +51,7 @@ def navi_prev_diary( date )
 	diary = @diaries[date.strftime( '%Y%m%d' )]
 	if diary and diary.title.length > 0 then
 		len = @options['title_navi.max'] || 30
-		@conf.shorten( apply_plugin( DiaryBase.method_defined?(:stripped_title) ? diary.stripped_title : diary.title, true ), len.to_i )
+		@conf.shorten( apply_plugin( TDiary::Style::BaseDiary.method_defined?(:stripped_title) ? diary.stripped_title : diary.title, true ), len.to_i )
 	else
 		"Prev(#{date.strftime '%Y%m%d'})"
 	end
@@ -61,7 +61,7 @@ def navi_next_diary( date )
 	diary = @diaries[date.strftime( '%Y%m%d' )]
 	if diary and diary.title.length > 0 then
 		len = @options['title_navi.max'] || 30
-		@conf.shorten( apply_plugin( DiaryBase.method_defined?(:stripped_title) ? diary.stripped_title : diary.title, true ), len.to_i )
+		@conf.shorten( apply_plugin( TDiary::Style::BaseDiary.method_defined?(:stripped_title) ? diary.stripped_title : diary.title, true ), len.to_i )
 	else
 		"Next(#{date.strftime '%Y%m%d'})"
 	end
