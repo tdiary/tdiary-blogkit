@@ -100,11 +100,6 @@ def label_hidden_diary
 	'This article is now HIDDEN.'
 end
 
-def mobile_label_hidden_diary
-	'This article is now HIDDEN.'
-end
-
-
 # Local Variables:
 # mode: ruby
 # indent-tabs-mode: t

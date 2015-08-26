@@ -15,10 +15,6 @@
 	<p>キャッシュディレクトリにあるblog_categoryというファイルを消してしまったり、カテゴリの情報がおかしくなってしまった場合は、再度カテゴリインデックスを初期化してください。</p>
 	<input type="hidden" name="blog_category_initialize" value="true">
 HTML
-@blog_category_desc_label_for_mobile = <<HTML
-	<H3>カテゴリインデックスの初期化</H3>
-	<P>下のボタンを押すとカテゴリインデックスが初期化されます。</P>
-HTML
 
 # Local Variables:
 # mode: ruby
