@@ -100,11 +100,6 @@ def label_hidden_diary
 	'この記事は現在、隠されています。'
 end
 
-def mobile_label_hidden_diary
-	'この記事は現在、隠されています。'
-end
-
-
 # Local Variables:
 # mode: ruby
 # indent-tabs-mode: t

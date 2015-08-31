@@ -39,22 +39,17 @@ end
 #
 def subtitle_link( date, index, subtitle )
 	r = ''
-
-	if @conf.mobile_agent? then
-		r << subtitle if subtitle
-	else
-		if subtitle
-			if respond_to?( :category_anchor ) then
-				r << subtitle.sub( /^(\[([^\[]+?)\])+/ ) do
-					$&.gsub( /\[(.*?)\]/ ) do
-						$1.split( /,/ ).collect do |c|
-							category_anchor( "#{c}" )
-						end.join
-					end
+	if subtitle
+		if respond_to?( :category_anchor ) then
+			r << subtitle.sub( /^(\[([^\[]+?)\])+/ ) do
+				$&.gsub( /\[(.*?)\]/ ) do
+					$1.split( /,/ ).collect do |c|
+						category_anchor( "#{c}" )
+					end.join
 				end
-			else
-				r << subtitle
 			end
+		else
+			r << subtitle
 		end
 	end
 	r

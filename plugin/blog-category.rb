@@ -202,8 +202,7 @@ add_conf_proc( 'blog_category', @blog_category_conf_label, 'basic' ) do
 	end
 
 	r = ''
-	r << @blog_category_desc_label unless @conf.mobile_agent?
-	r << @blog_category_desc_label_for_mobile if @conf.mobile_agent?
+	r << @blog_category_desc_label
 	r
 end
 

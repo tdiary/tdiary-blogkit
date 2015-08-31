@@ -14,10 +14,6 @@
 	<p>If you remove @cache_path/blog_category accidentally or there's something wrong with category feature, try to re-initialize category index.</p>
 	<input type="hidden" name="blog_category_initialize" value="true">
 HTML
-@blog_category_desc_label_for_mobile = <<HTML
-	<H3>Initialization of category index</H3>
-	<P>Push the button bellow to initialize category index.</P>
-HTML
 
 # Local Variables:
 # mode: ruby
