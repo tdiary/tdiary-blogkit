@@ -10,6 +10,8 @@
 # You can distribute this under GPL.
 #
 begin
+	require 'tdiary'
+	require 'tdiary/admin'
 	require 'tdiary/style/tdiary'
 rescue LoadError
 	require 'tdiary/tdiary_style'
@@ -21,7 +23,7 @@ module TDiary
 			def style
 				'Blog'
 			end
-	
+
 			def to_html4( opt )
 				section_id = 0
 				r = %Q[<div class="section">\n]
@@ -42,7 +44,7 @@ module TDiary
 				end
 				r << %Q[</div>]
 			end
-	
+
 			def to_chtml( opt )
 				r = ''
 				each_section do |section|
