@@ -10,7 +10,11 @@
 # You can distribute this under GPL.
 #
 begin
-	require 'tdiary'
+	# require each classes extended by this file (TDiaryBase, TDiaryForm, TDiaryAppend)
+	# because 'tdiary.rb' have not loaded at this point
+	require 'tdiary/view_helper'
+	require 'tdiary/base'
+	require 'tdiary/author_only_base'
 	require 'tdiary/admin'
 	require 'tdiary/style/tdiary'
 rescue LoadError
