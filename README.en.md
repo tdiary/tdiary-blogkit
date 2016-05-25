@@ -36,7 +36,7 @@ Also if you want to write by RD style, install RD style of tDiary original and c
 
 ### Copy theme
 
-Copy theme/blog under $INSTALL/theme. This is one kind of tDiary themes, but it has some settings to enable sidebar etc.
+A sample theme for BlogKit available in tdiary-theme package named by "blog'. This is one kind of tDiary themes, but it has some settings to enable sidebar etc.
 
 ### Copy Plugins
 
