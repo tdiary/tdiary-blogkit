@@ -24,14 +24,13 @@
 # Copyright (c) 2002 by TADA Tadashi <sho@spc.gr.jp>
 # Distributed under the GPL
 #
-require 'pstore'
 
 def whatsnew_list( max = 5, limit = 20 )
 	return 'DO NOT USE IN SECURE MODE' if @conf.secure
 
 	max = max.to_i
 	limit = limit.to_i
-	
+
 	wl = "#{@cache_path}/whatsnew-list"
 	begin
 		if @mode == 'latest' then
@@ -42,15 +41,14 @@ def whatsnew_list( max = 5, limit = 20 )
 	end
 
 	r = "<ul>\n"
-	PStore::new( wl ).transaction do |db|
+	transaction( 'whatsnew-list' ) do |db|
 		begin
-			wn = db['whatsnew']
+			wn = JSON.load( db.get( 'whatsnew' ) ) || []
 			wn.each_with_index do |item,i|
 				break if i >= max
 				title = @conf.shorten( apply_plugin( item[1] ).gsub( /^(\[.*?\])+\s*/, '' ).gsub( /<.*?>/, '' ), limit )
 				r << %Q|<li><a href="#{h @index}#{anchor item[0]}">#{title}</a></li>\n|
 			end
-			db.abort
 		rescue
 		end
 	end
@@ -70,7 +68,7 @@ add_conf_proc( 'whatsnew_list', "What's New List", 'update' ) do
 			rescue Errno::EACCES
 				@conf['whatsnew_list.rdf.out'] = false
 				error_message = %Q|<p class="message">#{rdf}#{@whatsnew_list_msg_access}</p>|
-	
+
 			end
 		else
 			@conf['whatsnew_list.rdf.out'] = false
@@ -209,17 +207,14 @@ def whatsnew_list_update
 	@whatsnew_list_in_feed = false
 
 	new_item = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime("%Y-%m-%dT%H:%M:%S#{zone}"), desc]
-	PStore::new( "#{@cache_path}/whatsnew-list" ).transaction do |db|
+	transaction( 'whatsnew-list' ) do |db|
 		wn = []
-		begin
-			(db['whatsnew'] || []).each_with_index do |item, i|
-				wn << item unless item[0] == new_item[0]
-				break if i > 15
-			end
-		rescue PStore::Error
+		(JSON.load( db.get( 'whatsnew' ) ) || []).each_with_index do |item, i|
+			wn << item unless item[0] == new_item[0]
+			break if i > 15
 		end
 		wn.unshift new_item if diary.visible?
-		db['whatsnew'] = wn
+		db.set( 'whatsnew', wn.to_json )
 
 		rdf = whatsnew_list_rdf_file
 		if @conf['whatsnew_list.rdf.out'] then
