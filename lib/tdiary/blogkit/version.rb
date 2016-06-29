@@ -1,5 +1,5 @@
 module TDiary
   class Blogkit
-    VERSION = "5.0.0.20160524"
+    VERSION = "5.0.1"
   end
 end
