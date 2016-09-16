@@ -12,19 +12,21 @@ tDiary BlogKit modifies tDiary. This modification enables tDiary to manage artic
 
 You can setup BlogKit without changing tDiary. It is only plugged-in.
 
-## how to install
+## how to install (Running as CGI)
+
+See "how to install (use gem)" section if you want to run tDiary + BlogKit with gem.
 
 First, you need tDiary that is installed. You must use tDiary version 2.1.3 or later. Here, it is assumed that you install tDiary under $INSTALL anew. 
 
 ### Creating tdiary.conf
 
-Copy tdiary.conf.sample in BlogKit to $INSTALL/tdiary.conf. And, rewrite @data\_path in the tdiary.conf to your data saving directory. Read README of tDiary about @data_path. 
+Copy `tdiary.conf.sample` in BlogKit to `$INSTALL/tdiary.conf`. And, rewrite `@data_path` in the tdiary.conf to your data saving directory. Read README of tDiary about `@data_path`. 
 
-### Copy blog_style.rb
+### Copy `blog_style.rb`
 
 #### To use tDiary style
 
-Copy tdiary/blog_style.rb of BlogKit under $INSTALL/tdiary. You have to confirm there is "@style= 'Blog'" in your tdiary.conf.
+Copy `tdiary/blog_style.rb` of BlogKit under `$INSTALL/tdiary`. You have to confirm there is "@style= 'Blog'" in your `tdiary.conf`.
 
 #### To use Wiki style
 
@@ -49,6 +51,20 @@ This option can have some pathes of plugins, 1st path is tDiary plugin collectio
 ### and run tDiary as CGI
 
 When you want to add a new topic, click 'Update' link at the bottom of the page. If you want to edit existing page, open the topic and click 'Edit' link at the bottom of the page.
+
+## how to install (use gem)
+
+If you installed tDiary by gem, exec `tdiary new` command to make your diary, and move current directory to the diary. If you did not use tDiary gem, also make your diary and move current directory to it.
+
+Edit `Gemfile.local` on the current directory, add a line below:
+
+    gem 'tdiary-blogkit'
+
+(If you want to use any web server, you can specify into the same file.)
+
+So, edit `tdiary.conf` file and change `@style` variable to 'Blog', 'BlogWiki' or 'BlogRD'.
+
+Then exec tDiary: `tdiary server` command or your specified web server.
 
 ## About Plugins
 
