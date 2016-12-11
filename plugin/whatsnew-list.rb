@@ -248,6 +248,10 @@ add_edit_proc do
 	HTML
 end
 
+add_startup_proc do
+	whatsnew_list_update
+end
+
 # Local Variables:
 # mode: ruby
 # indent-tabs-mode: t
