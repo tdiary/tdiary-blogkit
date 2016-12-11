@@ -10,8 +10,6 @@
 # Distributed under the GPL
 #
 
-require 'pstore'
-
 def blog_category
 	cat = @cgi.params['blogcategory'][0]
 	if cat and !cat.empty?
@@ -46,7 +44,7 @@ if /^(latest|month|day|append|replace|comment|showcomment|saveconf|trackbackrece
 						return '' unless @title
 						stripped = @title.sub(/^(\[(.*?)\])+\s*/,'')
 					end
-	
+
 					def categories
 						return [] unless @title
 						cat = /^(\[([^\[]+?)\])+/.match(@title).to_a[0]
@@ -107,27 +105,24 @@ def navi_user
 end
 
 def blog_category_cache
-	"#{@cache_path}/blog_category"
+	"blog_category"
 end
 
 def blog_category_cache_add(diary)
-	PStore.new(blog_category_cache).transaction do |db|
-		db['blog_category'] = Hash.new unless db.root?('blog_category')
+	transaction(blog_category_cache) do |db|
+		cache = JSON.load(db.get('blog_category')) || Hash.new
 		diary.categories.each do |c|
-			db['blog_category'][c] = Hash.new unless db['blog_category'][c]
-			db['blog_category'][c][diary.date.strftime('%Y%m%d')] = diary.stripped_title
+			cache[c] ||= Hash.new
+			cache[c][diary.date.strftime('%Y%m%d')] = diary.stripped_title
 		end
+		db.set('blog_category', cache.to_json)
 	end
 end
 
 def blog_category_cache_restore
-	return nil unless File.exist?(blog_category_cache)
-	cache = {}
-	PStore.new(blog_category_cache).transaction do |db|
-		cache.update(db['blog_category'])
-		db.abort
+	transaction(blog_category_cache) do |db|
+		JSON.load(db.get('blog_category'))
 	end
-	cache
 end
 
 def blog_category_entry(limit = 20)
@@ -179,20 +174,21 @@ def blog_category_cache_initialize
 	cgi = CGI::new
 	def cgi.referer; nil; end
 
-	PStore.new(blog_category_cache).transaction do |db|
-		db['blog_category'] = Hash.new
+	transaction(blog_category_cache) do |db|
+		cache = Hash.new
 		@years.each do |y, ms|
 			ms.each do |m|
 				cgi.params['date'] = ["#{y}#{m}"]
 				m = TDiaryMonth.new(cgi, '', @conf)
 				m.diaries.each do |k, diary|
 					diary.categories.each do |c|
-						db['blog_category'][c] = Hash.new unless db['blog_category'][c]
-						db['blog_category'][c][diary.date.strftime('%Y%m%d')] = diary.stripped_title
+						cache[c] ||= Hash.new
+						cache[c][diary.date.strftime('%Y%m%d')] = diary.stripped_title
 					end
 				end
 			end
 		end
+		db.set('blog_category', cache.to_json)
 	end
 end
 
