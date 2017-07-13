@@ -96,7 +96,12 @@ end
 # private methods
 #
 def whatsnew_list_rdf_file
-	@conf['whatsnew_list.rdf'] || 'index.rdf'
+	return @conf['whatsnew_list.rdf'] if @conf['whatsnew_list.rdf']
+	if @cgi.is_a?(RackCGI)
+		File.join(TDiary.server_root, 'public/index.rdf')
+	else
+		File.join(TDiary.server_root, 'index.rdf')
+	end
 end
 
 def whatsnew_list_rdf( items )
@@ -175,6 +180,28 @@ def feed?
 	@whatsnew_list_in_feed
 end
 
+def whatsnew_list_update_feed(new_items = [])
+	transaction( 'whatsnew-list' ) do |db|
+		wn = []
+		(JSON.load(db.get('whatsnew')) || []).each_with_index do |item, i|
+			wn << item unless item[0] == new_items[0]
+			break if i > 15
+		end
+
+		unless (new_items.empty?)
+			wn.unshift new_items
+			db.set('whatsnew', wn.to_json)
+		end
+
+		rdf = whatsnew_list_rdf_file
+		if @conf['whatsnew_list.rdf.out'] then
+			open(rdf, 'w') do |f|
+				f.write(whatsnew_list_rdf(wn))
+			end
+		end
+	end
+end
+
 def whatsnew_list_update
 	return if @mode == 'comment' and !@comment.visible?
 
@@ -206,23 +233,8 @@ def whatsnew_list_update
 
 	@whatsnew_list_in_feed = false
 
-	new_item = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime("%Y-%m-%dT%H:%M:%S#{zone}"), desc]
-	transaction( 'whatsnew-list' ) do |db|
-		wn = []
-		(JSON.load( db.get( 'whatsnew' ) ) || []).each_with_index do |item, i|
-			wn << item unless item[0] == new_item[0]
-			break if i > 15
-		end
-		wn.unshift new_item if diary.visible?
-		db.set( 'whatsnew', wn.to_json )
-
-		rdf = whatsnew_list_rdf_file
-		if @conf['whatsnew_list.rdf.out'] then
-			open( rdf, 'w' ) do |f|
-				f.write( whatsnew_list_rdf( wn ) )
-			end
-		end
-	end
+	new_items = [diary.date.strftime('%Y%m%d'), title, Time::now.strftime("%Y-%m-%dT%H:%M:%S#{zone}"), desc]
+	whatsnew_list_update_feed(diary.visible? ? new_items : [])
 end
 
 add_update_proc do
@@ -249,7 +261,7 @@ add_edit_proc do
 end
 
 add_startup_proc do
-	whatsnew_list_update
+	whatsnew_list_update_feed
 end
 
 # Local Variables:
