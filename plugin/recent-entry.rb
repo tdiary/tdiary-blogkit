@@ -10,27 +10,15 @@
 # You can redistribute it and/or modify it under GPL2.
 #
 
-eval( <<MODIFY_CLASS, TOPLEVEL_BINDING )
-module TDiary
-	class TDiaryMonth
-		attr_reader :diaries
-	end
-end
-MODIFY_CLASS
-
 def recent_entry( max = 5, limit = 20 )
 	max = max.to_i
 	limit = limit.to_i
 
 	result = "<ul>\n"
-
-	cgi = CGI::new
-	def cgi.referer; nil; end
 	catch( :exit ) {
 		@years.keys.sort.reverse_each do |year|
 			@years[year].sort.reverse_each do |month|
-				cgi.params['date'] = ["#{year}#{month}"]
-				m = TDiaryMonth::new( cgi, '', @conf )
+				m = DiaryContainer::find_by_month(@conf, "#{year}#{month}")
 				m.diaries.keys.sort.reverse_each do |date|
 					next unless m.diaries[date].visible?
 					title = if m.diaries[date].respond_to?( :stripped_title ) then
@@ -46,14 +34,9 @@ def recent_entry( max = 5, limit = 20 )
 			end
 		end
 	}
-
 	result << "</ul>\n"
 	apply_plugin( result )
 end
-
-def recent_entry_insecure( max = 5, limit = 20 )
-end
-
 
 # Local Variables:
 # mode: ruby
