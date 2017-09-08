@@ -10,39 +10,6 @@
 # You can redistribute it and/or modify it under GPL2.
 #
 
-def recent_entry( max = 5, limit = 20 )
-	result = "<ul>\n"
-	if @conf.secure then
-		result << recent_entry_secure( max, limit )
-	else
-		result << recent_entry_insecure( max, limit )
-	end
-	result << "</ul>\n"
-	apply_plugin( result )
-end
-
-
-#---- private ----#
-def recent_entry_secure( max = 5, limit = 20 )
-	max = max.to_i
-	limit = limit.to_i
-
-	result = ''
-	@diaries.keys.sort.reverse.each_with_index do |date, idx|
-		break if idx >= max
-		diary = @diaries[date]
-		next unless diary.visible?
-		title = if diary.respond_to?( :stripped_title ) then
-			diary.stripped_title.gsub( /<[^>]*>/, '' )
-		else
-			diary.title.gsub( /<[^>]*>/, '' )
-		end
-		title = 'no title' if title.empty?
-		result << %Q[<li><a href="#{h @index}#{anchor date}">#{@conf.shorten( title, limit )}</a></li>\n]
-	end
-	result
-end
-
 eval( <<MODIFY_CLASS, TOPLEVEL_BINDING )
 module TDiary
 	class TDiaryMonth
@@ -51,14 +18,14 @@ module TDiary
 end
 MODIFY_CLASS
 
-def recent_entry_insecure( max = 5, limit = 20 )
+def recent_entry( max = 5, limit = 20 )
 	max = max.to_i
 	limit = limit.to_i
 
+	result = "<ul>\n"
+
 	cgi = CGI::new
 	def cgi.referer; nil; end
-
-	result = ''
 	catch( :exit ) {
 		@years.keys.sort.reverse_each do |year|
 			@years[year].sort.reverse_each do |month|
@@ -79,7 +46,12 @@ def recent_entry_insecure( max = 5, limit = 20 )
 			end
 		end
 	}
-	result
+
+	result << "</ul>\n"
+	apply_plugin( result )
+end
+
+def recent_entry_insecure( max = 5, limit = 20 )
 end
 
 
