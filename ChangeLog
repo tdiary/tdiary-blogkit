@@ -1,3 +1,23 @@
+2017-09-08 TADA Tadashi <t@tdtds.jp>
+	* remove secure mode support and merge to single method
+	* recent_list.rb: update like recent_list plugin in core package
+	* recent_list.rb: update to modern style and fix some information
+
+2017-07-14 Tatsuya Sato <satoryu.1981@gmail.com>
+	* Add bloggfm style
+
+2017-07-13 TADA Tadashi <t@tdtds.jp>
+	* fix error of whatsnew_list plugin on startup
+
+2017-06-29 TADA Tadashi <t@tdtds.jp>
+	* release 5.0.5
+
+2017-03-29 TADA Tadashi <t@tdtds.jp>
+	* release 5.0.4
+
+2016-12-29 TADA Tadashi <t@tdtds.jp>
+	* release 5.0.3
+
 2016-09-29 TADA Tadashi <t@tdtds.jp>
 	* release 5.0.2
 
