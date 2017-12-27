@@ -7,6 +7,7 @@
 # Copyright (c) 2001,2002 Junichiro KITA <kita@kitaj.no-ip.com>
 # You can redistribute it and/or modify it under GPL.
 #
+require 'tdiary/diary_container'
 
 def recent_entry(max = 5, limit = 20)
 	max = max.to_i
