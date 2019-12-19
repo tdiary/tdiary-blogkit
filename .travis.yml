@@ -6,10 +6,8 @@ rvm:
   - 2.5.7
   - 2.6.5
   - ruby-head
-addons:
-  apt:
-    - libidn11-dev
 before_install:
+  - sudo apt-get -y install libidn11-dev
   - yes | gem update --system
   - gem update bundler
 script: bundle exec rake spec
