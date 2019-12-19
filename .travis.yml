@@ -8,6 +8,5 @@ rvm:
   - ruby-head
 before_install:
   - sudo apt-get -y install libidn11-dev
-  - yes | gem update --system
   - gem update bundler
 script: bundle exec rake spec
